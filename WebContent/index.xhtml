@@ -5,12 +5,43 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 
-<ui:composition template="/template/main.xhtml">
+<ui:composition template="/template/master.xhtml">
+
+
 	<ui:define name="content">
-		<h:form>
-			<h:commandLink action="#{usuarioBean.novo}">Novo usuário</h:commandLink>
+		<div id="box-inicio">
+			<h1>CarFire</h1>
+			<h4>A sua locadora de automóveis...</h4>
+		</div>
+
+		<h:form id="form-login" role="form">
+			<h:messages />
+
+			<h1>Login</h1>
+			<hr />
+			<h:outputLabel for="email" value="e-Mail:" />
+			<h:inputText styleClass="text form-control" label="e-Mail"
+				name="email" required="true" />
+
+			<h:outputLabel for="senha" value="Senha:" />
+			<h:inputSecret styleClass="text form-control" label="Senha"
+				name="senha" required="true" />
+
+			<div class="checkbox">
+				<h:outputLabel value="Mantenha-me conectado">
+					<h:selectBooleanCheckbox name="abc" />
+				</h:outputLabel>
+ 			</div>
+
+			<br/>
+			<h:commandButton action="#{usuarioBean.novo}"
+				class="btn btn-lg btn-primary" value="Entrar" />
+
+		
+
 		</h:form>
 	</ui:define>
+
 </ui:composition>
 
 </html>

@@ -1,3 +1,49 @@
 @CHARSET "UTF-8";
 @IMPORT URL("reset.css");
 
+
+/**** Início ****/
+#box-inicio {
+/* 	border: solid 1px #000; */
+	margin: 50px 100px;
+	width: 400px;
+	float: left;
+}
+
+#box-inicio h1 {
+	font-size: 7em;
+	color: #CCC;
+}
+
+#box-inicio h4 {
+	color: #666;
+	font-style: italic;
+}
+
+/** Login **/
+#form-login {
+/* 	border: solid 1px #000; */
+	padding: 20px;
+	margin: 0 100px;
+	float: right;
+}
+
+#form-login .text {
+	width: 350px;
+}
+
+#form-login input {
+	margin-bottom: 10px;
+}
+
+
+
+/** Footer **/
+footer {
+	border-top: solid 1px #CCC;
+	text-align: center;
+	margin-top: 100px;
+	padding: 10px 0;
+	width: 100%;
+	float: left;
+}
