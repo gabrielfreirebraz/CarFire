@@ -14,18 +14,19 @@
 <h:body>
 
 	
-	
+	<!-- Cabeçalho -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Brand</a>
+				<a class="navbar-brand" href="#">Área restrita</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,7 +51,7 @@
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search" />
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">Buscar</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Link</a></li>
@@ -71,13 +72,26 @@
 	</nav>
 
 
-	<ui:insert name="content">
-	</ui:insert>
+
+	<!-- Conteúdo das páginas -->
+	<ui:insert name="content" />
+
+
 	
+	
+	<!-- Rodapé do sistema -->
 	<footer>
 		<p>@2014 - CarFire<br/>Desenvolvido por Gabriel e Vanessa, 3MSIN - USJT Butantã</p>
 	</footer>
 	
+	
+	
+	<!-- Javascript -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>	
+	<h:outputScript name="bootstrap.min.js" library="js" />
+	<h:outputScript name="principal.js" library="js" />
+
+	<ui:insert name="js_externo" />
 	
 </h:body>
 </html>

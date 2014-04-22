@@ -1,14 +1,84 @@
 package carfire.web.controller;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import carfire.web.model.Login;
 
 public class LoginController {
 
-	public static void main(String[] args) {		
+	public Login login;
 
+	public LoginController() {
+		this.login = new Login();
 	}
-	
-	public boolean consultar(String email, String senha) {		
+
+	public String checkLogin() {
+
+		if (this.validar()) {
+			if (this.consultar()) {
+
+				// Redirecionar para próxima tela
+				return "public/usuario";
+			}
+		}
+
+		return "index";
+	}
+
+	private boolean validar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		if (login.getEmail().isEmpty() || login.getSenha().isEmpty()) {
+			context.addMessage(null, new FacesMessage(
+					FacesMessage.SEVERITY_ERROR,
+					"Digite o email no formato nome@exemplo.com.", ""));
+
+			context.addMessage(null, new FacesMessage(
+					FacesMessage.SEVERITY_ERROR,
+					"Digite a senha da sua conta do CarFire.", ""));
+
+			return false;
+		}
 
 		return true;
 	}
+
+	private boolean consultar() {
+
+		// Fazer consulta do email e senha na base
+
+		return true;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	
+	
+//	public void logout() {
+//
+//		user = null;
+//
+//	}
+//
+//	public boolean isLoggedIn() {
+//
+//		return user != null;
+//
+//	}
+//
+//	@Produces
+//	@LoggedIn
+//	User getCurrentUser() {
+//
+//		return user;
+//
+//	}
+
 }
