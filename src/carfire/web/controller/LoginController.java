@@ -16,10 +16,10 @@ public class LoginController {
 	public String checkLogin() {
 
 		if (this.validar()) {
-			if (this.consultar()) {
+			if (login.consultar()) {
 
 				// Redirecionar para próxima tela
-				return "public/usuario";
+				return "public/veiculo";
 			}
 		}
 
@@ -40,13 +40,6 @@ public class LoginController {
 
 			return false;
 		}
-
-		return true;
-	}
-
-	private boolean consultar() {
-
-		// Fazer consulta do email e senha na base
 
 		return true;
 	}

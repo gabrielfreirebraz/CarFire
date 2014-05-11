@@ -8,6 +8,8 @@
 <ui:composition template="/template/master.xhtml">
 
 
+	<ui:define name="left" />	
+
 	<ui:define name="content">
 		<div id="box-inicio">
 			<h1>CarFire</h1>
@@ -16,7 +18,7 @@
 
 		<h:form id="form-login" role="form">
 			<h:messages styleClass="message-error" />
-			
+
 			<h1>Login</h1>
 			<hr />
 
@@ -30,7 +32,7 @@
 
 			<div class="checkbox">
 				<h:outputLabel value="Mantenha-me conectado">
-					<h:selectBooleanCheckbox name="abc" />
+					<h:selectBooleanCheckbox name="checkbox" />
 				</h:outputLabel>
 			</div>
 
@@ -50,5 +52,4 @@
 	</ui:define>
 
 </ui:composition>
-
 </html>

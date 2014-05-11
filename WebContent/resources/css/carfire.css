@@ -2,6 +2,10 @@
 @IMPORT URL("reset.css");
 
 
+body { 
+	padding-top: 70px; 
+}
+
 /**** Início ****/
 #box-inicio {
 /* 	border: solid 1px #000; */
@@ -20,8 +24,30 @@
 	font-style: italic;
 }
 
+
+/** Left **/
+#left {
+/* 	border: solid 1px #000; */
+	width: 250px;
+	margin: 40px 10px;
+	float: left;
+}
+
+#content {
+/* 	border: solid 1px #000; */
+	width: 650px;
+	margin: 0 50px;
+	float: left;
+}
+
+
+
+
+
+
 /** Login **/
 #form-login {
+/* 	border: solid 1px #CCC; */
 	padding: 20px;
 	margin: 0 100px;
 	float: right;
@@ -46,7 +72,7 @@
 footer {
 	border-top: solid 1px #CCC;
 	text-align: center;
-	margin-top: 100px;
+	margin-top: 75px;
 	padding: 10px 0;
 	width: 100%;
 	float: left;

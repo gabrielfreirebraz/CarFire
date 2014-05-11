@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+
+
+	<ui:define name="content">
+
+		<h2>Veículo</h2>
+		<label>Cadastrar ou alterar</label>
+		<hr />
+
+
+		<h:form>
+			<h:messages styleClass="message-error" />
+
+			<h:panelGrid columns="2">
+				<h:outputLabel for="chassi" value="Chassi:" />
+				<h:inputText styleClass="text form-control" name="chassi"
+					label="Chassi" value="#{veiculoController.veiculo.chassi}"
+					required="true" />				
+
+				<h:outputLabel for="placa" value="Placa:" />
+				<h:inputText styleClass="text form-control" name="placa"
+					label="Placa" value="#{veiculoController.veiculo.placa}"
+					required="true" />
+
+				<h:outputLabel for="cidade" value="Cidade:" />
+				<h:inputText styleClass="text form-control" name="cidade"
+					label="Cidade" value="#{veiculoController.veiculo.cidade}"
+					required="true" />
+
+				<h:outputLabel for="km" value="Km:" />
+				<h:inputText styleClass="text form-control" name="km" label="km"
+					value="#{veiculoController.veiculo.km}" required="true" />
+
+				<h:outputLabel for="estado" value="Estado:" />
+				<h:inputText styleClass="text form-control" name="estado"
+					label="Estado" value="#{veiculoController.veiculo.estado}"
+					required="true" />
+
+				<h:outputLabel for="modelo" value="Modelo:" />
+				<h:inputText styleClass="text form-control" name="modelo"
+					label="Modelo" value="#{veiculoController.veiculo.modelo}"
+					required="true" />
+
+				<h:outputLabel for="fabricante" value="Fabricante:" />
+				<h:inputText styleClass="text form-control" name="fabricante"
+					label="Fabricante" value="#{veiculoController.veiculo.fabricante}"
+					required="true" />
+
+				<h:outputLabel for="marca" value="Marca:" />
+				<h:inputText styleClass="text form-control" name="marca"
+					label="Marca" value="#{veiculoController.veiculo.marca}"
+					required="true" />
+
+
+				<h:outputText />
+				<h:commandButton action="#{veiculoController.salvar}"
+					styleClass="btn btn-primary" value="Salvar" />
+
+				
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
