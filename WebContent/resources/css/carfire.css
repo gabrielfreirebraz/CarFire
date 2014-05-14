@@ -35,8 +35,8 @@ body {
 
 #content {
 /* 	border: solid 1px #000; */
-	width: 650px;
-	margin: 0 50px;
+	width: 100%;
+	padding: 0 50px;
 	float: left;
 }
 
@@ -54,17 +54,24 @@ body {
 }
 
 #form-login .text {
-	width: 350px;
+	width: 350px;	
 }
 
 #form-login input {
-	margin-bottom: 10px;
+	margin: 15px 0;
 }
 
 .message-error {
 	color: #F00;
 	list-style: none;
 	text-align: left;
+}
+
+
+/** Veículo **/
+#form-veiculo {
+/* 	border:solid 1px #000; */
+/* 	margin:0 20px; */
 }
 
 

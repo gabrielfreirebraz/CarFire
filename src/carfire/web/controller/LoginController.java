@@ -19,7 +19,7 @@ public class LoginController {
 			if (login.consultar()) {
 
 				// Redirecionar para próxima tela
-				return "public/veiculo";
+				return "public/listCars";
 			}
 		}
 
