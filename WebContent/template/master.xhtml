@@ -13,65 +13,79 @@
 
 <h:body>
 
+	<!-- Menu no topo -->
+	<ui:insert name="topo">
+	
+		<!-- Cabeçalho -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">CarFire System</a>
+				</div>
 
-	<!-- Cabeçalho -->
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Área restrita</a>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Empréstimo</a></li>
+						<li><a href="#">Devolução</a></li>
+						<li><a href="#">Reservar</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Cliente <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="/CarFire/public/formClientPF.jsf">Cadastrar
+										PF</a></li>
+								<li><a href="/CarFire/public/formClientPJ.jsf">Cadastrar
+										PJ</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Ver todos</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Automóveis <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="public/formCar.jsf">Cadastro</a></li>
+								<li><a href="#">Ver todos</a></li>
+								<li><a href="#">Busca avançada</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search" />
+						</div>
+						<button type="submit" class="btn btn-default">Buscar</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Link</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Usuário <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Minha conta</a></li>
+								<li class="divider"></li>
+								<li><a href="/CarFire/index.jsf">Sair</a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
 			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</ui:insert>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Empréstimo</a></li>
-					<li><a href="#">Devolução</a></li>
-					<li><a href="#">Reservar</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Automóveis <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="public/formCar.jsf">Cadastro</a></li>
-							<li><a href="#">Ver todos</a></li>
-							<li><a href="#">Busca avançada</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
-				</ul>
-				<form class="navbar-form navbar-left">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search" />
-					</div>
-					<button type="submit" class="btn btn-default">Buscar</button>
-				</form>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Link</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Usuário <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Minha conta</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Sair</a></li>
-						</ul></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
+
 
 
 	<!-- Menu esquerdo -->
-
 	<ui:insert name="left">
 
 		<div id="left">
@@ -88,11 +102,16 @@
 
 
 	<!-- Conteúdo das páginas -->
+
 	<div id="content">
+
 		<ui:insert name="content">
 
 		</ui:insert>
+
+
 	</div>
+
 
 
 
