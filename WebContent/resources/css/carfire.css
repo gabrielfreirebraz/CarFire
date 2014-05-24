@@ -1,25 +1,34 @@
 @CHARSET "UTF-8";
 @IMPORT URL("reset.css");
 
+* {
+/* 	border:solid 1px #000; */
+}
 
 body { 
 	padding-top: 70px; 
 }
 
-/**** Início ****/
-#box-inicio {
-/* 	border: solid 1px #000; */
-	margin: 50px 100px;
-	width: 400px;
-	float: left;
+input {
+	margin: 7px 0;
 }
 
-#box-inicio h1 {
-	font-size: 7em;
+
+
+/**** Início ****/
+#content {
+	float: left;
+}
+#box-logo {
+	margin-bottom: 50px;
+}
+
+#box-logo h1 {
+	font-size: 5em;
 	color: #CCC;
 }
 
-#box-inicio h4 {
+#box-logo h4 {
 	color: #666;
 	font-style: italic;
 }
@@ -27,40 +36,13 @@ body {
 
 /** Left **/
 #left {
-/* 	border: solid 1px #000; */
 	width: 250px;
 	margin: 40px 10px;
 	float: left;
 }
 
-#content {
-/* 	border: solid 1px #000; */
-	width: 100%;
-	padding: 0 50px;
-	float: left;
-}
-
-
-
-
-
 
 /** Login **/
-#form-login {
-/* 	border: solid 1px #CCC; */
-	padding: 20px;
-	margin: 0 100px;
-	float: right;
-}
-
-#form-login .text {
-	width: 350px;	
-}
-
-#form-login input {
-	margin: 15px 0;
-}
-
 .message-error {
 	color: #F00;
 	list-style: none;
@@ -69,18 +51,14 @@ body {
 
 
 /** Veículo **/
-#form-veiculo {
-/* 	border:solid 1px #000; */
-/* 	margin:0 20px; */
-}
 
 
 /** Footer **/
 footer {
 	border-top: solid 1px #CCC;
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 75px;
 	padding: 10px 0;
 	width: 100%;
-	float: left;
+	float:left;
 }

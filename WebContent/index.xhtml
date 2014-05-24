@@ -7,40 +7,61 @@
 
 <ui:composition template="/template/master.xhtml">
 
-	<ui:define name="topo" />	
-	<ui:define name="left" />	
+	<ui:define name="topo" />
+	<ui:define name="left" />
 
 	<ui:define name="content">
-		<div id="box-inicio">
+		<div class="col-sm-offset-1 col-sm-5" id="box-logo">
 			<h1>CarFire</h1>
 			<h4>A sua locadora de automóveis...</h4>
 		</div>
 
-		<h:form id="form-login" role="form">
-			<h:messages styleClass="message-error" />
+		<div class="col-sm-6">
+			<h:form styleClass="form-horizontal" role="form">
+				<h:messages styleClass="message-error" />
 
-			<h1>Login</h1>
-			<hr />
+				<h2>Login</h2>
+				<hr />
 
-			<h:outputLabel for="email" value="Email:" />
-			<h:inputText styleClass="text form-control" name="email"
-				value="#{loginController.login.email}" />
 
-			<h:outputLabel for="senha" value="Senha:" />
-			<h:inputSecret styleClass="text form-control" name="senha"
-				value="#{loginController.login.senha}" />
+				<div class="form-group">
+					<h:outputLabel for="email" styleClass="col-sm-2 control-label"
+						value="Email:" />
+					<div class="col-sm-7">
+						<h:inputText styleClass="form-control" id="email" name="email"
+							value="#{loginController.login.email}" />
+					</div>
+				</div>
 
-			<div class="checkbox">
-				<h:outputLabel value="Mantenha-me conectado">
-					<h:selectBooleanCheckbox name="checkbox" />
-				</h:outputLabel>
-			</div>
+				<div class="form-group">
+					<h:outputLabel for="senha" styleClass="col-sm-2 control-label"
+						value="Senha:" />
+					<div class="col-sm-7">
+						<h:inputText styleClass="form-control" id="senha" name="senha"
+							value="#{loginController.login.senha}" />
+					</div>
+				</div>
 
-			<br />
-			<h:commandButton action="#{loginController.checkLogin}"
-				class="btn btn-lg btn-primary" value="Entrar" />
 
-		</h:form>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="checkbox">
+							<h:outputLabel>
+								<h:selectBooleanCheckbox name="checkbox"/> Mantenha-me conectado 
+							</h:outputLabel> 
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<h:commandButton action="#{loginController.checkLogin}" 
+							styleClass="btn btn-primary" value="Entrar"/>
+					</div>
+				</div>
+
+			</h:form>
+		</div>
 	</ui:define>
 
 	<ui:define name="js_externo">
