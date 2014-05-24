@@ -3,6 +3,7 @@
 
 * {
 /* 	border:solid 1px #000; */
+	font-family: Arial;
 }
 
 body { 
@@ -47,6 +48,49 @@ body {
 
 
 /** Veículo **/
+.item-car {
+	border:solid 1px #efeded;
+	min-height: 210px;
+	
+}
+.item-car > h5 {
+	border-top:solid 1px #efeded;
+	padding-top: 4px;
+}
+.item-car-topo {
+	background: #efeded;
+	font-weight: bold;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+.item-car-corpo {
+	min-height: 100px;
+}
+.item-car-corpo h6 {
+	font-weight: bold;	
+}
+.item-car-corpo ul {
+	padding: 0;
+}
+.item-car-corpo ul li {
+	font-size: 12px;
+	list-style: disc;
+	margin-left: 25px;	
+	padding: 2px;
+}
+.item-car-corpo ul li span {
+	float: right;	
+}
+.item-car-direito {
+	text-align: right;
+	padding-right: 7px;
+}
+.item-car-direito > p {
+	font-size: 11px;
+}
+.item-car-direito > p > span {
+	color: #f00;
+}
 
 
 /** Footer **/
