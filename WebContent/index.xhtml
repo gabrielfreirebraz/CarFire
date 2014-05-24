@@ -17,49 +17,49 @@
 		</div>
 
 		<div class="col-sm-6">
-			<h:form styleClass="form-horizontal" role="form">
-				<h:messages styleClass="message-error" />
+			<h:form styleClass="form-horizontal" role="form">				
 
-				<h2>Login</h2>
-				<hr />
-
-
-				<div class="form-group">
-					<h:outputLabel for="email" styleClass="col-sm-2 control-label"
-						value="Email:" />
-					<div class="col-sm-7">
-						<h:inputText styleClass="form-control" id="email" name="email"
-							value="#{loginController.login.email}" />
+				<div class="col-sm-offset-1 col-sm-11">
+					<h2>Login</h2>
+					<hr />
+					<h:messages styleClass="col-sm-12 message-error" />
+					
+					<div class="form-group">
+						<h:outputLabel for="email" styleClass="col-sm-2 control-label"
+							value="Email:" />
+						<div class="col-sm-7">
+							<h:inputText styleClass="form-control" id="email" name="email"
+								value="#{loginController.login.email}" />
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<h:outputLabel for="senha" styleClass="col-sm-2 control-label"
-						value="Senha:" />
-					<div class="col-sm-7">
-						<h:inputText styleClass="form-control" id="senha" name="senha"
-							value="#{loginController.login.senha}" />
+					<div class="form-group">
+						<h:outputLabel for="senha" styleClass="col-sm-2 control-label"
+							value="Senha:" />
+						<div class="col-sm-7">
+							<h:inputSecret styleClass="form-control" id="senha" name="senha"
+								value="#{loginController.login.senha}" />
+						</div>
 					</div>
-				</div>
 
 
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<div class="checkbox">
-							<h:outputLabel>
-								<h:selectBooleanCheckbox name="checkbox"/> Mantenha-me conectado 
-							</h:outputLabel> 
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<div class="checkbox">
+								<h:outputLabel>
+									<h:selectBooleanCheckbox name="checkbox" /> Mantenha-me conectado 
+								</h:outputLabel>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<h:commandButton action="#{loginController.checkLogin}"
+								styleClass="btn btn-primary" value="Entrar" />
 						</div>
 					</div>
 				</div>
-				
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<h:commandButton action="#{loginController.checkLogin}" 
-							styleClass="btn btn-primary" value="Entrar"/>
-					</div>
-				</div>
-
 			</h:form>
 		</div>
 	</ui:define>

@@ -9,10 +9,6 @@ body {
 	padding-top: 70px; 
 }
 
-input {
-	margin: 7px 0;
-}
-
 
 
 /**** Início ****/
@@ -57,7 +53,7 @@ input {
 footer {
 	border-top: solid 1px #CCC;
 	text-align: center;
-	margin-top: 75px;
+	margin-top: 100px;
 	padding: 10px 0;
 	width: 100%;
 	float:left;
