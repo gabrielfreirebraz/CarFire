@@ -12,6 +12,3 @@ Sistema de locação de automóveis
 2. Hibernate
 3. Twitter Bootstrap 
     
-### Configuração do Sistema
-Ao iniciar o sistema, o atendente de uma Locadora de Veículos seleciona o idioma em que o
-sistema será exibido e o código da agência de locação.
