@@ -6,11 +6,13 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputStylesheet name="bootstrap.css" library="css" />
-	<h:outputStylesheet name="jquery.dataTables.css" library="css" />
-	<h:outputStylesheet name="jquery-ui-1.10.4.css" library="css" />
-	<h:outputStylesheet name="carfire.css" library="css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
+	<h:outputStylesheet name="bootstrap.css" library="css" />
+	<h:outputStylesheet name="jquery-ui.css" library="css" />
+	<h:outputStylesheet name="dataTables.jqueryui.css" library="css" />
+	<h:outputStylesheet name="carfire.css" library="css" />
+
 	<title>.::CarFire::.</title>
 </h:head>
 
@@ -54,7 +56,7 @@
 							data-toggle="dropdown">Automóveis <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="/CarFire/public/formCar.jsf">Cadastro</a></li>
-								<li><a href="/CarFire/public/listCars.jsf">Ver todos</a></li>								
+								<li><a href="/CarFire/public/listCars.jsf">Ver todos</a></li>
 								<li class="divider"></li>
 								<li><a href="#">Separated link</a></li>
 								<li class="divider"></li>
@@ -75,7 +77,8 @@
 								<li><a href="#">Minha conta</a></li>
 								<li class="divider"></li>
 								<li><a href="/CarFire/index.jsf">Sair</a></li>
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -125,9 +128,8 @@
 	<h:outputScript name="jquery-1.11.0.js" library="js" />
 	<h:outputScript name="bootstrap.js" library="js" />
 	<h:outputScript name="jquery.dataTables.js" library="js" />
-	<h:outputScript name="jquery-ui-1.10.4.js" library="js" />
+	<h:outputScript name="dataTables.jqueryui.js" library="js" />
 	<h:outputScript name="principal.js" library="js" />
-	
 
 	<ui:insert name="js_externo" />
 

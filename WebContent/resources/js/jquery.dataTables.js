@@ -1,5 +1,5 @@
 /*! DataTables 1.10.0
- * ©2008-2014 SpryMedia Ltd - datatables.net/license
+ * Â©2008-2014 SpryMedia Ltd - datatables.net/license
  */
 
 /**
@@ -112,7 +112,7 @@
 	
 	// U+2009 is thin space and U+202F is narrow no-break space, both used in many
 	// standards as thousands separators
-	var _re_formatted_numeric = /[',$£€¥%\u2009\u202F]/g;
+	var _re_formatted_numeric = /[',$Â£â‚¬Â¥%\u2009\u202F]/g;
 	
 	
 	var _empty = function ( d ) {
