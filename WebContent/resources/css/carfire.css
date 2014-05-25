@@ -10,7 +10,11 @@ body {
 	padding-top: 70px; 
 }
 
-
+.control-label {
+	color: #666;
+	font-weight: normal;
+	font-size: 12px;	
+}
 
 /**** Início ****/
 #content {
@@ -47,7 +51,7 @@ body {
 }
 
 
-/** Veículo **/
+/** Veículos para empréstimo **/
 .item-car {
 	border:solid 1px #efeded;
 	min-height: 210px;

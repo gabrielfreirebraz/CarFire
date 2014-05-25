@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+	<ui:define name="left" />
+
+	<ui:define name="content">
+		<ol class="breadcrumb">
+			<li><a href="#">Empréstimo</a></li>
+			<li class="active">Veículos</li>
+		</ol>
+
+		<BLOCKQUOTE>
+			<p>Veículos - 14 opções de grupos de carros</p>
+		</BLOCKQUOTE>
+		<hr />
+
+		<div class="col-sm-12 col-md-8">
+			<div class="item-car">
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="item-car-topo">Uno ou similar - O melhor da categoria<span>id 11</span></div>						
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3">
+						<h:graphicImage name="unoway.png" library="images/cars" />
+					</div>
+
+					<div class="col-sm-5">
+						<div class="item-car-corpo">
+							<h6 class="col-sm-12">Categoria básico sem ar</h6>
+							<ul class="col-sm-6">
+								<li>Motor;<span class="label label-success">1.0</span></li>
+								<li>Ocupantes;<span class="label label-success">5</span></li>
+								<li>Direção;<span class="label label-default">Manual</span></li>
+								<li>Air Bag;<span class="label label-default">Não</span></li>
+							</ul>
+							<ul class="col-sm-6">
+								<li>Portas;<span class="label label-success">2 ou 4</span></li>
+								<li>Ar condicionado;<span class="label label-default">Não</span></li>
+								<li>Câmbio;<span class="label label-default">Manual</span></li>
+								<li>Freios ABS;<span class="label label-default">Não</span></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="item-car-direito">
+							<h2>R$ 123,00/dia</h2>
+							<p>
+								<span>Total R$ 135,30 c/ taxas</span><br />ou até 2x sem juros
+								de R$67,65
+							</p>
+							<button type="button" class="btn btn-warning btn-lg">Alugar</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-car-baixo"></div>
+			</div>
+		</div>
+
+
+	</ui:define>
+
+	<ui:define name="js_externo">
+	</ui:define>
+
+</ui:composition>
+</html>

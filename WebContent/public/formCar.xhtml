@@ -10,64 +10,266 @@
 	<ui:define name="left" />
 
 	<ui:define name="content">
+		<ol class="breadcrumb">
+			<li><a href="#">Automóveis</a></li>
+			<li class="active">Cadastro de veículo</li>
+		</ol>
 
-		<h2>Veículo</h2>
-		<label>Cadastrar ou alterar</label>
+		<BLOCKQUOTE>
+			<p>Cadastro de veículo</p>
+			<small>Inserir ou editar um automóvel</small>
+		</BLOCKQUOTE>
 		<hr />
 
 
-		<h:form id="form-veiculo">
-			<h:messages styleClass="message-error" />
+		<div class="col-sm-9 col-md-6">
 
-			<h:panelGrid columns="2">
-				<h:outputLabel for="chassi" value="Chassi:" />
-				<h:inputText styleClass="text form-control" name="chassi"
-					label="Chassi" value="#{veiculoController.veiculo.chassi}"
-					required="true" />				
+			<h:form styleClass="form-horizontal" role="form">
+				<h:messages styleClass="message-error" />
 
-				<h:outputLabel for="placa" value="Placa:" />
-				<h:inputText styleClass="text form-control" name="placa"
-					label="Placa" value="#{veiculoController.veiculo.placa}"
-					required="true" />
+				<div class="form-group">
+					<h:outputLabel for="chassi" styleClass="col-sm-2 control-label">Chassi</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="chassi" />
+					</div>
 
-				<h:outputLabel for="cidade" value="Cidade:" />
-				<h:inputText styleClass="text form-control" name="cidade"
-					label="Cidade" value="#{veiculoController.veiculo.cidade}"
-					required="true" />
-
-				<h:outputLabel for="km" value="Km:" />
-				<h:inputText styleClass="text form-control" name="km" label="km"
-					value="#{veiculoController.veiculo.km}" required="true" />
-
-				<h:outputLabel for="estado" value="Estado:" />
-				<h:inputText styleClass="text form-control" name="estado"
-					label="Estado" value="#{veiculoController.veiculo.estado}"
-					required="true" />
-
-				<h:outputLabel for="modelo" value="Modelo:" />
-				<h:inputText styleClass="text form-control" name="modelo"
-					label="Modelo" value="#{veiculoController.veiculo.modelo}"
-					required="true" />
-
-				<h:outputLabel for="fabricante" value="Fabricante:" />
-				<h:inputText styleClass="text form-control" name="fabricante"
-					label="Fabricante" value="#{veiculoController.veiculo.fabricante}"
-					required="true" />
-
-				<h:outputLabel for="marca" value="Marca:" />
-				<h:inputText styleClass="text form-control" name="marca"
-					label="Marca" value="#{veiculoController.veiculo.marca}"
-					required="true" />
+					<h:outputLabel for="placa" styleClass="col-sm-2 control-label">Placa</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="placa" />
+					</div>
+				</div>
 
 
-				<h:outputText />
-				<h:commandButton action="#{veiculoController.salvar}"
-					styleClass="btn btn-primary" value="Salvar" />
+				<div class="form-group">
+					<h:outputLabel for="km" class="col-sm-2 control-label">Km</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="km" />
+					</div>
 
-				
-			</h:panelGrid>
-		</h:form>
+					<h:outputLabel for="cidade" styleClass="col-sm-2 control-label">Cidade</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="cidade" />
+					</div>
+				</div>
 
+
+				<div class="form-group">
+					<h:outputLabel for="estado" styleClass="col-sm-2 control-label">Estado</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectOneMenu styleClass="form-control input-sm" id="estado"
+							value="#{veiculoController.veiculo.estado}">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="AC" itemLabel="Acre" />
+							<f:selectItem itemValue="AL" itemLabel="Alagoas" />
+							<f:selectItem itemValue="AM" itemLabel="Amazonas" />
+							<f:selectItem itemValue="AP" itemLabel="Amapá" />
+							<f:selectItem itemValue="BA" itemLabel="Bahia" />
+							<f:selectItem itemValue="CE" itemLabel="Ceará" />
+							<f:selectItem itemValue="DF" itemLabel="Distrito Federal" />
+							<f:selectItem itemValue="ES" itemLabel="Espirito Santo" />
+							<f:selectItem itemValue="GO" itemLabel="Goiás" />
+							<f:selectItem itemValue="MA" itemLabel="Maranhão" />
+							<f:selectItem itemValue="MG" itemLabel="Minas Gerais" />
+							<f:selectItem itemValue="MS" itemLabel="Mato Grosso do Sul" />
+							<f:selectItem itemValue="MT" itemLabel="Mato Grosso" />
+							<f:selectItem itemValue="PA" itemLabel="Pará" />
+							<f:selectItem itemValue="PB" itemLabel="Paraíba" />
+							<f:selectItem itemValue="PE" itemLabel="Pernambuco" />
+							<f:selectItem itemValue="PI" itemLabel="Piauí" />
+							<f:selectItem itemValue="PR" itemLabel="Paraná" />
+							<f:selectItem itemValue="RJ" itemLabel="Rio de Janeiro" />
+							<f:selectItem itemValue="RN" itemLabel="Rio Grande do Norte" />
+							<f:selectItem itemValue="RO" itemLabel="Rondônia" />
+							<f:selectItem itemValue="RR" itemLabel="Roraima" />
+							<f:selectItem itemValue="RS" itemLabel="Rio Grande do Sul" />
+							<f:selectItem itemValue="SC" itemLabel="Santa Catarina" />
+							<f:selectItem itemValue="SE" itemLabel="Sergipe" />
+							<f:selectItem itemValue="SP" itemLabel="São Paulo" />
+							<f:selectItem itemValue="TO" itemLabel="Tocantins" />
+						</h:selectOneMenu>
+					</div>
+
+					<h:outputLabel for="grupo" styleClass="col-sm-2 control-label">Grupo</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectOneMenu styleClass="form-control input-sm" id="grupo"
+							value="">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="A" itemLabel="A – Econômico" />
+							<f:selectItem itemValue="C" itemLabel="C – Econômico com Ar" />
+							<f:selectItem itemValue="F" itemLabel="F – Intermediário" />
+							<f:selectItem itemValue="G"
+								itemLabel="G – Intermediário Wagon Especial" />
+							<f:selectItem itemValue="H" itemLabel="H – Executivo" />
+							<f:selectItem itemValue="I" itemLabel="I – Utilitário" />
+							<f:selectItem itemValue="K" itemLabel="K – Executivo Luxo" />
+							<f:selectItem itemValue="M" itemLabel="M – Intermediário Wagon" />
+							<f:selectItem itemValue="N" itemLabel="N – Pick-up" />
+							<f:selectItem itemValue="P" itemLabel="P – 4 x 4 Especial" />
+							<f:selectItem itemValue="R" itemLabel="R – Minivan" />
+							<f:selectItem itemValue="U" itemLabel="U – Furgão" />
+							<f:selectItem itemValue="Y" itemLabel="Y – Blindado" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<h:outputLabel for="combustivel"
+						styleClass="col-sm-2 control-label">Marca</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectOneMenu styleClass="form-control input-sm" id="marca"
+							value="">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="volkswagem" itemLabel="Volkswagem" />
+							<f:selectItem itemValue="fiat" itemLabel="Fiat" />
+							<f:selectItem itemValue="honda" itemLabel="Honda" />
+							<f:selectItem itemValue="chevrolet" itemLabel="Chevrolet" />
+							<f:selectItem itemValue="renault" itemLabel="Renault" />
+							<f:selectItem itemValue="nissan" itemLabel="Nissan" />
+							<f:selectItem itemValue="ford" itemLabel="Ford" />
+							<f:selectItem itemValue="peugeot" itemLabel="Peugeot" />
+							<f:selectItem itemValue="kia" itemLabel="Kia Motors" />
+							<f:selectItem itemValue="citroen" itemLabel="Citroën" />
+							<f:selectItem itemValue="toyota" itemLabel="Toyota" />
+							<f:selectItem itemValue="hyundai" itemLabel="Hyundai" />
+							<f:selectItem itemValue="mercedes" itemLabel="Mercedes-Benz" />
+							<f:selectItem itemValue="audi" itemLabel="Audi" />
+							<f:selectItem itemValue="bmw" itemLabel="BMW" />
+							<f:selectItem itemValue="mitsubishi" itemLabel="Mitsubishi" />
+							<f:selectItem itemValue="volvo" itemLabel="Volvo" />
+						</h:selectOneMenu>
+					</div>
+
+					<h:outputLabel for="modelo" styleClass="col-sm-2 control-label">Modelo</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="modelo" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<h:outputLabel for="fabricante" class="col-sm-2 control-label">Fabricante</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="fabricante" />
+					</div>
+
+					<h:outputLabel for="tarifa" class="col-sm-2 control-label">Valor tarifa</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="tarifa" />
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="taxa" class="col-sm-2 control-label">Valor taxa</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="taxa" />
+					</div>
+
+					<h:outputLabel for="combustivel"
+						styleClass="col-sm-2 control-label">Combustível</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectOneMenu styleClass="form-control input-sm"
+							id="combustivel" value="">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="gasolina" itemLabel="Gasolina" />
+							<f:selectItem itemValue="etanol" itemLabel="Etanol" />
+							<f:selectItem itemValue="diesel"
+								itemLabel="Flex(Gasolina/Etanol)" />
+							<f:selectItem itemValue="diesel" itemLabel="Diesel" />
+							<f:selectItem itemValue="biodiesel" itemLabel="Biodiesel" />
+							<f:selectItem itemValue="gas" itemLabel="Gás" />
+							<f:selectItem itemValue="hidrogenio" itemLabel="Hidrogênio" />
+							<f:selectItem itemValue="outros" itemLabel="Outros" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="portas" styleClass="col-sm-2 control-label">N° de portas</h:outputLabel>
+					<div class="col-sm-2">
+						<h:selectOneMenu styleClass="form-control input-sm" id="portas"
+							value="">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="2" itemLabel="2" />
+							<f:selectItem itemValue="3" itemLabel="3" />
+							<f:selectItem itemValue="4" itemLabel="4" />
+						</h:selectOneMenu>
+					</div>
+
+					<h:outputLabel for="acessorios"
+						styleClass="col-sm-offset-2 col-sm-2 control-label">Acessórios</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectManyListbox id="acessorios" value="">
+							<f:selectItem itemValue="gps" itemLabel="Navegador GPS" />
+							<f:selectItem itemValue="cadeira_bebe"
+								itemLabel="Cadeira de Bebê" />
+							<f:selectItem itemValue="motorista" itemLabel="Motorista" />
+						</h:selectManyListbox>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<h:outputLabel for="ano" styleClass="col-sm-2 control-label">Ano modelo</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="ano" />
+					</div>
+
+					<h:outputLabel for="cor" styleClass="col-sm-2 control-label">Cor</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="cor" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<h:outputLabel for="renavam" styleClass="col-sm-2 control-label">Renavam</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="renavam" />
+					</div>
+
+					<h:outputLabel for="descricao" styleClass="col-sm-2 control-label">Descrição</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="descricao" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<h:outputLabel for="em_estoque" styleClass="col-sm-2 control-label">Disponível</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectBooleanCheckbox styleClass="" id="em_estoque" value="1" />
+					</div>					
+
+					<h:outputLabel for="qtd_estoque"
+						styleClass="col-sm-2 control-label">Qtde. estoque</h:outputLabel>
+					<div class="col-sm-2">
+						<h:inputText styleClass="form-control input-sm" id="qtd_estoque" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<h:outputLabel for="observacoes"
+						styleClass="col-sm-2 control-label">Observações</h:outputLabel>
+					<div class="col-sm-10">
+						<h:inputTextarea styleClass="form-control" id="observacoes" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-4">
+						<h:commandButton action="#{veiculoController.salvar}"
+							styleClass="btn btn-success" value="Salvar" />
+						<h:button styleClass="btn btn-default" value="Cancelar" />
+					</div>
+				</div>
+			</h:form>
+		</div>
 	</ui:define>
+	
+	<ui:define name="js_externo">
+	</ui:define>
+	
 </ui:composition>
 </html>
