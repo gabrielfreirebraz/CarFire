@@ -7,6 +7,6 @@
 2. Tela de empréstimo  
  	. Local de retirada, data/hora de retirada e devolução
 
-3. Busca avançada
+3. Busca avançada    
 	. Permanecerá sempre embaixo do menu
 
