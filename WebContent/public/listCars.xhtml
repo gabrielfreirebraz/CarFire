@@ -23,26 +23,26 @@
 
 
 
-			<table id="tabela" class="display" cellspacing="0" width="100%">
+			<table class="display">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Age</th>
-						<th>Start date</th>
-						<th>Salary</th>
+						<th>Descrição</th>
+						<th>Placa</th>
+						<th>Combustível</th>
+						<th>Ano</th>
+						<th>Valor tarifa</th>
+						<th>Disponível</th>
 					</tr>
 				</thead>
 
 				<tfoot>
 					<tr>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Age</th>
-						<th>Start date</th>
-						<th>Salary</th>
+						<th>Descrição</th>
+						<th>Placa</th>
+						<th>Combustível</th>
+						<th>Ano</th>
+						<th>Valor tarifa</th>
+						<th>Disponível</th>
 					</tr>
 				</tfoot>
 
@@ -514,15 +514,7 @@
 
 	<ui:define name="js_externo">
 		<script type="text/javascript" class="init">
-			$('#tabela').dataTable();
-			// 			oTable = $('#tabela').dataTable(
-			// 					{
-			// 		        "bJQueryUI": true
-			// 		        "aLengthMenu": [[1, 2, 3, -1], [1, 2, 3, "Todos"]],
-			// 		        "sPaginationType": "full_numbers",
-			// 				"bAutoWidth": false,
-			// 				"bInfo": true
-			// 		    });
+			$("table").dataTable();
 		</script>
 	</ui:define>
 
