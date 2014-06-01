@@ -52,23 +52,21 @@
 				<tbody>
 					<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
 						<tr class="center">
-							<td><h:outputText value="#{veiculo.chassi}"/></td>
-							<td><h:outputText value="#{veiculo.placa}"/></td>
-							<td><h:outputText value="#{veiculo.combustivel}"/></td>
-							<td><h:outputText value="#{veiculo.ano_modelo}"/></td>
-							<td><h:outputText value="#{veiculo.marca}"/></td>
-							<td><h:outputText value="#{veiculo.modelo}"/></td>
-							<td><h:outputText value="#{veiculo.tarifa}"/></td>
-							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}"/></td>
-							
-							<td>
-								<a href="/CarFire/public/formCar.jsf" class="form-link-remove" title="Excluir">
-									<span class="glyphicon glyphicon-trash"></span>
-								</a>
-								<a href="/CarFire/public/formCar.jsf" class="form-link-edit" title="Editar">
-									<span class="glyphicon glyphicon-edit"></span>
-								</a>
-							</td>
+							<td><h:outputText value="#{veiculo.chassi}" /></td>
+							<td><h:outputText value="#{veiculo.placa}" /></td>
+							<td><h:outputText value="#{veiculo.combustivel}" /></td>
+							<td><h:outputText value="#{veiculo.ano_modelo}" /></td>
+							<td><h:outputText value="#{veiculo.marca}" /></td>
+							<td><h:outputText value="#{veiculo.modelo}" /></td>
+							<td><h:outputText value="#{veiculo.tarifa}" /></td>
+							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td>
+
+							<td><a href="/CarFire/public/formCar.jsf"
+								class="form-link-remove" title="Excluir"> <span
+									class="glyphicon glyphicon-trash"></span>
+							</a> <a href="/CarFire/public/formCar.jsf" class="form-link-edit"
+								title="Editar"> <span class="glyphicon glyphicon-edit"></span>
+							</a></td>
 						</tr>
 					</ui:repeat>
 				</tbody>
@@ -82,7 +80,21 @@
 
 	<ui:define name="js_externo">
 		<script type="text/javascript" class="init">
-			$("table").dataTable();
+			$("table").dataTable({
+				"scrollY":        300,
+		        "scrollCollapse": true,
+		        "jQueryUI":       true,
+				"language" : {
+					"sLengthMenu": "Registros por página: _MENU_",
+					"sSearch" : "Pesquisar:",
+					"sInfo": "Exibindo _PAGE_ de _PAGES_ páginas",
+					"sInfoEmpty": "Exibindo 0 de 0 páginas",
+					"infoFiltered": " - filtrado de _MAX_ registros",
+					"sPrevious": "Anterior",
+					"sNext": "Próximo",
+					"zeroRecords": "Nenhum registro encontrado"
+				}
+			});
 		</script>
 	</ui:define>
 
