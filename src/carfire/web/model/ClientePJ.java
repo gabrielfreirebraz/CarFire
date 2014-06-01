@@ -88,8 +88,8 @@ public class ClientePJ extends Cliente {
         	conexao = ConectaMySQL.getConexao();           
     		stm = conexao.prepareStatement(sqlInsert);
     		
-    		stm.setLong(  1, getCpf());
-    		stm.setString(2, getNome());
+//    		stm.setLong(  1, getCpf());
+//    		stm.setString(2, getNome());
     		stm.setString(3, getTelefone());
     		stm.setString(4, getEmail());
     		stm.setString(5, getEndereco());
@@ -148,7 +148,7 @@ public class ClientePJ extends Cliente {
         	conexao = ConectaMySQL.getConexao();           
     		stm = conexao.prepareStatement(sqlUpdate);
 		
-    		stm.setString(1, getNome());
+//    		stm.setString(1, getNome());
     		stm.setString(2, getTelefone());
     		stm.setString(3, getEmail());
     		stm.setString(4, getEndereco());
@@ -162,7 +162,7 @@ public class ClientePJ extends Cliente {
     		stm.setString(12, getData_fundacao());
     		stm.setInt(   13, getNumero_funcionarios());
     		stm.setString(14, getTipo());
-    		stm.setLong(  15, getCpf());
+//    		stm.setLong(  15, getCpf());
     		stm.execute();
             			
 			return true;

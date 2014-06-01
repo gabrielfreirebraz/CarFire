@@ -16,19 +16,31 @@ USE `locacao` ;
 -- Table `locacao`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
-  `cpf` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
+  `email` VARCHAR(45) NOT NULL,
+  `telefone` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(45) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `cep` VARCHAR(9) NOT NULL,
+
   `nome` VARCHAR(45) NOT NULL,
-  `rg` VARCHAR(45) NULL,
-  `passaporte` VARCHAR(45) NULL,
-  `telefone` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `data_nascimento` VARCHAR(45) NULL,
-  `genero` VARCHAR(45) NULL,
-  `habilitacao` VARCHAR(45) NULL,
-  `registro` VARCHAR(45) NULL,
-  `estado_emissor` VARCHAR(45) NULL,
-  `validade` VARCHAR(45) NULL,
-  PRIMARY KEY (`cpf`))
+  `cpf` BIGINT(11) NOT NULL,
+  `rg` VARCHAR(45) DEFAULT NULL,
+  `habilitacao` VARCHAR(45) DEFAULT NULL,
+  `data_nascimento` VARCHAR(45) DEFAULT NULL,
+  `genero` VARCHAR(45) DEFAULT NULL,
+  
+  `razao_social` VARCHAR(45) DEFAULT NULL,
+  `nome_comercial` VARCHAR(45) DEFAULT NULL,
+  `cnpj` BIGINT(14) DEFAULT NULL,
+  `inscricao_estadual` VARCHAR(45) DEFAULT NULL,
+  `data_fundacao` VARCHAR(45) DEFAULT NULL,
+  `numero_funcionarios` INT DEFAULT 0,
+   
+  `tipo` CHAR(2) DEFAULT "PF",
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -37,6 +49,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locacao`.`emprestimo` (
   `id` INT NOT NULL,
+  `id_cliente` INT NOT NULL,
   `modelo_veiculo` VARCHAR(45) NOT NULL,
   `data_inicial` DATE NOT NULL,
   `hora` TIMESTAMP NOT NULL,
@@ -47,12 +60,9 @@ CREATE TABLE IF NOT EXISTS `locacao`.`emprestimo` (
   `pais_devolucao` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NULL,
   `cidade` VARCHAR(45) NULL,
-  `cliente_cpf` INT NOT NULL,
-  PRIMARY KEY (`id`, `cliente_cpf`),
-  INDEX `fk_emprestimo_cliente1_idx` (`cliente_cpf` ASC),
-  CONSTRAINT `fk_emprestimo_cliente1`
-    FOREIGN KEY (`cliente_cpf`)
-    REFERENCES `locacao`.`cliente` (`cpf`)
+  PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `locacao`.`cliente` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -92,22 +102,27 @@ ENGINE = InnoDB;
 -- Table `locacao`.`veiculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locacao`.`veiculo` (
-  `id` INT NOT NULL,
-  `modelo` VARCHAR(45) NOT NULL,
-  `ano` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
+  `chassi` VARCHAR(45) NOT NULL,
+  `placa` VARCHAR(45) NOT NULL,
+  `km` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
+  `modelo` VARCHAR(45) NOT NULL,
+  `fabricante` VARCHAR(45) NOT NULL,
+  `tarifa` VARCHAR(45) NOT NULL,
+  `taxa` VARCHAR(45) NOT NULL,
+  `combustivel` VARCHAR(45) NOT NULL,
+  `portas` INT NOT NULL,
+  `ano_modelo` INT NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
-  `tarifa_aluguel` VARCHAR(45) NOT NULL,
-  `km_rodado` INT NOT NULL,
-  `grupos_id` INT NOT NULL,
-  `itensEmprestimo_reserva_cliente_nome` INT NOT NULL,
-  PRIMARY KEY (`id`, `grupos_id`, `itensEmprestimo_reserva_cliente_nome`),
-  INDEX `fk_veiculo_grupos1_idx` (`grupos_id` ASC),
-  CONSTRAINT `fk_veiculo_grupos1`
-    FOREIGN KEY (`grupos_id`)
-    REFERENCES `locacao`.`grupos` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `renavam` VARCHAR(45) NOT NULL,
+  `descricao` VARCHAR(45) NOT NULL,
+  `disponivel` TINYINT(1) NOT NULL,
+  `estoque` INT NOT NULL,
+  `observacoes` TEXT NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 

@@ -9,8 +9,6 @@ import carfire.web.util.ConectaMySQL;
 
 abstract public class Cliente {
 
-	private long cpf         = 0;
-	private String nome      = null;
 	private String telefone  = null;
 	private String email     = null;
 	private String endereco  = null;
@@ -20,18 +18,6 @@ abstract public class Cliente {
 	private String tipo      = null;
 
 	
-	public long getCpf() {
-		return cpf;
-	}
-	public void setCpf(long cpf) {
-		this.cpf = cpf;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	public String getTelefone() {
 		return telefone;
 	}

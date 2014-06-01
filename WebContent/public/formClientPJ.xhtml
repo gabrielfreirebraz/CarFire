@@ -13,7 +13,7 @@
 
 		<ol class="breadcrumb">
 			<li><a href="#">Cliente</a></li>
-			<li class="active">Cadastro de pessoa física</li>
+			<li class="active">Cadastro de pessoa jurídica</li>
 		</ol>
 
 		<BLOCKQUOTE>
@@ -26,8 +26,8 @@
 
 		<div class="col-sm-offset-6 col-md-offset-4 col-sm-12">
 			<div class="btn-group btn-group-sm">
-				<a href="#" class="btn btn-default active">Pessoa física</a>
-				<a href="/CarFire/public/formClientPJ.jsf" class="btn btn-default">Pessoa jurídica</a>
+				<a href="/CarFire/public/formClientPF.jsf" class="btn btn-default">Pessoa física</a>
+				<a href="#" class="btn btn-default active">Pessoa jurídica</a>
 			</div>
 		</div>
 
@@ -38,44 +38,43 @@
 				<h:messages styleClass="message-error" />
 
 			
-				<h5 class="form-h5">Dados pessoais</h5>
+				<h5 class="form-h5">Dados da empresa</h5>
 
 				<div class="form-group">
-					<h:outputLabel for="nome" styleClass="col-sm-2 control-label">Nome</h:outputLabel>
+					<h:outputLabel for="razao_social" styleClass="col-sm-2 control-label">Razão social</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="nome" />
+						<h:inputText styleClass="form-control input-sm" id="razao_social" />
 					</div>
 
-					<h:outputLabel for="cpf" styleClass="col-sm-2 control-label">CPF</h:outputLabel>
+					<h:outputLabel for="nome_comercial" styleClass="col-sm-2 control-label">Nome com.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cpf" />
+						<h:inputText styleClass="form-control input-sm" id="nome_comercial" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<h:outputLabel for="rg" styleClass="col-sm-2 control-label">RG</h:outputLabel>
+					<h:outputLabel for="cnpj" styleClass="col-sm-2 control-label">CNPJ</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="rg" />
+						<h:inputText styleClass="form-control input-sm" id="cnpj" />
 					</div>
 
-					<h:outputLabel for="habilitacao"
-						styleClass="col-sm-2 control-label">Habilitação</h:outputLabel>
+					<h:outputLabel for="inscricao_estadual"
+						styleClass="col-sm-2 control-label">Inscrição est.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="habilitacao" />
+						<h:inputText styleClass="form-control input-sm" id="inscricao_estadual" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<h:outputLabel for="data_nascimento"
-						styleClass="col-sm-2 control-label">Data de nasc.</h:outputLabel>
+					<h:outputLabel for="data_fundacao"
+						styleClass="col-sm-2 control-label">Data de fund.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm"
-							id="data_nascimento" />
+						<h:inputText styleClass="form-control input-sm" id="data_fundacao" />
 					</div>
 
-					<h:outputLabel for="genero" styleClass="col-sm-2 control-label">Gênero</h:outputLabel>
+					<h:outputLabel for="numero_funcionarios" styleClass="col-sm-2 control-label">N° de func.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="genero" />
+						<h:inputText styleClass="form-control input-sm" id="numero_funcionarios" />
 					</div>
 				</div>
 

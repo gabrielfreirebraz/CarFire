@@ -1,5 +1,7 @@
 package carfire.web.controller;
 
+import java.util.ArrayList;
+
 import carfire.web.model.Veiculo;
 
 
@@ -8,12 +10,18 @@ public class VeiculoController {
 	private Veiculo veiculo = null;
 	private String msg = null;
 	
+
 	
 	
 	public VeiculoController() {
 		this.veiculo = new Veiculo();
 	}
 
+	
+	public ArrayList<Veiculo> itens() {
+		return Veiculo.getArrayObjects();
+	}
+	
 	public String salvar() {
 		
 		this.veiculo.inserir();
