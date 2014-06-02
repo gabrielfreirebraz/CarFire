@@ -18,9 +18,6 @@
 		<hr />
 
 		<div class="col-sm-12 col-md-8">
-<!-- 		<div> -->
-
-
 			<table class="display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
@@ -35,20 +32,6 @@
 						<th>Ações</th>
 					</tr>
 				</thead>
-
-				<tfoot>
-					<tr>
-						<th>Chassi</th>
-						<th>Placa</th>
-						<th>Combustível</th>
-						<th>Ano</th>
-						<th>Marca</th>
-						<th>Modelo</th>
-						<th>Valor tarifa</th>
-						<th>Disponível</th>
-						<th>Ações</th>
-					</tr>
-				</tfoot>
 
 				<tbody>
 					<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
@@ -72,31 +55,24 @@
 					</ui:repeat>
 				</tbody>
 			</table>
-
-
-
-
 		</div>
 	</ui:define>
 
 	<ui:define name="js_externo">
 		<script type="text/javascript" class="init">
-			$("table").dataTable();
-// 			$("table").dataTable({
-// 				"scrollY":        300,
-// 		        "scrollCollapse": true,
-// 		        "jQueryUI":       true,
-// 				"language" : {
+			$("table").dataTable({
+				"language" : {
 // 					"sLengthMenu": "Registros por página: _MENU_",
-// 					"sSearch" : "Pesquisar:",
-// 					"sInfo": "Exibindo _PAGE_ de _PAGES_ páginas",
-// 					"sInfoEmpty": "Exibindo 0 de 0 páginas",
-// 					"infoFiltered": " - filtrado de _MAX_ registros",
-// 					"sPrevious": "Anterior",
-// 					"sNext": "Próximo",
-// 					"zeroRecords": "Nenhum registro encontrado"
-// 				}
-// 			});
+					"sLengthMenu": "",
+					"sSearch" : "Pesquisar:",
+					"sInfo": "Exibindo _PAGE_ de _PAGES_ páginas",
+					"sInfoEmpty": "Exibindo 0 de 0 páginas",
+					"infoFiltered": " - filtrado de _MAX_ registros",
+					"sPrevious": "Anterior",
+					"sNext": "Próximo",
+					"zeroRecords": "Nenhum registro encontrado"
+				}
+			});
 		</script>
 	</ui:define>
 

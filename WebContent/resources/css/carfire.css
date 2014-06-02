@@ -12,6 +12,9 @@ body {
 .center {
 	text-align: center;
 }
+.dataTables_wrapper label {
+	font-weight: normal;
+}
 .control-label {
 	color: #666;
 	font-weight: normal;
