@@ -1,9 +1,14 @@
 package carfire.web.controller;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import carfire.web.model.Login;
+
+@ManagedBean(name = "loginController")
+@RequestScoped
 
 public class LoginController {
 
@@ -19,7 +24,7 @@ public class LoginController {
 			if (login.consultar()) {
 
 				// Redirecionar para próxima tela
-				return "public/listCars";
+				return "/CarFire/public/listCars.jsf";
 			}
 		}
 

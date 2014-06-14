@@ -9,6 +9,10 @@
 body { 
 	padding-top: 70px; 
 }
+input[type=checkbox] {
+	margin: 0;
+	padding:0;
+}
 .center {
 	text-align: center;
 }

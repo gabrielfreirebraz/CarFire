@@ -18,43 +18,55 @@
 		<hr />
 
 		<div class="col-sm-12 col-md-8">
-			<table class="display" cellspacing="0" width="100%">
-				<thead>
-					<tr>
-						<th>Chassi</th>
-						<th>Placa</th>
-						<th>Combustível</th>
-						<th>Ano</th>
-						<th>Marca</th>
-						<th>Modelo</th>
-						<th>Valor tarifa</th>
-						<th>Disponível</th>
-						<th>Ações</th>
-					</tr>
-				</thead>
 
-				<tbody>
-					<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
-						<tr class="center">
-							<td><h:outputText value="#{veiculo.chassi}" /></td>
-							<td><h:outputText value="#{veiculo.placa}" /></td>
-							<td><h:outputText value="#{veiculo.combustivel}" /></td>
-							<td><h:outputText value="#{veiculo.ano_modelo}" /></td>
-							<td><h:outputText value="#{veiculo.marca}" /></td>
-							<td><h:outputText value="#{veiculo.modelo}" /></td>
-							<td><h:outputText value="#{veiculo.tarifa}" /></td>
-							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td>
-
-							<td><a href="/CarFire/public/formCar.jsf"
-								class="form-link-remove" title="Excluir"> <span
-									class="glyphicon glyphicon-trash"></span>
-							</a> <a href="/CarFire/public/formCar.jsf" class="form-link-edit"
-								title="Editar"> <span class="glyphicon glyphicon-edit"></span>
-							</a></td>
+			<h:form>
+				<table class="display">
+					<thead>
+						<tr>
+							<th>Chassi</th>
+							<th>Placa</th>
+							<th>Combustível</th>
+							<th>Ano</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Valor tarifa</th>
+							<!-- 						<th>Disponível</th> -->
+							<th>Ações</th>
 						</tr>
-					</ui:repeat>
-				</tbody>
-			</table>
+					</thead>
+	
+					<tbody>
+						
+						<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
+							<tr class="center">
+								<td><h:outputText value="#{veiculo.chassi}" /></td>
+								<td><h:outputText value="#{veiculo.placa}" /></td>
+								<td><h:outputText value="#{veiculo.combustivel}" /></td>
+								<td><h:outputText value="#{veiculo.ano_modelo}" /></td>
+								<td><h:outputText value="#{veiculo.marca}" /></td>
+								<td><h:outputText value="#{veiculo.modelo}" /></td>
+								<td><h:outputText value="#{veiculo.tarifa}" /></td>
+								<!-- 							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td> -->
+
+								<td>
+									<h:commandLink action="#{veiculoController.excluir()}"
+										styleClass="form-link-remove" title="Excluir">
+										
+										<span class="glyphicon glyphicon-trash"></span>
+										<f:setPropertyActionListener target="#{veiculoController.veiculo}" value="#{veiculo}" />
+									</h:commandLink> 
+								
+									
+									<a href="/CarFire/public/formCar.jsf"
+									class="form-link-edit" title="Editar"> <span
+										class="glyphicon glyphicon-edit"></span>
+								</a></td>
+							</tr>
+						</ui:repeat>
+						
+					</tbody>
+				</table>
+			</h:form>
 		</div>
 	</ui:define>
 
@@ -62,15 +74,15 @@
 		<script type="text/javascript" class="init">
 			$("table").dataTable({
 				"language" : {
-// 					"sLengthMenu": "Registros por página: _MENU_",
-					"sLengthMenu": "",
+					// 					"sLengthMenu": "Registros por página: _MENU_",
+					"sLengthMenu" : "",
 					"sSearch" : "Pesquisar:",
-					"sInfo": "Exibindo _PAGE_ de _PAGES_ páginas",
-					"sInfoEmpty": "Exibindo 0 de 0 páginas",
-					"infoFiltered": " - filtrado de _MAX_ registros",
-					"sPrevious": "Anterior",
-					"sNext": "Próximo",
-					"zeroRecords": "Nenhum registro encontrado"
+					"sInfo" : "Exibindo _PAGE_ de _PAGES_ páginas",
+					"sInfoEmpty" : "Exibindo 0 de 0 páginas",
+					"infoFiltered" : " - filtrado de _MAX_ registros",
+					"sPrevious" : "Anterior",
+					"sNext" : "Próximo",
+					"zeroRecords" : "Nenhum registro encontrado"
 				}
 			});
 		</script>

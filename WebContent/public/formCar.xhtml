@@ -29,12 +29,12 @@
 				<div class="form-group">
 					<h:outputLabel for="chassi" styleClass="col-sm-2 control-label">Chassi</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="chassi" />
+						<h:inputText styleClass="form-control input-sm" id="chassi" value="#{veiculoController.veiculo.chassi}" />
 					</div>
 
 					<h:outputLabel for="placa" styleClass="col-sm-2 control-label">Placa</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="placa" />
+						<h:inputText styleClass="form-control input-sm" id="placa" value="#{veiculoController.veiculo.placa}" />
 					</div>
 				</div>
 
@@ -42,12 +42,12 @@
 				<div class="form-group">
 					<h:outputLabel for="km" class="col-sm-2 control-label">Km</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="km" />
+						<h:inputText styleClass="form-control input-sm" id="km" value="#{veiculoController.veiculo.km}" />
 					</div>
 
 					<h:outputLabel for="cidade" styleClass="col-sm-2 control-label">Cidade</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cidade" />
+						<h:inputText styleClass="form-control input-sm" id="cidade" value="#{veiculoController.veiculo.cidade}" />
 					</div>
 				</div>
 
@@ -117,7 +117,7 @@
 						styleClass="col-sm-2 control-label">Marca</h:outputLabel>
 					<div class="col-sm-4">
 						<h:selectOneMenu styleClass="form-control input-sm" id="marca"
-							value="">
+							value="#{veiculoController.veiculo.marca}">
 							<f:selectItem itemValue="" itemLabel="" />
 							<f:selectItem itemValue="volkswagem" itemLabel="Volkswagem" />
 							<f:selectItem itemValue="fiat" itemLabel="Fiat" />
@@ -141,7 +141,7 @@
 
 					<h:outputLabel for="modelo" styleClass="col-sm-2 control-label">Modelo</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="modelo" />
+						<h:inputText styleClass="form-control input-sm" id="modelo" value="#{veiculoController.veiculo.modelo}" />
 					</div>
 				</div>
 
@@ -149,25 +149,25 @@
 				<div class="form-group">
 					<h:outputLabel for="fabricante" class="col-sm-2 control-label">Fabricante</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="fabricante" />
+						<h:inputText styleClass="form-control input-sm" id="fabricante" value="#{veiculoController.veiculo.fabricante}" />
 					</div>
 
 					<h:outputLabel for="tarifa" class="col-sm-2 control-label">Valor tarifa</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="tarifa" />
+						<h:inputText styleClass="form-control input-sm" id="tarifa" value="#{veiculoController.veiculo.tarifa}" />
 					</div>
 				</div>
 				<div class="form-group">
 					<h:outputLabel for="taxa" class="col-sm-2 control-label">Valor taxa</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="taxa" />
+						<h:inputText styleClass="form-control input-sm" id="taxa" value="#{veiculoController.veiculo.taxa}" />
 					</div>
 
 					<h:outputLabel for="combustivel"
 						styleClass="col-sm-2 control-label">Combustível</h:outputLabel>
 					<div class="col-sm-4">
 						<h:selectOneMenu styleClass="form-control input-sm"
-							id="combustivel" value="">
+							id="combustivel" value="#{veiculoController.veiculo.combustivel}">
 							<f:selectItem itemValue="" itemLabel="" />
 							<f:selectItem itemValue="gasolina" itemLabel="Gasolina" />
 							<f:selectItem itemValue="etanol" itemLabel="Etanol" />
@@ -186,7 +186,7 @@
 					<h:outputLabel for="portas" styleClass="col-sm-2 control-label">N° de portas</h:outputLabel>
 					<div class="col-sm-2">
 						<h:selectOneMenu styleClass="form-control input-sm" id="portas"
-							value="">
+							value="#{veiculoController.veiculo.portas}">
 							<f:selectItem itemValue="" itemLabel="" />
 							<f:selectItem itemValue="2" itemLabel="2" />
 							<f:selectItem itemValue="3" itemLabel="3" />
@@ -210,12 +210,12 @@
 				<div class="form-group">
 					<h:outputLabel for="ano" styleClass="col-sm-2 control-label">Ano modelo</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="ano" />
+						<h:inputText styleClass="form-control input-sm" id="ano" value="#{veiculoController.veiculo.ano_modelo}" />
 					</div>
 
 					<h:outputLabel for="cor" styleClass="col-sm-2 control-label">Cor</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cor" />
+						<h:inputText styleClass="form-control input-sm" id="cor" value="#{veiculoController.veiculo.cor}" />
 					</div>
 				</div>
 
@@ -223,12 +223,12 @@
 				<div class="form-group">
 					<h:outputLabel for="renavam" styleClass="col-sm-2 control-label">Renavam</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="renavam" />
+						<h:inputText styleClass="form-control input-sm" id="renavam" value="#{veiculoController.veiculo.renavam}" />
 					</div>
 
 					<h:outputLabel for="descricao" styleClass="col-sm-2 control-label">Descrição</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="descricao" />
+						<h:inputText styleClass="form-control input-sm" id="descricao" value="#{veiculoController.veiculo.descricao}" />
 					</div>
 				</div>
 
@@ -236,13 +236,13 @@
 				<div class="form-group">
 					<h:outputLabel for="em_estoque" styleClass="col-sm-2 control-label">Disponível</h:outputLabel>
 					<div class="col-sm-4">
-						<h:selectBooleanCheckbox styleClass="" id="em_estoque" value="1" />
+						<h:selectBooleanCheckbox styleClass="" id="em_estoque" value="#{veiculoController.veiculo.disponivel}" />
 					</div>					
 
 					<h:outputLabel for="qtd_estoque"
 						styleClass="col-sm-2 control-label">Qtde. estoque</h:outputLabel>
 					<div class="col-sm-2">
-						<h:inputText styleClass="form-control input-sm" id="qtd_estoque" />
+						<h:inputText styleClass="form-control input-sm" id="qtd_estoque" value="#{veiculoController.veiculo.estoque}" />
 					</div>
 				</div>
 
@@ -251,7 +251,7 @@
 					<h:outputLabel for="observacoes"
 						styleClass="col-sm-2 control-label">Observações</h:outputLabel>
 					<div class="col-sm-10">
-						<h:inputTextarea styleClass="form-control" id="observacoes" />
+						<h:inputTextarea styleClass="form-control" id="observacoes" value="#{veiculoController.veiculo.observacoes}" />
 					</div>
 				</div>
 
