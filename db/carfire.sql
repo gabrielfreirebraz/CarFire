@@ -35,22 +35,22 @@ CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `cep` VARCHAR(9) NOT NULL,
+  `tipo` CHAR(2) NOT NULL,
 
-  `nome` VARCHAR(45) NOT NULL,
-  `cpf` BIGINT(11) NOT NULL,
+  `cpf` BIGINT(11) DEFAULT NULL,
+  `nome` VARCHAR(45) DEFAULT NULL,  
   `rg` VARCHAR(45) DEFAULT NULL,
   `habilitacao` VARCHAR(45) DEFAULT NULL,
   `data_nascimento` VARCHAR(45) DEFAULT NULL,
   `genero` VARCHAR(45) DEFAULT NULL,
   
-  `razao_social` VARCHAR(45) DEFAULT NULL,
-  `nome_comercial` VARCHAR(45) DEFAULT NULL,
   `cnpj` BIGINT(14) DEFAULT NULL,
+  `razao_social` VARCHAR(45) DEFAULT NULL,
+  `nome_comercial` VARCHAR(45) DEFAULT NULL,  
   `inscricao_estadual` VARCHAR(45) DEFAULT NULL,
   `data_fundacao` VARCHAR(45) DEFAULT NULL,
   `numero_funcionarios` INT DEFAULT 0,
    
-  `tipo` CHAR(2) DEFAULT "PF",
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

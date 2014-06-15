@@ -15,7 +15,7 @@ public class VeiculoController {
 	
 
 	public VeiculoController() {
-		this.veiculo = new Veiculo();
+		veiculo = new Veiculo();
 	}
 
 	public ArrayList<Veiculo> itens() {

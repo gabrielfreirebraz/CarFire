@@ -1,62 +1,80 @@
 package carfire.web.controller;
 
+import java.util.ArrayList;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 import carfire.web.model.ClientePF;
 import carfire.web.model.ClientePJ;
 
-
+@ManagedBean(name = "clienteController")
+@RequestScoped
 public class ClienteController {
 
-	private String idioma   = null;
 	private ClientePF clientePF = null; 
 	private ClientePJ clientePJ = null;
 	
 	
-	public ClienteController(String idioma) {
-		this.idioma = idioma;
+	public ClienteController() {
+		clientePF = new ClientePF();
+		clientePJ = new ClientePJ();
 	}
 
-	public void setObject(ClientePF cliente) {
-		this.clientePF = cliente;
+
+	
+	public ArrayList<ClientePF> itensPF() {
+		return ClientePF.getArrayObjects();
 	}
 
-	public void setObject(ClientePJ cliente) {
-		this.clientePJ = cliente;
-	}
-	
-	public void executarPF() {
+	public String excluir() {
 
+		clientePF.excluir();
+		return null;
+	}
 
-	}
-	
-	public void executarPJ() {
-	
+	public String editar() {
 
+		return "formClient";
+	}
+
+	public String salvar() {
+
+		if (clientePF.getId() == 0) {
+			clientePF.inserir();
+
+		} else {
+			clientePF.editar();
+		}
+		return "listClients";
 	}
 	
 	
-	public static boolean inserirPF(ClientePF cliente) {
-		cliente.inserir();		
-		return true;
-	}
-		
-	public static boolean inserirPJ(ClientePJ cliente) {
-		cliente.inserir();		
-		return true;
-	}
-	
-	public static boolean editarPF(ClientePF cliente) {
-		cliente.editar();		
-		return true;
-	}
-		
-	public static boolean editarPJ(ClientePJ cliente) {
-		cliente.editar();		
-		return true;
-	}
 	
 	public static boolean validarCPF(long cpf) {		
 //		Serasa.validarCPF(cpf);
 		return true;
 	}
 	
+	
+	
+	/*********************************/
+	/*    Propriedades Cliente       */
+	/*********************************/
+	
+	public ClientePF getClientePF() {
+		return clientePF;
+	}
+
+	public void setClientePF(ClientePF cliente) {
+		clientePF = cliente;
+	}
+	
+	public ClientePJ getClientPJ() {
+		return clientePJ;
+	}
+	
+	public void setClientePJ(ClientePJ cliente) {
+		clientePJ = cliente;
+	}
 }
