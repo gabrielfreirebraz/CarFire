@@ -13,6 +13,17 @@ CREATE SCHEMA IF NOT EXISTS `locacao` DEFAULT CHARACTER SET utf8 COLLATE utf8_ge
 USE `locacao` ;
 
 -- -----------------------------------------------------
+-- Table `locacao`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `locacao`.`usuario` (
+  `id` INT NOT NULL auto_increment,
+  `nome` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
 -- Table `locacao`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
@@ -288,6 +299,13 @@ CREATE TABLE IF NOT EXISTS `locacao`.`serasa` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+
+-- -----------------------------------------------------
+-- Dados para teste
+-- -----------------------------------------------------
+insert into `locacao`.`usuario`(nome, email, senha) values("Gabriel", "gabriel@provedor.com", "123");
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

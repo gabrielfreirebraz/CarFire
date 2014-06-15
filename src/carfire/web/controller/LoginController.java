@@ -24,11 +24,11 @@ public class LoginController {
 			if (login.consultar()) {
 
 				// Redirecionar para próxima tela
-				return "/CarFire/public/listCars.jsf";
+				return "public/listCars.jsf";
 			}
 		}
 
-		return "index";
+		return null;
 	}
 
 	private boolean validar() {

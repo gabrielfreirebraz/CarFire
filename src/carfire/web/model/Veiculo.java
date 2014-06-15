@@ -10,26 +10,26 @@ import carfire.web.util.ConectaMySQL;
 
 public class Veiculo {
 
-	private int id;
-	private String chassi;
-	private String placa;
-	private String km;
-	private String cidade;
-	private String estado;
-	private String marca;
-	private String modelo;
-	private String fabricante;
-	private String tarifa;
-	private String taxa;
-	private String combustivel;
-	private int portas;
-	private int ano_modelo;
-	private String cor;
-	private String renavam;
-	private String descricao;
-	private boolean disponivel;
-	private int estoque;
-	private String observacoes;
+	private int id = 0;
+	private String chassi = null;
+	private String placa = null;
+	private String km = null;
+	private String cidade = null;
+	private String estado = null;
+	private String marca = null;
+	private String modelo = null;
+	private String fabricante = null;
+	private String tarifa = null;
+	private String taxa = null;
+	private String combustivel = null;
+	private int portas = 0;
+	private int ano_modelo = 0;
+	private String cor = null;
+	private String renavam = null;
+	private String descricao = null;
+	private boolean disponivel = false;
+	private int estoque = 0;
+	private String observacoes = null;
 	
 
 	public Veiculo() {
@@ -112,9 +112,10 @@ public class Veiculo {
 	public boolean inserir() {
 
 		String sqlInsert = "INSERT INTO veiculo "
-				+ "(chassi, placa, cidade, estado, modelo, fabricante) "
-				+ "VALUES (?, ?, ?, ?, ?, ?)";
-
+				+ "(chassi, placa, km, cidade, estado, marca, modelo, fabricante, tarifa, taxa, "
+				+ "combustivel, portas, ano_modelo, cor, renavam, descricao, disponivel, estoque, observacoes) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
 		PreparedStatement stm = null;
 		Connection conexao = null;
 		
@@ -122,16 +123,29 @@ public class Veiculo {
 		try {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlInsert);
-
-			stm.setString(1, chassi);
-			stm.setString(2, placa);
-			stm.setString(3, cidade);
-			stm.setString(4, estado);
-			stm.setString(5, modelo);
-			stm.setString(6, fabricante);
-			stm.execute();
-
-			return true;
+			
+        	stm.setString(1, chassi);
+        	stm.setString(2, placa);
+        	stm.setString(3, km);
+        	stm.setString(4, cidade);
+        	stm.setString(5, estado);
+        	stm.setString(6, marca);
+        	stm.setString(7, modelo);
+        	stm.setString(8, fabricante);
+        	stm.setString(9, tarifa);
+        	stm.setString(10, taxa);
+        	stm.setString(11, combustivel);
+        	stm.setInt(12, portas);
+        	stm.setInt(13, ano_modelo);
+        	stm.setString(14, cor);
+        	stm.setString(15, renavam);
+        	stm.setString(16, descricao);
+        	stm.setBoolean(17, disponivel);
+        	stm.setInt(18, estoque);
+        	stm.setString(19, observacoes);
+						
+			return stm.execute();
+			
 
 		} catch (SQLException e) {
 
@@ -155,6 +169,67 @@ public class Veiculo {
 		}
 	}
 	
+	public boolean editar() {
+
+		String sqlUpdate = "UPDATE veiculo SET "
+				+ "chassi = ?, placa = ?, km = ?, cidade = ?, estado = ?, marca = ?, modelo = ?, "
+				+ "fabricante = ?, tarifa = ?, taxa = ?, combustivel = ?, portas = ?, ano_modelo = ?, "
+				+ "cor = ?, renavam = ?, descricao = ?, disponivel = ?, estoque = ?, observacoes = ? "
+				+ "WHERE id = ?";
+
+		PreparedStatement stm = null;
+		Connection conexao = null;
+		
+
+		try {
+			conexao = ConectaMySQL.getConexao();
+			stm = conexao.prepareStatement(sqlUpdate);
+			
+        	stm.setString(1, chassi);
+        	stm.setString(2, placa);
+        	stm.setString(3, km);
+        	stm.setString(4, cidade);
+        	stm.setString(5, estado);
+        	stm.setString(6, marca);
+        	stm.setString(7, modelo);
+        	stm.setString(8, fabricante);
+        	stm.setString(9, tarifa);
+        	stm.setString(10, taxa);
+        	stm.setString(11, combustivel);
+        	stm.setInt(12, portas);
+        	stm.setInt(13, ano_modelo);
+        	stm.setString(14, cor);
+        	stm.setString(15, renavam);
+        	stm.setString(16, descricao);
+        	stm.setBoolean(17, disponivel);
+        	stm.setInt(18, estoque);
+        	stm.setString(19, observacoes);
+			stm.setInt(20, id);		
+			
+			return stm.execute();
+			
+
+		} catch (SQLException e) {
+
+			System.out.print(e.getMessage());
+			e.printStackTrace();
+			try {
+				conexao.rollback();
+
+			} catch (SQLException e1) {
+				System.out.print(e1.getStackTrace());
+			}
+			return false;
+		} finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e1) {
+					System.out.print(e1.getStackTrace());
+				}
+			}
+		}
+	}
 	
 	public boolean excluir() {
 		
@@ -168,10 +243,8 @@ public class Veiculo {
 			stm = conexao.prepareStatement(sqlDelete);	
 			
 			stm.setInt(1, id);
-			stm.execute();
-			
-			return true;
-			
+			return stm.execute();
+						
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {

@@ -19,7 +19,7 @@
 
 		<div class="col-sm-12 col-md-8">
 
-			<h:form>
+			<h:form role="form">
 				<table class="display">
 					<thead>
 						<tr>
@@ -54,19 +54,21 @@
 										
 										<span class="glyphicon glyphicon-trash"></span>
 										<f:setPropertyActionListener target="#{veiculoController.veiculo}" value="#{veiculo}" />
-									</h:commandLink> 
+									</h:commandLink>
 								
-									
-									<a href="/CarFire/public/formCar.jsf"
-									class="form-link-edit" title="Editar"> <span
-										class="glyphicon glyphicon-edit"></span>
-								</a></td>
+									<h:commandLink action="#{veiculoController.editar()}"
+										styleClass="form-link-edit" title="Editar">
+										
+										<span class="glyphicon glyphicon-edit"></span>
+										<f:setPropertyActionListener target="#{veiculoController.veiculo}" value="#{veiculo}" />
+									</h:commandLink> 
+								</td>
 							</tr>
 						</ui:repeat>
 						
 					</tbody>
 				</table>
-			</h:form>
+			</h:form>			 
 		</div>
 	</ui:define>
 

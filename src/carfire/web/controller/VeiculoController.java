@@ -9,56 +9,47 @@ import carfire.web.model.Veiculo;
 
 @ManagedBean(name = "veiculoController")
 @RequestScoped
-
 public class VeiculoController {
 
 	private Veiculo veiculo = null;
-	private String msg = null;
-	private String name = "";
 	
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getName() {
-		return name;
-	}
-	
 	public VeiculoController() {
 		this.veiculo = new Veiculo();
 	}
 
-	
 	public ArrayList<Veiculo> itens() {
 		return Veiculo.getArrayObjects();
 	}
-	
-	
+
 	public String excluir() {
-				
+
 		veiculo.excluir();
 		return null;
 	}
-	
+
+	public String editar() {
+
+		return "formCar";
+	}
+
 	public String salvar() {
-		
-		this.veiculo.inserir();
-		return "veiculo";
+
+		if (veiculo.getId() == 0) {
+			veiculo.inserir();
+
+		} else {
+			veiculo.editar();
+		}
+		return "listCars";
 	}
 
 	public Veiculo getVeiculo() {
 		return veiculo;
 	}
+
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
-	}
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
 	}
 
 }
