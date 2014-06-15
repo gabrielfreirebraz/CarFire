@@ -49,12 +49,12 @@ public class ClientePF extends Cliente {
             	cliente.setCep(rs.getString("cep"));
             	cliente.setTipo(rs.getString("tipo"));
             	
-            	cliente.setTelefone(rs.getString("cpf"));
-            	cliente.setEmail(rs.getString("nome"));
-            	cliente.setEndereco(rs.getString("rg"));            	           	
-            	cliente.setTipo(rs.getString("habilitacao"));
-            	cliente.setEstado(rs.getString("data_nascimento")); 
-            	cliente.setCep(rs.getString("genero"));
+            	cliente.setCpf(rs.getLong("cpf"));
+            	cliente.setNome(rs.getString("nome"));
+            	cliente.setRg(rs.getString("rg"));            	           	
+            	cliente.setHabilitacao(rs.getString("habilitacao"));
+            	cliente.setData_nascimento(rs.getString("data_nascimento")); 
+            	cliente.setGenero(rs.getString("genero"));
         		
         		//add ao ArrayList
         		clientes.add(cliente);

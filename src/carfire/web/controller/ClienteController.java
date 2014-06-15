@@ -46,7 +46,7 @@ public class ClienteController {
 		} else {
 			clientePF.editar();
 		}
-		return "listClients";
+		return "listClientsPF";
 	}
 	
 	

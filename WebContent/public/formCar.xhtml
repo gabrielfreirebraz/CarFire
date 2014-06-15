@@ -26,7 +26,7 @@
 			
 			<h:form styleClass="form-horizontal" role="form">
 				<h:messages styleClass="message-error" />
-										
+				<h:inputHidden value="#{veiculoController.veiculo.id}" />	
 				
 				<div class="form-group">
 					<h:outputLabel for="chassi" styleClass="col-sm-2 control-label">Chassi</h:outputLabel>
@@ -259,8 +259,7 @@
 
 
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-4">
-						<h:inputHidden value="#{veiculoController.veiculo.id}" />							
+					<div class="col-sm-offset-2 col-sm-4">												
 						<h:commandLink action="#{veiculoController.salvar()}" styleClass="btn btn-success" value="Salvar" />
 						<a href="/CarFire/public/listCars.jsf" class="btn btn-default">Cancelar</a>
 					</div>
