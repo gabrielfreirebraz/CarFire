@@ -35,7 +35,7 @@ public class ClienteController {
 
 	public String editar() {
 
-		return "formClient";
+		return "formClientPF";
 	}
 
 	public String salvar() {
