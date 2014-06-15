@@ -10,15 +10,15 @@
 
 
 
-// Ativar dropdown
-// ======================
+// Ativar dropdown (menu superior)
+// ===================================
 
 $('.dropdown-toggle').dropdown();
 
 
 
 // Validação de campos
-// ======================
+// ===================================
 
 
 
