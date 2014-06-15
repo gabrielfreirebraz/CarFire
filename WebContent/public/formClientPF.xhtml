@@ -35,7 +35,7 @@
 		<div class="col-sm-9 col-md-6">			
 			<h:form styleClass="form-horizontal" role="form">
 				<h:messages styleClass="message-error" />
-
+				<h:inputHidden value="#{clienteController.clientePF.id}" />			
 			
 				<h5 class="form-h5">Dados pessoais</h5>
 
@@ -126,8 +126,8 @@
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-4">
-						<h:commandButton styleClass="btn btn-success" value="Salvar" />
-						<h:button styleClass="btn btn-default" value="Cancelar" />
+						<h:commandLink action="#{clienteController.salvar()}" styleClass="btn btn-success" value="Salvar" />
+						<a href="/CarFire/public/listClientsPF.jsf" class="btn btn-default">Cancelar</a>
 					</div>
 				</div>
 
