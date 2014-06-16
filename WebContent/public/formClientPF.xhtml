@@ -75,7 +75,12 @@
 
 					<h:outputLabel for="genero" styleClass="col-sm-2 control-label">Gênero</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="genero" value="#{clientePFController.cliente.genero}" />
+						<h:selectOneMenu styleClass="form-control input-sm" id="genero"
+							value="#{clientePFController.cliente.genero}">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="M" itemLabel="Masculino" />
+							<f:selectItem itemValue="F" itemLabel="Feminino" />
+						</h:selectOneMenu>
 					</div>
 				</div>
 

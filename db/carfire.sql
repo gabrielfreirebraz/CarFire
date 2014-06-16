@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
   `rg` VARCHAR(45) DEFAULT NULL,
   `habilitacao` VARCHAR(45) DEFAULT NULL,
   `data_nascimento` VARCHAR(45) DEFAULT NULL,
-  `genero` VARCHAR(45) DEFAULT NULL,
+  `genero` CHAR(1) DEFAULT NULL,
   
   `cnpj` BIGINT(14) DEFAULT NULL,
   `razao_social` VARCHAR(45) DEFAULT NULL,
@@ -66,16 +66,11 @@ CREATE TABLE IF NOT EXISTS `locacao`.`emprestimo` (
   `hora` TIMESTAMP NOT NULL,
   `local_emprestimo` VARCHAR(45) NOT NULL,
   `data_devolucao` DATE NOT NULL,
-  `hora` TIMESTAMP NOT NULL,
   `tipo_tarifa` VARCHAR(45) NOT NULL,
   `pais_devolucao` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NULL,
   `cidade` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-    FOREIGN KEY (`id_cliente`)
-    REFERENCES `locacao`.`cliente` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -228,25 +223,7 @@ CREATE TABLE IF NOT EXISTS `locacao`.`itensEmprestimo` (
   `veiculo_id` INT NOT NULL,
   `veiculo_grupos_id` INT NOT NULL,
   `veiculo_itensEmprestimo_reserva_cliente_nome` INT NOT NULL,
-  PRIMARY KEY (`id`, `emprestimo_id`, `reserva_id`, `veiculo_id`, `veiculo_grupos_id`, `veiculo_itensEmprestimo_reserva_cliente_nome`),
-  INDEX `fk_itensEmprestimo_emprestimo1_idx` (`emprestimo_id` ASC),
-  INDEX `fk_itensEmprestimo_reserva1_idx` (`reserva_id` ASC),
-  INDEX `fk_itensEmprestimo_veiculo1_idx` (`veiculo_id` ASC, `veiculo_grupos_id` ASC, `veiculo_itensEmprestimo_reserva_cliente_nome` ASC),
-  CONSTRAINT `fk_itensEmprestimo_emprestimo1`
-    FOREIGN KEY (`emprestimo_id`)
-    REFERENCES `locacao`.`emprestimo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_itensEmprestimo_reserva1`
-    FOREIGN KEY (`reserva_id`)
-    REFERENCES `locacao`.`reserva` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_itensEmprestimo_veiculo1`
-    FOREIGN KEY (`veiculo_id` , `veiculo_grupos_id` , `veiculo_itensEmprestimo_reserva_cliente_nome`)
-    REFERENCES `locacao`.`veiculo` (`id` , `grupos_id` , `itensEmprestimo_reserva_cliente_nome`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -266,20 +243,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `locacao`.`acessorios_has_veiculo` (
   `acessorios_id` INT NOT NULL,
-  `veiculo_id_veiculo` INT NOT NULL,
-  PRIMARY KEY (`acessorios_id`, `veiculo_id_veiculo`),
-  INDEX `fk_acessorios_has_veiculo_veiculo1_idx` (`veiculo_id_veiculo` ASC),
-  INDEX `fk_acessorios_has_veiculo_acessorios_idx` (`acessorios_id` ASC),
-  CONSTRAINT `fk_acessorios_has_veiculo_acessorios`
-    FOREIGN KEY (`acessorios_id`)
-    REFERENCES `locacao`.`acessorios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_acessorios_has_veiculo_veiculo1`
-    FOREIGN KEY (`veiculo_id_veiculo`)
-    REFERENCES `locacao`.`veiculo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `id_veiculo` INT NOT NULL
+)
 ENGINE = InnoDB;
 
 
@@ -290,14 +255,8 @@ CREATE TABLE IF NOT EXISTS `locacao`.`serasa` (
   `id` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `status` VARCHAR(45) NULL,
-  `cliente_cpf` INT NOT NULL,
-  PRIMARY KEY (`id`, `cliente_cpf`),
-  INDEX `fk_serasa_cliente1_idx` (`cliente_cpf` ASC),
-  CONSTRAINT `fk_serasa_cliente1`
-    FOREIGN KEY (`cliente_cpf`)
-    REFERENCES `locacao`.`cliente` (`cpf`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  `id_cliente` INT NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -307,7 +266,3 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 insert into `locacao`.`usuario`(nome, email, senha) values("Gabriel", "gabriel@provedor.com", "123");
 
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
