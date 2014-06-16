@@ -27,7 +27,7 @@
 					data-toggle="dropdown">
 					Filtrar por <span class="caret"></span>
 				</button>
-				<ul class="dropdown-menu" role="menu">
+				<ul class="dropdown-menu">
 					<li><a href="/CarFire/public/listClientsPF.jsf">Pessoa física</a></li>
 					<li><a href="/CarFire/public/listClientsPJ.jsf">Pessoa jurídica</a></li>
 				</ul>
@@ -55,27 +55,27 @@
 					</thead>
 
 					<tbody>
-						<ui:repeat var="cliente" value="#{clienteController.itensPF()}">
+						<ui:repeat var="cliente" value="#{clientePFController.itens()}">
 							<tr class="center">
 								<td><h:outputText value="#{cliente.nome}" /></td>
 								<td><h:outputText value="#{cliente.email}" /></td>
 								<td><h:outputText value="#{cliente.data_nascimento}" /></td>
 								<td><h:outputText value="#{cliente.cpf}" /></td>
 								<td><h:outputText value="#{cliente.telefone}" /></td>
-								<td><h:commandLink action="#{clienteController.excluir()}"
+								<td><h:commandLink action="#{clientePFController.excluir()}"
 										styleClass="form-link-remove" title="Excluir">
 
 										<span class="glyphicon glyphicon-trash"></span>
 										<f:setPropertyActionListener
-											target="#{clienteController.clientePF}" value="#{cliente}" />
+											target="#{clientePFController.cliente}" value="#{cliente}" />
 									</h:commandLink> 
 									
-									<h:commandLink action="#{clienteController.editar()}"
+									<h:commandLink action="#{clientePFController.editar()}"
 										styleClass="form-link-edit" title="Editar">
 
 										<span class="glyphicon glyphicon-edit"></span>
 										<f:setPropertyActionListener
-											target="#{clienteController.clientePF}" value="#{cliente}" />
+											target="#{clientePFController.cliente}" value="#{cliente}" />
 									</h:commandLink></td>
 							</tr>
 						</ui:repeat>

@@ -17,7 +17,7 @@ public class ClientePF extends Cliente {
 	private String habilitacao     = null;
 	private String data_nascimento = null;	
 	private String genero          = null;
-	
+	private String tipo            = "PF";
 	
 	
 	
@@ -31,7 +31,7 @@ public class ClientePF extends Cliente {
     
         try {
             
-        	String sql = "SELECT * FROM cliente";
+        	String sql = "SELECT * FROM cliente WHERE tipo = 'PF'";
         	conexao = ConectaMySQL.getConexao();
             
             stm = conexao.prepareStatement(sql);            
@@ -276,5 +276,11 @@ public class ClientePF extends Cliente {
 	}
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+	public String getTipo() {
+		return this.tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

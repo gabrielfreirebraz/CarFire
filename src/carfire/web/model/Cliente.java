@@ -17,7 +17,7 @@ abstract public class Cliente {
 	protected String cidade    = null;
 	protected String estado    = null;
 	protected String cep       = null;
-	protected String tipo      = null;
+	
 
 	
 
@@ -127,12 +127,6 @@ abstract public class Cliente {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}	
-	public String getTipo() {
-		return this.tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 	
 	
 }
