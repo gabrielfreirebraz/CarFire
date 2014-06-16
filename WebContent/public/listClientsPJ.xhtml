@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+
+	<ui:define name="content">
+
+		<ol class="breadcrumb">
+			<li><a href="#">Clientes</a></li>
+			<li class="active">Listar pessoa jurídica</li>
+		</ol>
+
+		<BLOCKQUOTE>
+			<p>Clientes - Pessoa jurídica</p>
+			<small>Todos os clientes cadastrados</small>
+		</BLOCKQUOTE>
+		<hr />
+
+		<div class="col-sm-12 col-md-8">
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+					data-toggle="dropdown">
+					Filtrar por <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="/CarFire/public/listClientsPF.jsf">Pessoa física</a></li>
+					<li><a href="/CarFire/public/listClientsPJ.jsf">Pessoa jurídica</a></li>
+				</ul>
+			</div>
+			
+			<div class="btn-group">
+				<a href="/CarFire/public/formClientPJ.jsf"
+					class="btn btn-default btn-sm">Cadastrar</a>
+			</div>
+		</div>
+
+
+		<div class="col-sm-12 col-md-8">
+			<h:form role="form">
+				<table class="display">
+					<thead>
+						<tr>
+							<th>Razão social</th>
+							<th>Email</th>
+							<th>Data fund.</th>
+							<th>CNPJ</th>
+							<th>Telefone</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<ui:repeat var="cliente" value="#{clientePJController.itens()}">
+							<tr class="center">
+								<td><h:outputText value="#{cliente.razao_social}" /></td>
+								<td><h:outputText value="#{cliente.email}" /></td>
+								<td><h:outputText value="#{cliente.data_fundacao}" /></td>
+								<td><h:outputText value="#{cliente.cnpj}" /></td>
+								<td><h:outputText value="#{cliente.telefone}" /></td>
+								<td><h:commandLink action="#{clientePJController.excluir()}"
+										styleClass="form-link-remove" title="Excluir">
+
+										<span class="glyphicon glyphicon-trash"></span>
+										<f:setPropertyActionListener
+											target="#{clientePJController.cliente}" value="#{cliente}" />
+									</h:commandLink> 
+									
+									<h:commandLink action="#{clientePJController.editar()}"
+										styleClass="form-link-edit" title="Editar">
+
+										<span class="glyphicon glyphicon-edit"></span>
+										<f:setPropertyActionListener
+											target="#{clientePJController.cliente}" value="#{cliente}" />
+									</h:commandLink></td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+			</h:form>
+		</div>
+	</ui:define>
+
+
+	<ui:define name="js_externo">
+		<script type="text/javascript">
+			$("table").dataTable({
+				"language" : {
+					//		"sLengthMenu": "Registros por página: _MENU_",
+					//      "aLengthMenu": [[1, 2, 3, -1], [1, 2, 3, "Todos"]],
+					//      "sPaginationType": "full_numbers",
+					//		"bAutoWidth": false,
+					"sLengthMenu" : "",
+					"sSearch" : "Pesquisar:",
+					"sInfo" : "Exibindo _PAGE_ de _PAGES_ páginas",
+					"sInfoEmpty" : "Exibindo 0 de 0 páginas",
+					"infoFiltered" : " - filtrado de _MAX_ registros",
+					"sPrevious" : "Anterior",
+					"sNext" : "Próximo",
+					"zeroRecords" : "Nenhum registro encontrado"
+				}
+			});
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>
