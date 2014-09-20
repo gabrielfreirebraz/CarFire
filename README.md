@@ -14,8 +14,8 @@ Sistema de locação de automóveis
 3. Twitter Bootstrap 
     
 ### Equipe do projeto
-Gabriel Freire
-Vanessa Souza
-Bruno Willian
+Gabriel Freire        
+Vanessa Souza       
+Bruno Willian           
 
 3MSIN - Usjt Butantã
