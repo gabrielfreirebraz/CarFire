@@ -48,7 +48,7 @@
 	
 					<tbody>
 						
-						<ui:repeat var="veiculo" value="#{veiculoController.itens}">
+						<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
 							<tr class="center">
 								<td><h:outputText value="#{veiculo.chassi}" /></td>
 								<td><h:outputText value="#{veiculo.placa}" /></td>

@@ -55,7 +55,7 @@
 					</thead>
 
 					<tbody>
-						<ui:repeat var="cliente" value="#{clientePFController.itens}">
+						<ui:repeat var="cliente" value="#{clientePFController.itens()}">
 							<tr class="center">
 								<td><h:outputText value="#{cliente.nome}" /></td>
 								<td><h:outputText value="#{cliente.email}" /></td>

@@ -55,7 +55,7 @@
 					</thead>
 
 					<tbody>
-						<ui:repeat var="cliente" value="#{clientePJController.itens}">
+						<ui:repeat var="cliente" value="#{clientePJController.itens()}">
 							<tr class="center">
 								<td><h:outputText value="#{cliente.razao_social}" /></td>
 								<td><h:outputText value="#{cliente.email}" /></td>
