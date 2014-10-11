@@ -55,14 +55,14 @@
 					</thead>
 
 					<tbody>
-						<ui:repeat var="cliente" value="#{clientePJController.itens()}">
+						<ui:repeat var="cliente" value="#{clientePJController.itens}">
 							<tr class="center">
 								<td><h:outputText value="#{cliente.razao_social}" /></td>
 								<td><h:outputText value="#{cliente.email}" /></td>
 								<td><h:outputText value="#{cliente.data_fundacao}" /></td>
 								<td><h:outputText value="#{cliente.cnpj}" /></td>
 								<td><h:outputText value="#{cliente.telefone}" /></td>
-								<td><h:commandLink action="#{clientePJController.excluir()}"
+								<td><h:commandLink action="#{clientePJController.excluir}"
 										styleClass="form-link-remove" title="Excluir">
 
 										<span class="glyphicon glyphicon-trash"></span>
@@ -70,7 +70,7 @@
 											target="#{clientePJController.cliente}" value="#{cliente}" />
 									</h:commandLink> 
 									
-									<h:commandLink action="#{clientePJController.editar()}"
+									<h:commandLink action="#{clientePJController.editar}"
 										styleClass="form-link-edit" title="Editar">
 
 										<span class="glyphicon glyphicon-edit"></span>

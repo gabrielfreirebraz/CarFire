@@ -48,7 +48,7 @@
 	
 					<tbody>
 						
-						<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
+						<ui:repeat var="veiculo" value="#{veiculoController.itens}">
 							<tr class="center">
 								<td><h:outputText value="#{veiculo.chassi}" /></td>
 								<td><h:outputText value="#{veiculo.placa}" /></td>
@@ -60,14 +60,14 @@
 								<!-- 							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td> -->
 
 								<td>
-									<h:commandLink action="#{veiculoController.excluir()}"
+									<h:commandLink action="#{veiculoController.excluir}"
 										styleClass="form-link-remove" title="Excluir">
 										
 										<span class="glyphicon glyphicon-trash"></span>
 										<f:setPropertyActionListener target="#{veiculoController.veiculo}" value="#{veiculo}" />
 									</h:commandLink>
 								
-									<h:commandLink action="#{veiculoController.editar()}"
+									<h:commandLink action="#{veiculoController.editar}"
 										styleClass="form-link-edit" title="Editar">
 										
 										<span class="glyphicon glyphicon-edit"></span>
