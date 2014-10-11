@@ -23,7 +23,7 @@ public class ConectaMySQL {
 	// -----------------------------------------------------------
 	public static Connection getConexao() throws SQLException {
 		return DriverManager
-				.getConnection("jdbc:mysql://localhost:3306/locacao?user=root&password=mysql");
+				.getConnection("jdbc:mysql://localhost:3306/locacao?user=root&password=Mysql");
 	}
 		
 
