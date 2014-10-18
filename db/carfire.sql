@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `locacao`.`usuario` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `locacao`.`cliente`
+-- Table `locacao`.`cliente_pf`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
+CREATE TABLE IF NOT EXISTS `locacao`.`cliente_pf` (
   `id` INT NOT NULL auto_increment,
   `email` VARCHAR(45) NOT NULL,
   `telefone` VARCHAR(45) NOT NULL,
@@ -35,7 +35,6 @@ CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `cep` VARCHAR(9) NOT NULL,
-  `tipo` CHAR(2) NOT NULL,
 
   `cpf` BIGINT(11) DEFAULT NULL,
   `nome` VARCHAR(45) DEFAULT NULL,  
@@ -43,7 +42,23 @@ CREATE TABLE IF NOT EXISTS `locacao`.`cliente` (
   `habilitacao` VARCHAR(45) DEFAULT NULL,
   `data_nascimento` VARCHAR(45) DEFAULT NULL,
   `genero` CHAR(1) DEFAULT NULL,
-  
+   
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `locacao`.`cliente_pj`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `locacao`.`cliente_pj` (
+  `id` INT NOT NULL auto_increment,
+  `email` VARCHAR(45) NOT NULL,
+  `telefone` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(45) NOT NULL,
+  `bairro` VARCHAR(45) NOT NULL,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `cep` VARCHAR(9) NOT NULL,
+
   `cnpj` BIGINT(14) DEFAULT NULL,
   `razao_social` VARCHAR(45) DEFAULT NULL,
   `nome_comercial` VARCHAR(45) DEFAULT NULL,  
