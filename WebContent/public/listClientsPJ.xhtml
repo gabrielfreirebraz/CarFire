@@ -62,21 +62,26 @@
 								<td><h:outputText value="#{cliente.data_fundacao}" /></td>
 								<td><h:outputText value="#{cliente.cnpj}" /></td>
 								<td><h:outputText value="#{cliente.telefone}" /></td>
-								<td><h:commandLink action="#{clientePJController.excluir}"
+								<td>
+									<!-- Excluir -->
+									<h:commandLink action="#{clientePJController.excluir()}"
 										styleClass="form-link-remove" title="Excluir">
 
 										<span class="glyphicon glyphicon-trash"></span>
 										<f:setPropertyActionListener
-											target="#{clientePJController.cliente}" value="#{cliente}" />
+											target="#{clientePJController.clienteTO.id}" value="#{cliente.id}" />
 									</h:commandLink> 
 									
-									<h:commandLink action="#{clientePJController.editar}"
+									
+									<!-- Editar -->
+									<h:commandLink action="#{clientePJController.editar()}"
 										styleClass="form-link-edit" title="Editar">
 
 										<span class="glyphicon glyphicon-edit"></span>
 										<f:setPropertyActionListener
-											target="#{clientePJController.cliente}" value="#{cliente}" />
-									</h:commandLink></td>
+											target="#{clientePJController.clienteTO}" value="#{cliente}" />
+									</h:commandLink>
+								</td>
 							</tr>
 						</ui:repeat>
 					</tbody>

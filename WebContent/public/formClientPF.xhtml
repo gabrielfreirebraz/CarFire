@@ -35,33 +35,32 @@
 		<div class="col-sm-9 col-md-6">			
 			<h:form styleClass="form-horizontal" role="form">
 				<h:messages styleClass="message-error" />
-				<h:inputHidden value="#{clientePFController.cliente.id}" />			
-				<h:inputHidden value="#{clientePFController.cliente.tipo}" />			
+				<h:inputHidden value="#{clientePFController.clienteTO.id}" />			
 			
 				<h5 class="form-h5">Dados pessoais</h5>
 
 				<div class="form-group">
 					<h:outputLabel for="nome" styleClass="col-sm-2 control-label">Nome</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="nome" value="#{clientePFController.cliente.nome}" />
+						<h:inputText styleClass="form-control input-sm" id="nome" value="#{clientePFController.clienteTO.nome}" />
 					</div>
 
 					<h:outputLabel for="cpf" styleClass="col-sm-2 control-label">CPF</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cpf" value="#{clientePFController.cliente.cpf}" />
+						<h:inputText styleClass="form-control input-sm" id="cpf" value="#{clientePFController.clienteTO.cpf}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="rg" styleClass="col-sm-2 control-label">RG</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="rg" value="#{clientePFController.cliente.rg}" />
+						<h:inputText styleClass="form-control input-sm" id="rg" value="#{clientePFController.clienteTO.rg}" />
 					</div>
 
 					<h:outputLabel for="habilitacao"
 						styleClass="col-sm-2 control-label">Habilitação</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="habilitacao" value="#{clientePFController.cliente.habilitacao}" />
+						<h:inputText styleClass="form-control input-sm" id="habilitacao" value="#{clientePFController.clienteTO.habilitacao}" />
 					</div>
 				</div>
 
@@ -70,13 +69,13 @@
 						styleClass="col-sm-2 control-label">Data de nasc.</h:outputLabel>
 					<div class="col-sm-4">
 						<h:inputText styleClass="form-control input-sm"
-							id="data_nascimento" value="#{clientePFController.cliente.data_nascimento}" />
+							id="data_nascimento" value="#{clientePFController.clienteTO.data_nascimento}" />
 					</div>
 
 					<h:outputLabel for="genero" styleClass="col-sm-2 control-label">Gênero</h:outputLabel>
 					<div class="col-sm-4">
 						<h:selectOneMenu styleClass="form-control input-sm" id="genero"
-							value="#{clientePFController.cliente.genero}">
+							value="#{clientePFController.clienteTO.genero}">
 							<f:selectItem itemValue="" itemLabel="" />
 							<f:selectItem itemValue="M" itemLabel="Masculino" />
 							<f:selectItem itemValue="F" itemLabel="Feminino" />
@@ -87,12 +86,12 @@
 				<div class="form-group">
 					<h:outputLabel for="email" styleClass="col-sm-2 control-label">Email</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="email" value="#{clientePFController.cliente.email}" />
+						<h:inputText styleClass="form-control input-sm" id="email" value="#{clientePFController.clienteTO.email}" />
 					</div>
 
 					<h:outputLabel for="telefone" styleClass="col-sm-2 control-label">Telefone</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="telefone" value="#{clientePFController.cliente.telefone}" />
+						<h:inputText styleClass="form-control input-sm" id="telefone" value="#{clientePFController.clienteTO.telefone}" />
 					</div>
 				</div>
 
@@ -102,31 +101,31 @@
 				<div class="form-group">
 					<h:outputLabel for="endereco" styleClass="col-sm-2 control-label">Endereço</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="endereco" value="#{clientePFController.cliente.endereco}" />
+						<h:inputText styleClass="form-control input-sm" id="endereco" value="#{clientePFController.clienteTO.endereco}" />
 					</div>
 
 					<h:outputLabel for="bairro" styleClass="col-sm-2 control-label">Bairro</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="bairro" value="#{clientePFController.cliente.bairro}" />
+						<h:inputText styleClass="form-control input-sm" id="bairro" value="#{clientePFController.clienteTO.bairro}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="cidade" styleClass="col-sm-2 control-label">Cidade</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cidade" value="#{clientePFController.cliente.cidade}" />
+						<h:inputText styleClass="form-control input-sm" id="cidade" value="#{clientePFController.clienteTO.cidade}" />
 					</div>
 
 					<h:outputLabel for="estado" styleClass="col-sm-2 control-label">Estado</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="estado" value="#{clientePFController.cliente.estado}" />
+						<h:inputText styleClass="form-control input-sm" id="estado" value="#{clientePFController.clienteTO.estado}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="cep" styleClass="col-sm-2 control-label">CEP</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cep" value="#{clientePFController.cliente.cep}" />
+						<h:inputText styleClass="form-control input-sm" id="cep" value="#{clientePFController.clienteTO.cep}" />
 					</div>
 				</div>
 

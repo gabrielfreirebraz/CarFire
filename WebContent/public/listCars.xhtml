@@ -60,18 +60,21 @@
 								<!-- 							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td> -->
 
 								<td>
-									<h:commandLink action="#{veiculoController.excluir}"
+									<!-- Excluir -->
+									<h:commandLink action="#{veiculoController.excluir()}"
 										styleClass="form-link-remove" title="Excluir">
 										
 										<span class="glyphicon glyphicon-trash"></span>
-										<f:setPropertyActionListener target="#{veiculoController.veiculo}" value="#{veiculo}" />
+										<f:setPropertyActionListener target="#{veiculoController.veiculoTO.id}" value="#{veiculo.id}" />
 									</h:commandLink>
 								
-									<h:commandLink action="#{veiculoController.editar}"
+								
+									<!-- Editar -->
+									<h:commandLink action="#{veiculoController.editar()}"
 										styleClass="form-link-edit" title="Editar">
 										
 										<span class="glyphicon glyphicon-edit"></span>
-										<f:setPropertyActionListener target="#{veiculoController.veiculo}" value="#{veiculo}" />
+										<f:setPropertyActionListener target="#{veiculoController.veiculoTO}" value="#{veiculo}" />
 									</h:commandLink> 
 								</td>
 							</tr>

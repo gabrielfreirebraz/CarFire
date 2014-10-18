@@ -35,8 +35,7 @@
 		<div class="col-sm-9 col-md-6">			
 			<h:form styleClass="form-horizontal" role="form">
 				<h:messages styleClass="message-error" />
-				<h:inputHidden value="#{clientePJController.cliente.id}" />			
-				<h:inputHidden value="#{clientePJController.cliente.tipo}" />	
+				<h:inputHidden value="#{clientePJController.clienteTO.id}" />		
 
 			
 				<h5 class="form-h5">Dados da empresa</h5>
@@ -44,25 +43,25 @@
 				<div class="form-group">
 					<h:outputLabel for="razao_social" styleClass="col-sm-2 control-label">Razão social</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="razao_social" value="#{clientePJController.cliente.razao_social}" />
+						<h:inputText styleClass="form-control input-sm" id="razao_social" value="#{clientePJController.clienteTO.razao_social}" />
 					</div>
 
 					<h:outputLabel for="nome_comercial" styleClass="col-sm-2 control-label">Nome com.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="nome_comercial" value="#{clientePJController.cliente.nome_comercial}" />
+						<h:inputText styleClass="form-control input-sm" id="nome_comercial" value="#{clientePJController.clienteTO.nome_comercial}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="cnpj" styleClass="col-sm-2 control-label">CNPJ</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cnpj" value="#{clientePJController.cliente.cnpj}" />
+						<h:inputText styleClass="form-control input-sm" id="cnpj" value="#{clientePJController.clienteTO.cnpj}" />
 					</div>
 
 					<h:outputLabel for="inscricao_estadual"
 						styleClass="col-sm-2 control-label">Inscrição est.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="inscricao_estadual" value="#{clientePJController.cliente.inscricao_estadual}" />
+						<h:inputText styleClass="form-control input-sm" id="inscricao_estadual" value="#{clientePJController.clienteTO.inscricao_estadual}" />
 					</div>
 				</div>
 
@@ -70,24 +69,24 @@
 					<h:outputLabel for="data_fundacao"
 						styleClass="col-sm-2 control-label">Data de fund.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="data_fundacao" value="#{clientePJController.cliente.data_fundacao}" />
+						<h:inputText styleClass="form-control input-sm" id="data_fundacao" value="#{clientePJController.clienteTO.data_fundacao}" />
 					</div>
 
 					<h:outputLabel for="numero_funcionarios" styleClass="col-sm-2 control-label">N° de func.</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="numero_funcionarios" value="#{clientePJController.cliente.numero_funcionarios}" />
+						<h:inputText styleClass="form-control input-sm" id="numero_funcionarios" value="#{clientePJController.clienteTO.numero_funcionarios}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="email" styleClass="col-sm-2 control-label">Email</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="email" value="#{clientePJController.cliente.email}" />
+						<h:inputText styleClass="form-control input-sm" id="email" value="#{clientePJController.clienteTO.email}" />
 					</div>
 
 					<h:outputLabel for="telefone" styleClass="col-sm-2 control-label">Telefone</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="telefone" value="#{clientePJController.cliente.telefone}" />
+						<h:inputText styleClass="form-control input-sm" id="telefone" value="#{clientePJController.clienteTO.telefone}" />
 					</div>
 				</div>
 
@@ -97,31 +96,31 @@
 				<div class="form-group">
 					<h:outputLabel for="endereco" styleClass="col-sm-2 control-label">Endereço</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="endereco" value="#{clientePJController.cliente.endereco}" />
+						<h:inputText styleClass="form-control input-sm" id="endereco" value="#{clientePJController.clienteTO.endereco}" />
 					</div>
 
 					<h:outputLabel for="bairro" styleClass="col-sm-2 control-label">Bairro</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="bairro" value="#{clientePJController.cliente.bairro}" />
+						<h:inputText styleClass="form-control input-sm" id="bairro" value="#{clientePJController.clienteTO.bairro}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="cidade" styleClass="col-sm-2 control-label">Cidade</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cidade" value="#{clientePJController.cliente.cidade}" />
+						<h:inputText styleClass="form-control input-sm" id="cidade" value="#{clientePJController.clienteTO.cidade}" />
 					</div>
 
 					<h:outputLabel for="estado" styleClass="col-sm-2 control-label">Estado</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="estado" value="#{clientePJController.cliente.estado}" />
+						<h:inputText styleClass="form-control input-sm" id="estado" value="#{clientePJController.clienteTO.estado}" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<h:outputLabel for="cep" styleClass="col-sm-2 control-label">CEP</h:outputLabel>
 					<div class="col-sm-4">
-						<h:inputText styleClass="form-control input-sm" id="cep" value="#{clientePJController.cliente.cep}" />
+						<h:inputText styleClass="form-control input-sm" id="cep" value="#{clientePJController.clienteTO.cep}" />
 					</div>
 				</div>
 
