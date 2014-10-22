@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+	<ui:define name="content">
+
+		<ol class="breadcrumb">
+			<li><a href="#">Empréstimo</a></li>
+			<li class="active">Veículos</li>
+		</ol>
+
+		<BLOCKQUOTE>
+			<p>CARROS/TARIFAS</p>
+			<small>Consulta de modelos e a tarifa do aluguel por km livre ou km controlado</small>
+		</BLOCKQUOTE>
+		<hr />
+		
+		<div id="barra_de_etapas">
+			<h:graphicImage name="barra1.jpg" library="images" />			
+		</div>
+
+	</ui:define>
+
+	<ui:define name="js_externo">
+		<script type="text/javascript">
+
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>

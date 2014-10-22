@@ -134,6 +134,27 @@ input[type=checkbox] {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+/*************************Passo 1**************************/
+#barra_de_etapas {
+/* 	border:solid 1px #000; */
+/* 	width: 850px; */
+/* 	height: 25px; */
+}
+
+
+
+
+
 /** Footer **/
 #footer {
 	position:fixed;

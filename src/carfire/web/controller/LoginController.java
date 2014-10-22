@@ -18,19 +18,23 @@ public class LoginController {
 		this.login = new Login();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String checkLogin() {
-
 		if (this.validar()) {
 			if (login.consultar()) {
-
-				// Redirecionar para próxima tela
-				return "public/listCars.jsf";
+				return "public/passo1.jsf";
 			}
 		}
-
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private boolean validar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -45,14 +49,21 @@ public class LoginController {
 
 			return false;
 		}
-
 		return true;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Login getLogin() {
 		return login;
 	}
 
+	/**
+	 * 
+	 * @param login
+	 */
 	public void setLogin(Login login) {
 		this.login = login;
 	}
