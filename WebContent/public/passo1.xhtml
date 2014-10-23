@@ -20,10 +20,98 @@
 		</BLOCKQUOTE>
 		<hr />
 		
-		<div id="barra_de_etapas">
+		<div class="col-md-8" id="barra_de_etapas">
 			<h:graphicImage name="barra1.jpg" library="images" />			
 		</div>
-
+		
+		
+		<div class="col-sm-6 col-md-8">		
+			<h:form role="form">
+			
+				<!-- Parte 1 -->
+				<div class="box">
+					<h4>Escolha seu carro</h4>
+					
+					<div class="row">
+						<h:outputLabel for="grupo" styleClass="col-sm-3 control-label">Selecione um grupo</h:outputLabel>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-4">						
+							<h:selectOneMenu styleClass="form-control input-sm" id="grupo">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItem itemValue="A" itemLabel="A – Econômico" />
+								<f:selectItem itemValue="C" itemLabel="C – Econômico com Ar" />
+								<f:selectItem itemValue="F" itemLabel="F – Intermediário" />
+								<f:selectItem itemValue="G" itemLabel="G – Intermediário Wagon Especial" />
+								<f:selectItem itemValue="H" itemLabel="H – Executivo" />
+								<f:selectItem itemValue="I" itemLabel="I – Utilitário" />
+								<f:selectItem itemValue="K" itemLabel="K – Executivo Luxo" />
+								<f:selectItem itemValue="M" itemLabel="M – Intermediário Wagon" />
+								<f:selectItem itemValue="N" itemLabel="N – Pick-up" />
+								<f:selectItem itemValue="P" itemLabel="P – 4 x 4 Especial" />
+								<f:selectItem itemValue="R" itemLabel="R – Minivan" />
+								<f:selectItem itemValue="U" itemLabel="U – Furgão" />
+								<f:selectItem itemValue="Y" itemLabel="Y – Blindado" />
+							</h:selectOneMenu>
+						</div>	
+					</div>
+				</div>		
+				
+				
+				
+				
+				<!-- Parte 2 -->
+				<div class="box">
+					<h4>Escolha sua tarifa</h4>
+								
+					<div class="row">
+						<h:outputLabel for="km_livre" styleClass="col-sm-3 control-label">DIÁRIA KM LIVRE</h:outputLabel>						
+						<h:outputLabel for="km_controlado" styleClass="col-sm-9 control-label">PROMOCIONAL KM CONTROLADO (VALOR DIÁRIO)</h:outputLabel>					
+					</div>			
+					
+					<div class="row">
+						<label class="col-sm-3">
+				  			<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"/><span>R$ 99,99</span> 
+						</label>						
+						<label class="col-sm-9">
+					  		<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2"/><span>R$ 39,99 + R$ 0,46 por km rodado.</span>
+						</label>
+					</div>
+				</div>
+<!-- 						<h:selectOneRadio value=""> -->
+<!-- 								<f:selectItem itemValue="1" itemLabel="R$ 99,99" /> -->
+<!-- 								<f:selectItem itemValue="2" itemLabel="R$ 39,99 + R$ 0,46 por km rodado." /> -->
+<!-- 						</h:selectOneRadio> -->
+						
+				
+				<!-- Parte 3 -->
+				<div class="box">
+					<h4>Contrate acessórios</h4>
+								
+					<div class="row">
+						<div class="col-sm-3">
+							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>
+							<h:outputLabel for="navegador_gps" styleClass="control-label"><span>Navegador GPS</span></h:outputLabel>
+						</div> 
+						
+						<div class="col-sm-3">
+							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>	
+							<h:outputLabel for="cadeira_bebe" styleClass="control-label"><span>Cadeira de Bebê</span></h:outputLabel>
+						</div>
+						
+						<div class="col-sm-3">
+							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>	
+							<h:outputLabel for="motorista" styleClass="control-label"><span>Motorista</span></h:outputLabel>
+						</div>					
+					</div>
+				</div>
+				
+				<div class="col-sm-2 col-sm-offset-10">
+					<h:commandLink  styleClass="btn btn-primary" value="Próximo" />
+				</div>				
+			</h:form>
+		</div>
 	</ui:define>
 
 	<ui:define name="js_externo">

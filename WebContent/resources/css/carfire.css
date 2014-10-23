@@ -149,6 +149,35 @@ input[type=checkbox] {
 /* 	border:solid 1px #000; */
 /* 	width: 850px; */
 /* 	height: 25px; */
+	margin-bottom: 20px;
+}
+
+div,label {
+/* 	border:solid 1px #000; */
+}
+.box {
+/*  	border:solid 1px #000;  */
+ 	border-bottom:solid 1px #CCC;
+ 	border-bottom-style: dashed;
+ 	margin: 5px 0;
+ 	padding-bottom: 40px;
+}
+.box:last-of-type {
+	border:none;
+}
+.box h4 {	
+	color: #666;
+	margin: 10px 0 15px;
+}
+
+.box label {
+	margin:0;	
+}
+
+.box label span {
+	margin:0 5px 0;
+	font-size: 11px;
+	font-weight: bold;
 }
 
 
