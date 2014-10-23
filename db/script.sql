@@ -15,6 +15,17 @@ CREATE SCHEMA IF NOT EXISTS `carfire` DEFAULT CHARACTER SET utf8 COLLATE utf8_ge
 USE `carfire` ;
 
 -- -----------------------------------------------------
+-- Table `carfire`.`grupo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`grupo` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `sigla` CHAR(1) NULL,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `carfire`.`veiculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carfire`.`veiculo` (
@@ -38,7 +49,14 @@ CREATE TABLE IF NOT EXISTS `carfire`.`veiculo` (
   `disponivel` TINYINT(1) NULL,
   `estoque` VARCHAR(45) NULL,
   `observacoes` TEXT NULL,
-  PRIMARY KEY (`id`))
+  `grupo_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_veiculo_grupo_veiculo1_idx` (`grupo_id` ASC),
+  CONSTRAINT `fk_veiculo_grupo_veiculo1`
+    FOREIGN KEY (`grupo_id`)
+    REFERENCES `carfire`.`grupo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -96,11 +114,47 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `carfire`.`cidade`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`cidade` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `carfire`.`agencia`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`agencia` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cidade_id` INT NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_agencia_cidade1_idx` (`cidade_id` ASC),
+  CONSTRAINT `fk_agencia_cidade1`
+    FOREIGN KEY (`cidade_id`)
+    REFERENCES `carfire`.`cidade` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `carfire`.`devolucao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carfire`.`devolucao` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`))
+  `agencia_id` INT NULL,
+  `data` VARCHAR(45) NULL,
+  `hora` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_devolucao_agencia1_idx` (`agencia_id` ASC),
+  CONSTRAINT `fk_devolucao_agencia1`
+    FOREIGN KEY (`agencia_id`)
+    REFERENCES `carfire`.`agencia` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -118,17 +172,21 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carfire`.`emprestimo` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `agencia_id` INT NOT NULL,
   `pagamento_id` INT NULL,
   `devolucao_id` INT NULL,
   `reserva_id` INT NULL,
   `cliente_pf_id` INT NULL,
   `cliente_pj_id` INT NULL,
+  `data` VARCHAR(45) NOT NULL,
+  `hora` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_emprestimo_pagamento1_idx` (`pagamento_id` ASC),
   INDEX `fk_emprestimo_cliente_pj1_idx` (`cliente_pj_id` ASC),
   INDEX `fk_emprestimo_pj_devolucao1_idx` (`devolucao_id` ASC),
   INDEX `fk_emprestimo_pj_reserva1_idx` (`reserva_id` ASC),
   INDEX `fk_emprestimo_cliente_pf1_idx` (`cliente_pf_id` ASC),
+  INDEX `fk_emprestimo_agencia1_idx` (`agencia_id` ASC),
   CONSTRAINT `fk_emprestimo_pagamento1`
     FOREIGN KEY (`pagamento_id`)
     REFERENCES `carfire`.`pagamento` (`id`)
@@ -153,6 +211,11 @@ CREATE TABLE IF NOT EXISTS `carfire`.`emprestimo` (
     FOREIGN KEY (`cliente_pf_id`)
     REFERENCES `carfire`.`cliente_pf` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_emprestimo_agencia1`
+    FOREIGN KEY (`agencia_id`)
+    REFERENCES `carfire`.`agencia` (`id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -161,8 +224,8 @@ ENGINE = InnoDB;
 -- Table `carfire`.`itens_emprestimo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carfire`.`itens_emprestimo` (
-  `emprestimo_id` INT NULL,
-  `veiculo_id` INT NULL,
+  `emprestimo_id` INT NOT NULL,
+  `veiculo_id` INT NOT NULL,
   INDEX `fk_itens_emprestimo_veiculo1_idx` (`veiculo_id` ASC),
   INDEX `fk_itens_emprestimo_emprestimo_pj1_idx` (`emprestimo_id` ASC),
   CONSTRAINT `fk_itens_emprestimo_veiculo1`
@@ -179,23 +242,86 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `carfire`.`agencia`
+-- Table `carfire`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carfire`.`agencia` (
+CREATE TABLE IF NOT EXISTS `carfire`.`usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `agencia_id` INT NULL,
+  `nome` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `senha` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_usuario_agencia1_idx` (`agencia_id` ASC),
+  CONSTRAINT `fk_usuario_agencia1`
+    FOREIGN KEY (`agencia_id`)
+    REFERENCES `carfire`.`agencia` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `carfire`.`tarifa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`tarifa` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `carfire`.`usuario`
+-- Table `carfire`.`itens_tarifa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carfire`.`usuario` (
+CREATE TABLE IF NOT EXISTS `carfire`.`itens_tarifa` (
+  `grupo_id` INT NOT NULL,
+  `tarifa_id` INT NOT NULL,
+  `descricao` VARCHAR(100) NULL,
+  PRIMARY KEY (`grupo_id`, `tarifa_id`),
+  INDEX `fk_grupo_has_tarifa_tarifa1_idx` (`tarifa_id` ASC),
+  INDEX `fk_grupo_has_tarifa_grupo1_idx` (`grupo_id` ASC),
+  CONSTRAINT `fk_grupo_has_tarifa_grupo1`
+    FOREIGN KEY (`grupo_id`)
+    REFERENCES `carfire`.`grupo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_grupo_has_tarifa_tarifa1`
+    FOREIGN KEY (`tarifa_id`)
+    REFERENCES `carfire`.`tarifa` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `carfire`.`acessorio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`acessorio` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `senha` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `carfire`.`itens_acessorio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`itens_acessorio` (
+  `emprestimo_id` INT NOT NULL,
+  `acessorio_id` INT NOT NULL,
+  PRIMARY KEY (`emprestimo_id`, `acessorio_id`),
+  INDEX `fk_emprestimo_has_acessorio_acessorio1_idx` (`acessorio_id` ASC),
+  INDEX `fk_emprestimo_has_acessorio_emprestimo1_idx` (`emprestimo_id` ASC),
+  CONSTRAINT `fk_emprestimo_has_acessorio_emprestimo1`
+    FOREIGN KEY (`emprestimo_id`)
+    REFERENCES `carfire`.`emprestimo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_emprestimo_has_acessorio_acessorio1`
+    FOREIGN KEY (`acessorio_id`)
+    REFERENCES `carfire`.`acessorio` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -203,7 +329,38 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+
+
+
+
+
+
 -- -----------------------------------------------------
--- Dados para teste
+-- Dados para produção
 -- -----------------------------------------------------
-insert into `locacao`.`usuario`(nome, email, senha) values("Gabriel", "gabriel@provedor.com", "123");
+insert into `carfire`.`usuario`(nome, email, senha) values
+("Gabriel", "gabriel@provedor.com", "123");
+
+insert into `carfire`.`tarifa`(nome) values
+("Km livre"),
+("Km controlado");
+
+insert into `carfire`.`grupo`(sigla, nome) values
+("A", "A – Econômico"),
+("C", "C – Econômico com Ar"),
+("F", "F – Intermediário"),
+("G", "G – Intermediário Wagon Especial"),
+("H", "H – Executivo"),
+("I", "I – Utilitário"),
+("K", "K – Executivo Luxo"),
+("M", "M – Intermediário Wagon"),
+("N", "N – Pick-up"),
+("P", "P – 4 x 4 Especial"),
+("R", "R – Minivan"),
+("U", "U – Furgão"),
+("Y", "Y – Blindado");	
+
+insert into `carfire`.`acessorio`(nome) values
+("Navegador GPS"),
+("Cadeira de Bebê"),
+("Motorista");
