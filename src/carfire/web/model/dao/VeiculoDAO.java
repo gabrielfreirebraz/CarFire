@@ -29,6 +29,7 @@ public class VeiculoDAO {
             while (rs.next()) {    
             	VeiculoTO veiculo = new VeiculoTO();
             	veiculo.setId(rs.getLong("id"));
+            	veiculo.setGrupo_id(rs.getLong("grupo_id"));
         		veiculo.setChassi(rs.getString("chassi"));
         		veiculo.setPlaca(rs.getString("placa"));
         		veiculo.setKm(rs.getString("km"));
@@ -84,9 +85,9 @@ public class VeiculoDAO {
 	 */
 	public boolean inserir(VeiculoTO veiculo) {
 		String sqlInsert = "INSERT INTO veiculo "
-				+ "(chassi, placa, km, cidade, estado, marca, modelo, fabricante, tarifa, taxa, "
+				+ "(grupo_id, chassi, placa, km, cidade, estado, marca, modelo, fabricante, tarifa, taxa, "
 				+ "combustivel, portas, ano_modelo, cor, renavam, descricao, disponivel, estoque, observacoes) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement stm = null;
 		Connection conexao = null;
@@ -96,25 +97,26 @@ public class VeiculoDAO {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlInsert);
 			
-        	stm.setString(1, veiculo.getChassi());
-        	stm.setString(2, veiculo.getPlaca());
-        	stm.setString(3, veiculo.getKm());
-        	stm.setString(4, veiculo.getCidade());
-        	stm.setString(5, veiculo.getEstado());
-        	stm.setString(6, veiculo.getMarca());
-        	stm.setString(7, veiculo.getModelo());
-        	stm.setString(8, veiculo.getFabricante());
-        	stm.setString(9, veiculo.getTarifa());
-        	stm.setString(10, veiculo.getTaxa());
-        	stm.setString(11, veiculo.getCombustivel());
-        	stm.setInt(12, veiculo.getPortas());
-        	stm.setInt(13, veiculo.getAno_modelo());
-        	stm.setString(14, veiculo.getCor());
-        	stm.setString(15, veiculo.getRenavam());
-        	stm.setString(16, veiculo.getDescricao());
-        	stm.setBoolean(17, true);
-        	stm.setInt(18, veiculo.getEstoque());
-        	stm.setString(19, veiculo.getObservacoes());
+			stm.setLong(1, veiculo.getGrupo_id());
+        	stm.setString(2, veiculo.getChassi());        	
+        	stm.setString(3, veiculo.getPlaca());
+        	stm.setString(4, veiculo.getKm());
+        	stm.setString(5, veiculo.getCidade());
+        	stm.setString(6, veiculo.getEstado());        	
+        	stm.setString(7, veiculo.getMarca());
+        	stm.setString(8, veiculo.getModelo());
+        	stm.setString(9, veiculo.getFabricante());
+        	stm.setString(10, veiculo.getTarifa());
+        	stm.setString(11, veiculo.getTaxa());
+        	stm.setString(12, veiculo.getCombustivel());
+        	stm.setInt(13, veiculo.getPortas());
+        	stm.setInt(14, veiculo.getAno_modelo());
+        	stm.setString(15, veiculo.getCor());
+        	stm.setString(16, veiculo.getRenavam());
+        	stm.setString(17, veiculo.getDescricao());
+        	stm.setBoolean(18, veiculo.getDisponivel());
+        	stm.setInt(19, veiculo.getEstoque());
+        	stm.setString(20, veiculo.getObservacoes());
 						
 			return stm.execute();
 
@@ -148,7 +150,7 @@ public class VeiculoDAO {
 	 */
 	public boolean editar(VeiculoTO veiculo) {
 		String sqlUpdate = "UPDATE veiculo SET "
-				+ "chassi = ?, placa = ?, km = ?, cidade = ?, estado = ?, marca = ?, modelo = ?, "
+				+ "grupo_id = ?, chassi = ?, placa = ?, km = ?, cidade = ?, estado = ?, marca = ?, modelo = ?, "
 				+ "fabricante = ?, tarifa = ?, taxa = ?, combustivel = ?, portas = ?, ano_modelo = ?, "
 				+ "cor = ?, renavam = ?, descricao = ?, disponivel = ?, estoque = ?, observacoes = ? "
 				+ "WHERE id = ?";
@@ -160,26 +162,27 @@ public class VeiculoDAO {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlUpdate);
 			
-        	stm.setString(1, veiculo.getChassi());
-        	stm.setString(2, veiculo.getPlaca());
-        	stm.setString(3, veiculo.getKm());
-        	stm.setString(4, veiculo.getCidade());
-        	stm.setString(5, veiculo.getEstado());
-        	stm.setString(6, veiculo.getMarca());
-        	stm.setString(7, veiculo.getModelo());
-        	stm.setString(8, veiculo.getFabricante());
-        	stm.setString(9, veiculo.getTarifa());
-        	stm.setString(10, veiculo.getTaxa());
-        	stm.setString(11, veiculo.getCombustivel());
-        	stm.setInt(12, veiculo.getPortas());
-        	stm.setInt(13, veiculo.getAno_modelo());
-        	stm.setString(14, veiculo.getCor());
-        	stm.setString(15, veiculo.getRenavam());
-        	stm.setString(16, veiculo.getDescricao());
-        	stm.setBoolean(17, veiculo.getDisponivel());
-        	stm.setInt(18, veiculo.getEstoque());
-        	stm.setString(19, veiculo.getObservacoes());	
-        	stm.setLong(20, veiculo.getId());
+			stm.setLong(1, veiculo.getGrupo_id());
+        	stm.setString(2, veiculo.getChassi());        	
+        	stm.setString(3, veiculo.getPlaca());
+        	stm.setString(4, veiculo.getKm());
+        	stm.setString(5, veiculo.getCidade());
+        	stm.setString(6, veiculo.getEstado());        	
+        	stm.setString(7, veiculo.getMarca());
+        	stm.setString(8, veiculo.getModelo());
+        	stm.setString(9, veiculo.getFabricante());
+        	stm.setString(10, veiculo.getTarifa());
+        	stm.setString(11, veiculo.getTaxa());
+        	stm.setString(12, veiculo.getCombustivel());
+        	stm.setInt(13, veiculo.getPortas());
+        	stm.setInt(14, veiculo.getAno_modelo());
+        	stm.setString(15, veiculo.getCor());
+        	stm.setString(16, veiculo.getRenavam());
+        	stm.setString(17, veiculo.getDescricao());
+        	stm.setBoolean(18, veiculo.getDisponivel());
+        	stm.setInt(19, veiculo.getEstoque());
+        	stm.setString(20, veiculo.getObservacoes());
+        	stm.setLong(21, veiculo.getId());
 			
 			return stm.execute();
 

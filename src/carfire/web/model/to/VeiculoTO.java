@@ -4,6 +4,7 @@ package carfire.web.model.to;
 public class VeiculoTO {
 
 	private long id = 0;
+	private long grupo_id = 0;
 	private String chassi = null;
 	private String placa = null;
 	private String km = null;
@@ -30,6 +31,12 @@ public class VeiculoTO {
 	}
 	public void setId(long id) {
 		this.id = id;
+	}
+	public long getGrupo_id() {
+		return grupo_id;
+	}
+	public void setGrupo_id(long grupo_id) {
+		this.grupo_id = grupo_id;
 	}
 	public String getChassi() {
 		return chassi;

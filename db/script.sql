@@ -30,6 +30,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carfire`.`veiculo` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `grupo_id` INT NOT NULL,
   `chassi` VARCHAR(45) NULL,
   `placa` VARCHAR(45) NULL,
   `km` VARCHAR(45) NULL,
@@ -49,7 +50,6 @@ CREATE TABLE IF NOT EXISTS `carfire`.`veiculo` (
   `disponivel` TINYINT(1) NULL,
   `estoque` VARCHAR(45) NULL,
   `observacoes` TEXT NULL,
-  `grupo_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_veiculo_grupo_veiculo1_idx` (`grupo_id` ASC),
   CONSTRAINT `fk_veiculo_grupo_veiculo1`
@@ -328,11 +328,6 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-
-
-
 
 
 -- -----------------------------------------------------

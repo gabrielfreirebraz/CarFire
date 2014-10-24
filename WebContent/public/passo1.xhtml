@@ -33,26 +33,21 @@
 					<h4>Escolha seu carro</h4>
 					
 					<div class="row">
-						<h:outputLabel for="grupo" styleClass="col-sm-3 control-label">Selecione um grupo</h:outputLabel>
+						<h:outputLabel for="grupo" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel>
+						<h:outputLabel for="veiculo" styleClass="col-sm-4 control-label">Selecione um veículo</h:outputLabel>
 					</div>
 					
 					<div class="row">
 						<div class="col-sm-4">						
 							<h:selectOneMenu styleClass="form-control input-sm" id="grupo">
 								<f:selectItem itemValue="" itemLabel="" />
-								<f:selectItem itemValue="A" itemLabel="A – Econômico" />
-								<f:selectItem itemValue="C" itemLabel="C – Econômico com Ar" />
-								<f:selectItem itemValue="F" itemLabel="F – Intermediário" />
-								<f:selectItem itemValue="G" itemLabel="G – Intermediário Wagon Especial" />
-								<f:selectItem itemValue="H" itemLabel="H – Executivo" />
-								<f:selectItem itemValue="I" itemLabel="I – Utilitário" />
-								<f:selectItem itemValue="K" itemLabel="K – Executivo Luxo" />
-								<f:selectItem itemValue="M" itemLabel="M – Intermediário Wagon" />
-								<f:selectItem itemValue="N" itemLabel="N – Pick-up" />
-								<f:selectItem itemValue="P" itemLabel="P – 4 x 4 Especial" />
-								<f:selectItem itemValue="R" itemLabel="R – Minivan" />
-								<f:selectItem itemValue="U" itemLabel="U – Furgão" />
-								<f:selectItem itemValue="Y" itemLabel="Y – Blindado" />
+								<f:selectItems value="#{grupoController.itens()}" var="grupo" itemValue="#{grupo.id}" itemLabel="#{grupo.nome}" />							
+							</h:selectOneMenu>
+						</div>	
+						<div class="col-sm-4">						
+							<h:selectOneMenu styleClass="form-control input-sm" id="veiculo">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItems value="#{veiculoController.itens()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
 							</h:selectOneMenu>
 						</div>	
 					</div>
