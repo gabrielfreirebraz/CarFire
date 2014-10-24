@@ -12,6 +12,10 @@ import carfire.web.util.ConectaMySQL;
 public class VeiculoDAO {
 	
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static ArrayList<VeiculoTO> listarItens() {		
 		PreparedStatement stm = null;
         Connection conexao = null;
@@ -77,6 +81,79 @@ public class VeiculoDAO {
         }		
 	}
 
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public static ArrayList<VeiculoTO> listarItensByGrupo(long grupo_id) {		
+		PreparedStatement stm = null;
+        Connection conexao = null;
+        ResultSet rs = null;
+        
+        ArrayList<VeiculoTO> veiculos = new ArrayList<VeiculoTO>();
+    
+        try {            
+        	String sql = "SELECT * FROM veiculo WHERE grupo_id = ?";
+        	conexao = ConectaMySQL.getConexao();
+                    	
+        	stm = conexao.prepareStatement(sql); 
+            stm.setLong(1, grupo_id);
+            
+            rs = stm.executeQuery();
+            
+            while (rs.next()) {    
+            	VeiculoTO veiculo = new VeiculoTO();
+            	veiculo.setId(rs.getLong("id"));
+            	veiculo.setGrupo_id(rs.getLong("grupo_id"));
+        		veiculo.setChassi(rs.getString("chassi"));
+        		veiculo.setPlaca(rs.getString("placa"));
+        		veiculo.setKm(rs.getString("km"));
+        		veiculo.setCidade(rs.getString("cidade"));
+        		veiculo.setEstado(rs.getString("estado"));
+        		veiculo.setMarca(rs.getString("marca"));
+        		veiculo.setModelo(rs.getString("modelo"));
+        		veiculo.setFabricante(rs.getString("fabricante"));
+        		veiculo.setTarifa(rs.getString("tarifa"));
+        		veiculo.setTaxa(rs.getString("taxa"));
+        		veiculo.setCombustivel(rs.getString("combustivel"));
+        		veiculo.setPortas(rs.getInt("portas"));
+        		veiculo.setAno_modelo(rs.getInt("ano_modelo"));
+        		veiculo.setCor(rs.getString("cor"));
+        		veiculo.setRenavam(rs.getString("renavam"));
+        		veiculo.setDescricao(rs.getString("descricao"));
+        		veiculo.setDisponivel(rs.getBoolean("disponivel"));
+        		veiculo.setEstoque(rs.getInt("estoque"));
+        		veiculo.setObservacoes(rs.getString("observacoes"));
+        		
+            	veiculos.add(veiculo);
+            }     
+            rs.close();            
+            return veiculos;            
+            
+        } catch (SQLException e) {            
+            e.printStackTrace();
+            try {
+                conexao.rollback();
+                
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }	            
+            return veiculos;
+        }
+        finally{
+            if (stm != null) {
+                try {
+                    stm.close();
+                }
+                catch (SQLException e1) {
+                    System.out.print(e1.getStackTrace());
+                }
+            }
+        }		
+	}
+	
 	
 	/**
 	 * 

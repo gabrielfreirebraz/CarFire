@@ -33,21 +33,23 @@
 					<h4>Escolha seu carro</h4>
 					
 					<div class="row">
-						<h:outputLabel for="grupo" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel>
-						<h:outputLabel for="veiculo" styleClass="col-sm-4 control-label">Selecione um veículo</h:outputLabel>
+						<h:outputLabel for="grupos" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel>
+						<h:outputLabel for="veiculos" styleClass="col-sm-4 control-label">Selecione um veículo</h:outputLabel>
 					</div>
 					
 					<div class="row">
 						<div class="col-sm-4">						
-							<h:selectOneMenu styleClass="form-control input-sm" id="grupo">
+							<h:selectOneMenu styleClass="form-control input-sm" id="grupos" onchange="submit()" 
+									valueChangeListener="#{veiculoController.changeVeiculo}">
 								<f:selectItem itemValue="" itemLabel="" />
 								<f:selectItems value="#{grupoController.itens()}" var="grupo" itemValue="#{grupo.id}" itemLabel="#{grupo.nome}" />							
 							</h:selectOneMenu>
 						</div>	
+						
 						<div class="col-sm-4">						
-							<h:selectOneMenu styleClass="form-control input-sm" id="veiculo">
+							<h:selectOneMenu styleClass="form-control input-sm" id="veiculos">
 								<f:selectItem itemValue="" itemLabel="" />
-								<f:selectItems value="#{veiculoController.itens()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
+								<f:selectItems value="#{veiculoController.getLista()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
 							</h:selectOneMenu>
 						</div>	
 					</div>

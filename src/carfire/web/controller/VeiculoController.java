@@ -3,22 +3,25 @@ package carfire.web.controller;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 
 import carfire.web.model.dao.VeiculoDAO;
 import carfire.web.model.to.VeiculoTO;
 
 @ManagedBean(name = "veiculoController")
-@RequestScoped
+@SessionScoped
 public class VeiculoController {
 
 	private VeiculoTO veiculoTO = null;
 	private VeiculoDAO veiculoDAO = null;
-	
+	private ArrayList<VeiculoTO> listaVeiculos = null;
 
+	
 	public VeiculoController() {
 		veiculoTO = new VeiculoTO();
 		veiculoDAO = new VeiculoDAO();
+		listaVeiculos = new ArrayList<VeiculoTO>();
 	}
 
 	
@@ -29,6 +32,20 @@ public class VeiculoController {
 	public ArrayList<VeiculoTO> itens() {
 		return VeiculoDAO.listarItens();
 	}
+
+	
+	/**
+	 * Alterar combo de veículos quando selecionar um grupo
+	 * @param e
+	 */
+	public void changeVeiculo(ValueChangeEvent e) {	
+		
+		if (e.getNewValue() != e.getOldValue()) { 
+			long grupo_id = Long.parseLong(e.getNewValue().toString());
+			listaVeiculos = VeiculoDAO.listarItensByGrupo(grupo_id);
+		}
+	}
+
 
 	/**
 	 * 
@@ -77,5 +94,11 @@ public class VeiculoController {
 	}
 	public void setVeiculoTO(VeiculoTO veiculo) {
 		veiculoTO = veiculo;
+	}
+	public ArrayList<VeiculoTO> getLista() {
+		return listaVeiculos;
+	}
+	public void setLista(ArrayList<VeiculoTO> veiculos) {
+		listaVeiculos = veiculos;
 	}
 }

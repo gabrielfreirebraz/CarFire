@@ -23,7 +23,6 @@ public class GrupoController {
 		grupoDAO = new GrupoDAO();
 	}
 
-	
 	/**
 	 * 
 	 * @return
@@ -31,7 +30,7 @@ public class GrupoController {
 	public ArrayList<GrupoTO> itens() {
 		return GrupoDAO.listarItens();
 	}
-
+	
 	
 	
 	/**************************************/
