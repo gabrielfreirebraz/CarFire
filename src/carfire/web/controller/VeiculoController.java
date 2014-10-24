@@ -30,7 +30,7 @@ public class VeiculoController {
 	 * @return
 	 */
 	public ArrayList<VeiculoTO> itens() {
-		return VeiculoDAO.listarItens();
+		return veiculoDAO.listarItens();
 	}
 
 	
@@ -42,7 +42,7 @@ public class VeiculoController {
 		
 		if (e.getNewValue() != e.getOldValue()) { 
 			long grupo_id = Long.parseLong(e.getNewValue().toString());
-			listaVeiculos = VeiculoDAO.listarItensByGrupo(grupo_id);
+			listaVeiculos = veiculoDAO.listarItensByGrupo(grupo_id);
 		}
 	}
 

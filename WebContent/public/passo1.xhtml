@@ -87,20 +87,28 @@
 					<h4>Contrate acessórios</h4>
 								
 					<div class="row">
-						<div class="col-sm-3">
-							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>
-							<h:outputLabel for="navegador_gps" styleClass="control-label"><span>Navegador GPS</span></h:outputLabel>
-						</div> 
+						<ui:repeat var="acessorio" value="#{acessorioController.itens()}">
 						
-						<div class="col-sm-3">
-							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>	
-							<h:outputLabel for="cadeira_bebe" styleClass="control-label"><span>Cadeira de Bebê</span></h:outputLabel>
-						</div>
+							<div class="col-sm-3">
+								<input type="checkbox" name="inlineRadioOptions" value="1"/>
+								<h:outputText styleClass="control-label" value="#{acessorio.nome}" />
+							</div>
+						</ui:repeat>
 						
-						<div class="col-sm-3">
-							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>	
-							<h:outputLabel for="motorista" styleClass="control-label"><span>Motorista</span></h:outputLabel>
-						</div>					
+<!-- 						<div class="col-sm-3"> -->
+<!-- 							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/> -->
+<!-- 							<h:outputLabel for="navegador_gps" styleClass="control-label"><span>Navegador GPS</span></h:outputLabel> -->
+<!-- 						</div>  -->
+						
+<!-- 						<div class="col-sm-3"> -->
+<!-- 							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>	 -->
+<!-- 							<h:outputLabel for="cadeira_bebe" styleClass="control-label"><span>Cadeira de Bebê</span></h:outputLabel> -->
+<!-- 						</div> -->
+						
+<!-- 						<div class="col-sm-3"> -->
+<!-- 							<input type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="1"/>	 -->
+<!-- 							<h:outputLabel for="motorista" styleClass="control-label"><span>Motorista</span></h:outputLabel> -->
+<!-- 						</div>					 -->
 					</div>
 				</div>
 				

@@ -6,36 +6,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import carfire.web.model.to.GrupoTO;
+import carfire.web.model.to.AcessorioTO;
 import carfire.web.util.ConectaMySQL;
 
-public class GrupoDAO {
+public class AcessorioDAO {
 	
 
-	public ArrayList<GrupoTO> listarItens() {		
+	public ArrayList<AcessorioTO> listarItens() {		
 		PreparedStatement stm = null;
         Connection conexao = null;
         ResultSet rs = null;
-        
-        ArrayList<GrupoTO> grupos = new ArrayList<GrupoTO>();
+       
+        ArrayList<AcessorioTO> acessorios = new ArrayList<AcessorioTO>();
     
         try {            
-        	String sql = "SELECT * FROM grupo";
+        	String sql = "SELECT * FROM acessorios";
         	conexao = ConectaMySQL.getConexao();
             
             stm = conexao.prepareStatement(sql);            
             rs = stm.executeQuery();
             
             while (rs.next()) {    
-            	GrupoTO grupo = new GrupoTO();
-            	grupo.setId(rs.getLong("id"));
-            	grupo.setSigla(rs.getString("sigla")); 
-            	grupo.setNome(rs.getString("nome"));        		
+            	AcessorioTO acessorio = new AcessorioTO();
+            	acessorio.setId(rs.getLong("id")); 
+            	acessorio.setNome(rs.getString("nome"));        		
         		
-            	grupos.add(grupo);
+            	acessorios.add(acessorio);
             }     
             rs.close();            
-            return grupos;            
+            return acessorios;            
             
         } catch (SQLException e) {            
             e.printStackTrace();
@@ -45,7 +44,7 @@ public class GrupoDAO {
             } catch (SQLException e1) {
                 System.out.print(e1.getStackTrace());
             }	            
-            return grupos;
+            return acessorios;
         }
         finally{
             if (stm != null) {
@@ -65,22 +64,19 @@ public class GrupoDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean inserir(GrupoTO grupo) {
+	public boolean inserir(AcessorioTO acessorio) {
 		String sqlInsert = "INSERT INTO grupo "
-				+ "(sigla, nome) "
-				+ "VALUES (?, ?)";
+				+ "(nome) "
+				+ "VALUES (?)";
 		
 		PreparedStatement stm = null;
-		Connection conexao = null;
-		
+		Connection conexao = null;		
 
 		try {
-			conexao = ConectaMySQL.getConexao();
+			conexao = ConectaMySQL.getConexao();			
 			stm = conexao.prepareStatement(sqlInsert);
 			
-        	stm.setString(1, grupo.getSigla());
-        	stm.setString(2, grupo.getNome());
-						
+        	stm.setString(1, acessorio.getNome());						
 			return stm.execute();
 
 		} catch (SQLException e) {
@@ -111,9 +107,9 @@ public class GrupoDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean editar(GrupoTO grupo) {
-		String sqlUpdate = "UPDATE grupo SET "
-				+ "sigla = ?, nome = ? "
+	public boolean editar(AcessorioTO acessorio) {
+		String sqlUpdate = "UPDATE acessorio SET "
+				+ "nome = ? "
 				+ "WHERE id = ?";
 
 		PreparedStatement stm = null;
@@ -123,9 +119,8 @@ public class GrupoDAO {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlUpdate);
 			
-        	stm.setString(1, grupo.getSigla());
-        	stm.setString(2, grupo.getNome());	
-        	stm.setLong(3, grupo.getId());
+        	stm.setString(1, acessorio.getNome());	
+        	stm.setLong(2, acessorio.getId());
 			
 			return stm.execute();
 
@@ -158,7 +153,7 @@ public class GrupoDAO {
 	 * @return
 	 */
 	public boolean excluir(long id) {		
-		String sqlDelete = "DELETE FROM grupo WHERE id = ?";
+		String sqlDelete = "DELETE FROM acessorio WHERE id = ?";
 
 		PreparedStatement stm = null;
 		Connection conexao = null;

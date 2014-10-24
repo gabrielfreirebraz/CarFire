@@ -28,7 +28,7 @@ public class GrupoController {
 	 * @return
 	 */
 	public ArrayList<GrupoTO> itens() {
-		return GrupoDAO.listarItens();
+		return grupoDAO.listarItens();
 	}
 	
 	

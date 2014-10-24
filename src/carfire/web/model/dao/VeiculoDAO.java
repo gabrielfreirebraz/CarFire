@@ -16,7 +16,7 @@ public class VeiculoDAO {
 	 * 
 	 * @return
 	 */
-	public static ArrayList<VeiculoTO> listarItens() {		
+	public ArrayList<VeiculoTO> listarItens() {		
 		PreparedStatement stm = null;
         Connection conexao = null;
         ResultSet rs = null;
@@ -87,7 +87,7 @@ public class VeiculoDAO {
 	 * 
 	 * @return
 	 */
-	public static ArrayList<VeiculoTO> listarItensByGrupo(long grupo_id) {		
+	public ArrayList<VeiculoTO> listarItensByGrupo(long grupo_id) {		
 		PreparedStatement stm = null;
         Connection conexao = null;
         ResultSet rs = null;
