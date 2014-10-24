@@ -34,14 +34,11 @@
 				<table class="display">
 					<thead>
 						<tr>
-							<th>Chassi</th>
+							<th>Descrição</th>
 							<th>Placa</th>
 							<th>Combustível</th>
-							<th>Ano</th>
-							<th>Marca</th>
-							<th>Modelo</th>
 							<th>Valor tarifa</th>
-							<!-- 						<th>Disponível</th> -->
+							<th class="center">Disponível</th>
 							<th>Ações</th>
 						</tr>
 					</thead>
@@ -49,15 +46,12 @@
 					<tbody>
 						
 						<ui:repeat var="veiculo" value="#{veiculoController.itens()}">
-							<tr class="center">
-								<td><h:outputText value="#{veiculo.chassi}" /></td>
+							<tr>
+								<td><h:outputText value="#{veiculo.descricao}" /></td>
 								<td><h:outputText value="#{veiculo.placa}" /></td>
 								<td><h:outputText value="#{veiculo.combustivel}" /></td>
-								<td><h:outputText value="#{veiculo.ano_modelo}" /></td>
-								<td><h:outputText value="#{veiculo.marca}" /></td>
-								<td><h:outputText value="#{veiculo.modelo}" /></td>
 								<td><h:outputText value="#{veiculo.tarifa}" /></td>
-								<!-- 							<td><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td> -->
+								<td class="center"><h:selectBooleanCheckbox value="#{veiculo.disponivel}" /></td>
 
 								<td>
 									<!-- Excluir -->
