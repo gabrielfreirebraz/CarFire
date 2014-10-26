@@ -149,10 +149,10 @@ input[type=checkbox] {
 /* 	border:solid 1px #000; */
 /* 	width: 850px; */
 /* 	height: 25px; */
-	margin-bottom: 20px;
+	margin:-10px 0 20px;
 }
 
-div,label {
+div,label,span {
 /* 	border:solid 1px #000; */
 }
 .box {

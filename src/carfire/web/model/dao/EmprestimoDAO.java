@@ -6,35 +6,43 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import carfire.web.model.to.AcessorioTO;
+import carfire.web.model.to.EmprestimoTO;
 import carfire.web.util.ConectaMySQL;
 
-public class AcessorioDAO {
+public class EmprestimoDAO {
 	
 
-	public ArrayList<AcessorioTO> listarItens() {		
+	public ArrayList<EmprestimoTO> listarItens() {		
 		PreparedStatement stm = null;
         Connection conexao = null;
         ResultSet rs = null;
        
-        ArrayList<AcessorioTO> acessorios = new ArrayList<AcessorioTO>();
+        ArrayList<EmprestimoTO> emprestimos = new ArrayList<EmprestimoTO>();
     
         try {            
-        	String sql = "SELECT * FROM acessorio";
+        	String sql = "SELECT * FROM emprestimo";
         	conexao = ConectaMySQL.getConexao();
             
             stm = conexao.prepareStatement(sql);            
             rs = stm.executeQuery();
             
             while (rs.next()) {    
-            	AcessorioTO acessorio = new AcessorioTO();
-            	acessorio.setId(rs.getLong("id")); 
-            	acessorio.setNome(rs.getString("nome"));        		
+            	EmprestimoTO emprestimo = new EmprestimoTO();
+            	emprestimo.setId(rs.getLong("id")); 
+            	emprestimo.setAgencia_id(rs.getLong("agencia_id")); 
+            	emprestimo.setPagamento_id(rs.getLong("pagamento_id")); 
+            	emprestimo.setDevolucao_id(rs.getLong("devolucao_id")); 
+            	emprestimo.setReserva_id(rs.getLong("reserva_id")); 
+            	emprestimo.setCliente_pf_id(rs.getLong("cliente_pf_id"));
+            	emprestimo.setCliente_pj_id(rs.getLong("cliente_pj_id"));
+            	emprestimo.setData(rs.getString("data"));
+            	emprestimo.setData(rs.getString("hora"));
+            	emprestimo.setData(rs.getString("status"));
         		
-            	acessorios.add(acessorio);
+            	emprestimos.add(emprestimo);
             }     
             rs.close();            
-            return acessorios;            
+            return emprestimos;            
             
         } catch (SQLException e) {            
             e.printStackTrace();
@@ -44,7 +52,7 @@ public class AcessorioDAO {
             } catch (SQLException e1) {
                 System.out.print(e1.getStackTrace());
             }	            
-            return acessorios;
+            return emprestimos;
         }
         finally{
             if (stm != null) {
@@ -64,10 +72,10 @@ public class AcessorioDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean inserir(AcessorioTO acessorio) {
-		String sqlInsert = "INSERT INTO grupo "
-				+ "(nome) "
-				+ "VALUES (?)";
+	public boolean inserir(EmprestimoTO emprestimo) {
+		String sqlInsert = "INSERT INTO emprestimo "
+				+ "(agencia_id, pagamento_id, devolucao_id, reserva_id, cliente_pf_id, cliente_pj_id, data, hora, status) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement stm = null;
 		Connection conexao = null;		
@@ -76,7 +84,16 @@ public class AcessorioDAO {
 			conexao = ConectaMySQL.getConexao();			
 			stm = conexao.prepareStatement(sqlInsert);
 			
-        	stm.setString(1, acessorio.getNome());						
+			stm.setLong(1, emprestimo.getAgencia_id());
+			stm.setLong(2, emprestimo.getPagamento_id());
+			stm.setLong(3, emprestimo.getDevolucao_id());
+			stm.setLong(4, emprestimo.getReserva_id());
+			stm.setLong(5, emprestimo.getCliente_pf_id());
+			stm.setLong(6, emprestimo.getCliente_pj_id());
+			stm.setString(7, emprestimo.getData());
+			stm.setString(8, emprestimo.getHora());
+        	stm.setString(9, emprestimo.getStatus());
+        	
 			return stm.execute();
 
 		} catch (SQLException e) {
@@ -107,9 +124,10 @@ public class AcessorioDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean editar(AcessorioTO acessorio) {
-		String sqlUpdate = "UPDATE acessorio SET "
-				+ "nome = ? "
+	public boolean editar(EmprestimoTO emprestimo) {
+		String sqlUpdate = "UPDATE emprestimo SET "
+				+ "agencia_id = ?, pagamento_id = ?, devolucao_id = ?, reserva_id = ?, cliente_pf_id = ?, cliente_pj_id = ?, "
+				+ "data = ?, hora = ?, status = ? "
 				+ "WHERE id = ?";
 
 		PreparedStatement stm = null;
@@ -119,8 +137,16 @@ public class AcessorioDAO {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlUpdate);
 			
-        	stm.setString(1, acessorio.getNome());	
-        	stm.setLong(2, acessorio.getId());
+			stm.setLong(1, emprestimo.getAgencia_id());
+			stm.setLong(2, emprestimo.getPagamento_id());
+			stm.setLong(3, emprestimo.getDevolucao_id());
+			stm.setLong(4, emprestimo.getReserva_id());
+			stm.setLong(5, emprestimo.getCliente_pf_id());
+			stm.setLong(6, emprestimo.getCliente_pj_id());
+			stm.setString(7, emprestimo.getData());
+        	stm.setString(8, emprestimo.getHora());
+        	stm.setString(9, emprestimo.getStatus());
+        	stm.setLong(10, emprestimo.getId());
 			
 			return stm.execute();
 
@@ -153,7 +179,7 @@ public class AcessorioDAO {
 	 * @return
 	 */
 	public boolean excluir(long id) {		
-		String sqlDelete = "DELETE FROM acessorio WHERE id = ?";
+		String sqlDelete = "DELETE FROM emprestimo WHERE id = ?";
 
 		PreparedStatement stm = null;
 		Connection conexao = null;

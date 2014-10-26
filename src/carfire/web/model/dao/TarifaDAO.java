@@ -6,35 +6,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import carfire.web.model.to.AcessorioTO;
+import carfire.web.model.to.TarifaTO;
 import carfire.web.util.ConectaMySQL;
 
-public class AcessorioDAO {
+public class TarifaDAO {
 	
 
-	public ArrayList<AcessorioTO> listarItens() {		
+	public ArrayList<TarifaTO> listarItens() {		
 		PreparedStatement stm = null;
         Connection conexao = null;
         ResultSet rs = null;
        
-        ArrayList<AcessorioTO> acessorios = new ArrayList<AcessorioTO>();
+        ArrayList<TarifaTO> tarifas = new ArrayList<TarifaTO>();
     
         try {            
-        	String sql = "SELECT * FROM acessorio";
+        	String sql = "SELECT * FROM tarifa";
         	conexao = ConectaMySQL.getConexao();
             
             stm = conexao.prepareStatement(sql);            
             rs = stm.executeQuery();
             
             while (rs.next()) {    
-            	AcessorioTO acessorio = new AcessorioTO();
-            	acessorio.setId(rs.getLong("id")); 
-            	acessorio.setNome(rs.getString("nome"));        		
+            	TarifaTO tarifa = new TarifaTO();
+            	tarifa.setId(rs.getLong("id")); 
+            	tarifa.setNome(rs.getString("nome"));        		
         		
-            	acessorios.add(acessorio);
+            	tarifas.add(tarifa);
             }     
             rs.close();            
-            return acessorios;            
+            return tarifas;            
             
         } catch (SQLException e) {            
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class AcessorioDAO {
             } catch (SQLException e1) {
                 System.out.print(e1.getStackTrace());
             }	            
-            return acessorios;
+            return tarifas;
         }
         finally{
             if (stm != null) {
@@ -64,8 +64,8 @@ public class AcessorioDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean inserir(AcessorioTO acessorio) {
-		String sqlInsert = "INSERT INTO grupo "
+	public boolean inserir(TarifaTO tarifa) {
+		String sqlInsert = "INSERT INTO tarifa "
 				+ "(nome) "
 				+ "VALUES (?)";
 		
@@ -76,7 +76,7 @@ public class AcessorioDAO {
 			conexao = ConectaMySQL.getConexao();			
 			stm = conexao.prepareStatement(sqlInsert);
 			
-        	stm.setString(1, acessorio.getNome());						
+        	stm.setString(1, tarifa.getNome());						
 			return stm.execute();
 
 		} catch (SQLException e) {
@@ -107,8 +107,8 @@ public class AcessorioDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean editar(AcessorioTO acessorio) {
-		String sqlUpdate = "UPDATE acessorio SET "
+	public boolean editar(TarifaTO tarifa) {
+		String sqlUpdate = "UPDATE tarifa SET "
 				+ "nome = ? "
 				+ "WHERE id = ?";
 
@@ -119,8 +119,8 @@ public class AcessorioDAO {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlUpdate);
 			
-        	stm.setString(1, acessorio.getNome());	
-        	stm.setLong(2, acessorio.getId());
+        	stm.setString(1, tarifa.getNome());	
+        	stm.setLong(2, tarifa.getId());
 			
 			return stm.execute();
 
@@ -153,7 +153,7 @@ public class AcessorioDAO {
 	 * @return
 	 */
 	public boolean excluir(long id) {		
-		String sqlDelete = "DELETE FROM acessorio WHERE id = ?";
+		String sqlDelete = "DELETE FROM tarifa WHERE id = ?";
 
 		PreparedStatement stm = null;
 		Connection conexao = null;

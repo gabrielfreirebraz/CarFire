@@ -25,7 +25,7 @@ public class LoginController {
 	public String checkLogin() {
 		if (this.validar()) {
 			if (login.consultar()) {
-				return "public/passo1.jsf";
+				return "public/emprestimoPasso1.jsf";
 			}
 		}
 		return null;

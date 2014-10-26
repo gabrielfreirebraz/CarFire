@@ -180,6 +180,7 @@ CREATE TABLE IF NOT EXISTS `carfire`.`emprestimo` (
   `cliente_pj_id` INT NULL,
   `data` VARCHAR(45) NOT NULL,
   `hora` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_emprestimo_pagamento1_idx` (`pagamento_id` ASC),
   INDEX `fk_emprestimo_cliente_pj1_idx` (`cliente_pj_id` ASC),
@@ -336,10 +337,6 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 insert into `carfire`.`usuario`(nome, email, senha) values
 ("Gabriel", "gabriel@provedor.com", "123");
 
-insert into `carfire`.`tarifa`(nome) values
-("Km livre"),
-("Km controlado");
-
 insert into `carfire`.`grupo`(sigla, nome) values
 ("A", "A – Econômico"),
 ("C", "C – Econômico com Ar"),
@@ -359,3 +356,35 @@ insert into `carfire`.`acessorio`(nome) values
 ("Navegador GPS"),
 ("Cadeira de Bebê"),
 ("Motorista");
+
+insert into `carfire`.`tarifa`(nome) values
+("DIÁRIA KM LIVRE"),
+("KM CONTROLADO (VALOR DIÁRIO)");
+
+insert into `carfire`.`itens_tarifa`(grupo_id, tarifa_id, descricao) values
+(1, 1, "R$ 32,90"),
+(2, 1, "R$ 37,90"),
+(3, 1, "R$ 35,90"),
+(4, 1, "R$ 99,90"),
+(5, 1, "R$ 59,90"),
+(6, 1, "R$ 49,99"),
+(7, 1, "R$ 49,99"),
+(8, 1, "R$ 49,99"),
+(9, 1, "R$ 67,99"),
+(10, 1, "R$ 49,99"),
+(11, 1, "R$ 69,99"),
+(12, 1, "R$ 79,99"),
+(13, 1, "R$ 119,90"),
+(1, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
+(2, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
+(3, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
+(4, 2, "R$ 69,99 + R$ 0,99 por km rodado."),
+(5, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
+(6, 2, "R$ 85,99 + R$ 2,39 por km rodado."),
+(7, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
+(8, 2, "R$ 39,99 + R$ 0,69 por km rodado."),
+(9, 2, "R$ 39,99 + R$ 0,85 por km rodado."),
+(10, 2, "R$ 39,99 + R$ 0,89 por km rodado."),
+(11, 2, "R$ 45,69 + R$ 1,49 por km rodado."),
+(12, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
+(13, 2, "R$ 90,49 + R$ 4,16 por km rodado.");

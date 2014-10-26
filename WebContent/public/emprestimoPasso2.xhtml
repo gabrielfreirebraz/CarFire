@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+	<ui:define name="content">
+
+		<ol class="breadcrumb">
+			<li><a href="#">Empréstimo</a></li>
+			<li class="active">Veículos</li>
+		</ol>
+
+		<BLOCKQUOTE>
+			<p>CARROS/TARIFAS</p>
+			<small>Consulta de modelos e a tarifa do aluguel por km livre ou km controlado</small>
+		</BLOCKQUOTE>
+		<hr />
+		
+		<div class="col-md-8" id="barra_de_etapas">
+			<h:graphicImage name="barra1.jpg" library="images" />			
+		</div>
+		
+		
+		<div class="col-sm-6 col-md-8">		
+			<h:form role="form">
+			
+			
+			
+				<!-- Parte 1 -->
+				<div class="box">
+					<h4>Escolha seu carro</h4>
+					
+					<div class="row">
+						<h:outputLabel for="grupos" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel>
+						<h:outputLabel for="veiculos" styleClass="col-sm-4 control-label">Selecione um veículo</h:outputLabel>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-4">						
+							<h:selectOneMenu styleClass="form-control input-sm" id="grupos" onchange="submit()"
+									valueChangeListener="#{grupoController.changeCombosRelacionadas}">									
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItems value="#{grupoController.itens()}" var="grupo" itemValue="#{grupo.id}" itemLabel="#{grupo.nome}" />							
+							</h:selectOneMenu>
+						</div>	
+						
+						<div class="col-sm-4">						
+							<h:selectOneMenu styleClass="form-control input-sm" id="veiculos">
+								<f:selectItem itemValue="" itemLabel="" />
+								<f:selectItems value="#{grupoController.getComboVeiculos()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
+							</h:selectOneMenu>
+						</div>	
+					</div>
+				</div>		
+				
+				
+				
+				<!-- Parte 2 -->
+				<div class="box">
+					<h4>Escolha sua tarifa</h4>
+					
+					<div class="row">
+						<ui:repeat var="tarifa" value="#{tarifaController.itens()}">
+							<h:outputText styleClass="col-sm-4 control-label" value="#{tarifa.nome}" />
+						</ui:repeat>
+					</div>
+					<div class="row">
+						<h:selectOneRadio>
+							<f:selectItems var="item_tarifa" value="#{grupoController.getComboItensTarifa()}" itemValue="#{item_tarifa.tarifa_id}" itemLabel="#{item_tarifa.descricao}" />
+						</h:selectOneRadio>	
+					</div>
+				</div>
+				
+			
+				
+				<!-- Parte 3 -->
+				<div class="box">
+					<h4>Contrate acessórios</h4>
+								
+					<div class="row">					
+						<h:selectManyCheckbox value="emprestimoController.acessoriosSelecionados_ids">						
+							<f:selectItems value="#{acessorioController.itens()}" var="acessorio" itemValue="#{acessorio.id}" itemLabel="#{acessorio.nome}" />
+						</h:selectManyCheckbox>						
+					</div>
+				</div>
+				
+				
+				
+				<div class="col-sm-2 col-sm-offset-10">
+					<h:commandButton action="#{emprestimoController.salvarPasso1}" styleClass="btn btn-default" value="Próximo >>" />
+				</div>				
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="js_externo">
+		<script type="text/javascript">
+
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>
