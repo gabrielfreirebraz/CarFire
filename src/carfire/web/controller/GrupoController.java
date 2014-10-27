@@ -1,6 +1,7 @@
 package carfire.web.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -20,8 +21,8 @@ public class GrupoController {
 
 	private GrupoTO grupoTO = null;
 	private GrupoDAO grupoDAO = null;	
-	private ArrayList<VeiculoTO> comboVeiculos = null;
-	private ArrayList<ItensTarifaTO> comboItensTarifa = null;
+	private List<VeiculoTO> comboVeiculos = null;
+	private List<ItensTarifaTO> comboItensTarifa = null;
 
 	
 	public GrupoController() {
@@ -40,6 +41,10 @@ public class GrupoController {
 	}
 	
 	
+	/**
+	 * Carregar combobox de veículo e tarifas do grupo selecionado
+	 * @param e
+	 */
 	public void changeCombosRelacionadas(ValueChangeEvent e) {	
 	
 		if (e.getNewValue() != e.getOldValue()) {
@@ -69,13 +74,13 @@ public class GrupoController {
 	public void setGrupoTO(GrupoTO grupo) {
 		grupoTO = grupo;
 	}
-	public ArrayList<VeiculoTO> getComboVeiculos() {
+	public List<VeiculoTO> getComboVeiculos() {
 		return comboVeiculos;
 	}
 	public void setComboVeiculos(ArrayList<VeiculoTO> comboVeiculos) {
 		this.comboVeiculos = comboVeiculos;
 	}
-	public ArrayList<ItensTarifaTO> getComboItensTarifa() {
+	public List<ItensTarifaTO> getComboItensTarifa() {
 		return comboItensTarifa;
 	}
 	public void setComboItensTarifa(ArrayList<ItensTarifaTO> comboItensTarifa) {

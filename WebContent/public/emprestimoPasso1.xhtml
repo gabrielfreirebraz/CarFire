@@ -21,7 +21,7 @@
 		<hr />
 		
 		<div class="col-md-8" id="barra_de_etapas">
-			<h:graphicImage name="barra1.jpg" library="images" />			
+			<img src="/CarFire/resources/images/barra1.jpg" alt="" />			
 		</div>
 		
 		
@@ -89,10 +89,11 @@
 				</div>
 				
 				
-				
-				<div class="col-sm-2 col-sm-offset-10">
-					<h:commandButton action="#{emprestimoController.salvarPasso1}" styleClass="btn btn-default" value="Próximo >>" />
-				</div>				
+				<ul class="pager col-sm-12">
+				  	<li class="next">
+				  		<h:commandLink action="#{emprestimoController.salvarPasso1}">Avançar</h:commandLink>
+			  		</li>
+				</ul>			
 			</h:form>
 		</div>
 	</ui:define>

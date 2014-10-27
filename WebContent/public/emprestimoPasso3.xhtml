@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+	<ui:define name="content">
+
+		<ol class="breadcrumb">
+			<li><a href="#">Empréstimo</a></li>
+			<li class="active">Veículos</li>
+		</ol>
+
+		<BLOCKQUOTE>
+			<p>DADOS PESSOAIS</p>
+			<small>Localizar ou cadastrar o cliente</small>
+		</BLOCKQUOTE>
+		<hr />
+		
+		<div class="col-md-8" id="barra_de_etapas">
+			<img src="/CarFire/resources/images/barra3.jpg" alt="" />			
+		</div>
+		
+		
+		<div class="col-sm-6 col-md-8">			
+			<h:form styleClass="form-horizontal" role="form">
+				<h:messages styleClass="message-error" />
+				<h:inputHidden value="#{clientePFController.clienteTO.id}" />			
+			
+				<h4>Dados pessoais</h4>
+
+				<div class="form-group">				
+					<h:outputLabel for="cpf" styleClass="col-sm-2 control-label">CPF</h:outputLabel>					
+					<div class="col-sm-4">
+						<div class="input-group">
+							<h:inputText styleClass="form-control input-sm" id="cpf" value="#{clientePFController.clienteTO.cpf}" />
+					      	<span class="input-group-btn">
+					        	<button class="btn btn-default btn-sm" type="button">Localizar</button>
+			      			</span>					      	
+			    		</div>
+		    		</div>
+					
+					<h:outputLabel for="nome" styleClass="col-sm-2 control-label">Nome</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="nome" value="#{clientePFController.clienteTO.nome}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="rg" styleClass="col-sm-2 control-label">RG</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="rg" value="#{clientePFController.clienteTO.rg}" />
+					</div>
+
+					<h:outputLabel for="habilitacao"
+						styleClass="col-sm-2 control-label">Habilitação</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="habilitacao" value="#{clientePFController.clienteTO.habilitacao}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="data_nascimento"
+						styleClass="col-sm-2 control-label">Data de nasc.</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm"
+							id="data_nascimento" value="#{clientePFController.clienteTO.data_nascimento}" />
+					</div>
+
+					<h:outputLabel for="genero" styleClass="col-sm-2 control-label">Gênero</h:outputLabel>
+					<div class="col-sm-4">
+						<h:selectOneMenu styleClass="form-control input-sm" id="genero"
+							value="#{clientePFController.clienteTO.genero}">
+							<f:selectItem itemValue="" itemLabel="" />
+							<f:selectItem itemValue="M" itemLabel="Masculino" />
+							<f:selectItem itemValue="F" itemLabel="Feminino" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel for="email" styleClass="col-sm-2 control-label">Email</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="email" value="#{clientePFController.clienteTO.email}" />
+					</div>
+
+					<h:outputLabel for="telefone" styleClass="col-sm-2 control-label">Telefone</h:outputLabel>
+					<div class="col-sm-4">
+						<h:inputText styleClass="form-control input-sm" id="telefone" value="#{clientePFController.clienteTO.telefone}" />
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				<ul class="pager col-sm-12">
+			  		<li class="previous">
+			  			<a href="/CarFire/public/emprestimoPasso2.jsf">Voltar</a>
+			  		</li>
+				  	<li class="next">
+				  		<h:commandLink action="#{emprestimoController.salvarPasso3}">Finalizar</h:commandLink>
+			  		</li>
+				</ul>		
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="js_externo">
+		<script type="text/javascript">
+
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>

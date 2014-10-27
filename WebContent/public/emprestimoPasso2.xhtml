@@ -15,13 +15,13 @@
 		</ol>
 
 		<BLOCKQUOTE>
-			<p>CARROS/TARIFAS</p>
-			<small>Consulta de modelos e a tarifa do aluguel por km livre ou km controlado</small>
+			<p>RETIRADA/DEVOLUÇÃO</p>
+			<small>Informações de data, hora e local; para retirada e devolução</small>
 		</BLOCKQUOTE>
 		<hr />
 		
 		<div class="col-md-8" id="barra_de_etapas">
-			<h:graphicImage name="barra1.jpg" library="images" />			
+			<img src="/CarFire/resources/images/barra2.jpg" alt="" />			
 		</div>
 		
 		
@@ -29,77 +29,155 @@
 			<h:form role="form">
 			
 			
-			
-				<!-- Parte 1 -->
-				<div class="box">
-					<h4>Escolha seu carro</h4>
+				<!-- RETIRADA -->
+				<div class="col-sm-6">
+					<h4>RETIRADA</h4>
 					
-					<div class="row">
-						<h:outputLabel for="grupos" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel>
-						<h:outputLabel for="veiculos" styleClass="col-sm-4 control-label">Selecione um veículo</h:outputLabel>
+					<div class="form-group">
+						<div class="row">
+							<h:outputLabel for="data_retirada" styleClass="col-sm-6 control-label">Data</h:outputLabel>
+							<h:outputLabel for="hora_retirada" styleClass="col-sm-6 control-label">Hora</h:outputLabel>						
+						</div>						
+						<div class="row">
+							<div class="col-sm-6">
+								<h:inputText styleClass="form-control input-sm" id="data_retirada" value="#{emprestimoController.emprestimoTO.data}" />
+							</div>		
+							<div class="col-sm-6">
+								<h:inputText styleClass="form-control input-sm" id="hora_retirada" value="#{emprestimoController.emprestimoTO.hora}" />
+							</div>
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<div class="row">
+							<h:outputLabel for="cidade_retirada" styleClass="col-sm-2 control-label">Cidade</h:outputLabel>
+						</div>						
+						<div class="row">
+							<div class="col-sm-12">
+								<h:selectOneMenu styleClass="form-control input-sm" id="cidade_retirada" onchange="submit()"
+										valueChangeListener="#{cidadeController.changeComboAgenciasRetirada}">
+									<f:selectItem itemValue="" itemLabel="" />
+									<f:selectItems value="#{cidadeController.itens()}" var="cidadeR" itemValue="#{cidadeR.id}" itemLabel="#{cidadeR.nome}" />							
+								</h:selectOneMenu>	
+							</div>		
+						</div>				
+					</div>					
+					
+					<div class="form-group">
+						<div class="row">
+							<h:outputLabel for="agencia_retirada" styleClass="col-sm-2 control-label">Agência</h:outputLabel>
+						</div>						
+						<div class="row">
+							<div class="col-sm-12">
+								<h:selectOneMenu styleClass="form-control input-sm" id="agencia_retirada">
+									<f:selectItem itemValue="" itemLabel="" />
+									<f:selectItems value="#{cidadeController.comboAgenciasRetirada}" var="agenciaR" itemValue="#{agenciaR.id}" itemLabel="#{agenciaR.nome}" />							
+								</h:selectOneMenu>		
+							</div>			
+						</div>			
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				<!-- DEVOLUÇÃO -->
+				<div class="col-sm-6">
+					<h4>DEVOLUÇÃO</h4>
+					
+					<div class="form-group">
+						<div class="row">
+							<h:outputLabel for="data_devolucao" styleClass="col-sm-6 control-label">Data</h:outputLabel>
+							<h:outputLabel for="hora_devolucao" styleClass="col-sm-6 control-label">Hora</h:outputLabel>						
+						</div>						
+						<div class="row">
+							<div class="col-sm-6">
+								<h:inputText styleClass="form-control input-sm" id="data_devolucao" value="#{devolucaoController.devolucaoTO.data}" />
+							</div>		
+							<div class="col-sm-6">
+								<h:inputText styleClass="form-control input-sm" id="hora_devolucao" value="#{devolucaoController.devolucaoTO.hora}" />
+							</div>
+						</div>
 					</div>
 					
-					<div class="row">
-						<div class="col-sm-4">						
-							<h:selectOneMenu styleClass="form-control input-sm" id="grupos" onchange="submit()"
-									valueChangeListener="#{grupoController.changeCombosRelacionadas}">									
-								<f:selectItem itemValue="" itemLabel="" />
-								<f:selectItems value="#{grupoController.itens()}" var="grupo" itemValue="#{grupo.id}" itemLabel="#{grupo.nome}" />							
-							</h:selectOneMenu>
+					
+					
+					
+					
+					
+					
+					
+					
+					<div id="localDevolucao" style="display: none">	
+						<div class="form-group">
+							<div class="row">
+								<h:outputLabel for="cidade_devolucao" styleClass="col-sm-2 control-label">Cidade</h:outputLabel>
+							</div>						
+							<div class="row">
+								<div class="col-sm-12">
+									<h:selectOneMenu styleClass="form-control input-sm" id="cidade_devolucao" onchange="submit()"
+											valueChangeListener="#{cidadeController.changeComboAgenciasDevolucao}">
+										<f:selectItem itemValue="" itemLabel="" />
+										<f:selectItems value="#{cidadeController.itens()}" var="cidadeD" itemValue="#{cidadeD.id}" itemLabel="#{cidadeD.nome}" />							
+									</h:selectOneMenu>	
+								</div>		
+							</div>				
+						</div>		
+			
+	
+						<div class="form-group">
+							<div class="row">
+								<h:outputLabel for="agencia_devolucao" styleClass="col-sm-2 control-label">Agência</h:outputLabel>
+							</div>						
+							<div class="row">
+								<div class="col-sm-12">
+									<h:selectOneMenu styleClass="form-control input-sm" id="agencia_devolucao">
+										<f:selectItem itemValue="" itemLabel="" />
+										<f:selectItems value="#{cidadeController.comboAgenciasDevolucao}" var="agenciaD" itemValue="#{agenciaD.id}" itemLabel="#{agenciaD.nome}" />							
+									</h:selectOneMenu>		
+								</div>			
+							</div>			
 						</div>	
+					</div>
+					
+					<div id="selecionaCheckbox">
+						<div class="form-group">					
+							<input type="checkbox" /><span>Marque se o local de devolução for diferente do local de retirada.</span>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				<ul class="pager col-sm-12">
+			  		<li class="previous">
+			  			<a href="/CarFire/public/emprestimoPasso1.jsf">Voltar</a>
+			  		</li>
+				  	<li class="next">
+				  		<h:commandLink action="#{emprestimoController.salvarPasso2}">Avançar</h:commandLink>
+			  		</li>
+				</ul>
 						
-						<div class="col-sm-4">						
-							<h:selectOneMenu styleClass="form-control input-sm" id="veiculos">
-								<f:selectItem itemValue="" itemLabel="" />
-								<f:selectItems value="#{grupoController.getComboVeiculos()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
-							</h:selectOneMenu>
-						</div>	
-					</div>
-				</div>		
-				
-				
-				
-				<!-- Parte 2 -->
-				<div class="box">
-					<h4>Escolha sua tarifa</h4>
-					
-					<div class="row">
-						<ui:repeat var="tarifa" value="#{tarifaController.itens()}">
-							<h:outputText styleClass="col-sm-4 control-label" value="#{tarifa.nome}" />
-						</ui:repeat>
-					</div>
-					<div class="row">
-						<h:selectOneRadio>
-							<f:selectItems var="item_tarifa" value="#{grupoController.getComboItensTarifa()}" itemValue="#{item_tarifa.tarifa_id}" itemLabel="#{item_tarifa.descricao}" />
-						</h:selectOneRadio>	
-					</div>
-				</div>
-				
-			
-				
-				<!-- Parte 3 -->
-				<div class="box">
-					<h4>Contrate acessórios</h4>
-								
-					<div class="row">					
-						<h:selectManyCheckbox value="emprestimoController.acessoriosSelecionados_ids">						
-							<f:selectItems value="#{acessorioController.itens()}" var="acessorio" itemValue="#{acessorio.id}" itemLabel="#{acessorio.nome}" />
-						</h:selectManyCheckbox>						
-					</div>
-				</div>
-				
-				
-				
-				<div class="col-sm-2 col-sm-offset-10">
-					<h:commandButton action="#{emprestimoController.salvarPasso1}" styleClass="btn btn-default" value="Próximo >>" />
-				</div>				
 			</h:form>
 		</div>
 	</ui:define>
 
 	<ui:define name="js_externo">
 		<script type="text/javascript">
-
+		
+			$("#selecionaCheckbox input").on("click", function(){			
+				if ($(this).is(":checked")) {					
+					$("#localDevolucao").show("slow");
+				}
+				else {
+					$("#localDevolucao").hide("slow");
+				}
+			});	
 		</script>
 	</ui:define>
 

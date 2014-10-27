@@ -388,3 +388,18 @@ insert into `carfire`.`itens_tarifa`(grupo_id, tarifa_id, descricao) values
 (11, 2, "R$ 45,69 + R$ 1,49 por km rodado."),
 (12, 2, "R$ 39,99 + R$ 0,49 por km rodado."),
 (13, 2, "R$ 90,49 + R$ 4,16 por km rodado.");
+
+insert into `carfire`.`cidade`(nome) values
+("Taboão da Serra - SP"),
+("Pinheiros - SP"),
+("Lapa - SP"),
+("Rio de Janeiro - RJ"),
+("Copacabana - RJ"),
+("Belo Horizonte - MG");
+
+insert into `carfire`.`agencia`(cidade_id, nome) values
+(2, "Agência do largo"),
+(2, "Agência do faria lima"),
+(5, "Agência da praia"),
+(4, "Agência da pesada"),
+(6, "Agência mineira");

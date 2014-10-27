@@ -52,11 +52,14 @@ public class EmprestimoController {
 //			i++;
 //		}		
 		
-		
-		
+		return "emprestimoPasso2.jsf";
+	}
+	public String salvarPasso2() {		
+		return "emprestimoPasso3.jsf";
+	}
+	public String salvarPasso3() {		
 		return null;
 	}
-	
 	
 	
 	/**************************************/

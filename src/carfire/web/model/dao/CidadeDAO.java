@@ -6,43 +6,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import carfire.web.model.to.EmprestimoTO;
+import carfire.web.model.to.CidadeTO;
 import carfire.web.util.ConectaMySQL;
 
-public class EmprestimoDAO {
+public class CidadeDAO {
 	
 
-	public ArrayList<EmprestimoTO> listarItens() {		
+	public ArrayList<CidadeTO> listarItens() {		
 		PreparedStatement stm = null;
         Connection conexao = null;
         ResultSet rs = null;
        
-        ArrayList<EmprestimoTO> emprestimos = new ArrayList<EmprestimoTO>();
+        ArrayList<CidadeTO> cidades = new ArrayList<CidadeTO>();
     
         try {            
-        	String sql = "SELECT * FROM emprestimo";
+        	String sql = "SELECT * FROM cidade";
         	conexao = ConectaMySQL.getConexao();
             
             stm = conexao.prepareStatement(sql);            
             rs = stm.executeQuery();
             
             while (rs.next()) {    
-            	EmprestimoTO emprestimo = new EmprestimoTO();
-            	emprestimo.setId(rs.getLong("id")); 
-            	emprestimo.setAgencia_id(rs.getLong("agencia_id")); 
-            	emprestimo.setPagamento_id(rs.getLong("pagamento_id")); 
-            	emprestimo.setDevolucao_id(rs.getLong("devolucao_id")); 
-            	emprestimo.setReserva_id(rs.getLong("reserva_id")); 
-            	emprestimo.setCliente_pf_id(rs.getLong("cliente_pf_id"));
-            	emprestimo.setCliente_pj_id(rs.getLong("cliente_pj_id"));
-            	emprestimo.setData(rs.getString("data"));
-            	emprestimo.setHora(rs.getString("hora"));
-            	emprestimo.setStatus(rs.getString("status"));
+            	CidadeTO cidade = new CidadeTO();
+            	cidade.setId(rs.getLong("id")); 
+            	cidade.setNome(rs.getString("nome"));
         		
-            	emprestimos.add(emprestimo);
+            	cidades.add(cidade);
             }     
             rs.close();            
-            return emprestimos;            
+            return cidades;            
             
         } catch (SQLException e) {            
             e.printStackTrace();
@@ -52,7 +44,7 @@ public class EmprestimoDAO {
             } catch (SQLException e1) {
                 System.out.print(e1.getStackTrace());
             }	            
-            return emprestimos;
+            return cidades;
         }
         finally{
             if (stm != null) {
@@ -72,10 +64,10 @@ public class EmprestimoDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean inserir(EmprestimoTO emprestimo) {
-		String sqlInsert = "INSERT INTO emprestimo "
-				+ "(agencia_id, pagamento_id, devolucao_id, reserva_id, cliente_pf_id, cliente_pj_id, data, hora, status) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public boolean inserir(CidadeTO cidade) {
+		String sqlInsert = "INSERT INTO cidade "
+				+ "(nome) "
+				+ "VALUES (?)";
 		
 		PreparedStatement stm = null;
 		Connection conexao = null;		
@@ -84,15 +76,7 @@ public class EmprestimoDAO {
 			conexao = ConectaMySQL.getConexao();			
 			stm = conexao.prepareStatement(sqlInsert);
 			
-			stm.setLong(1, emprestimo.getAgencia_id());
-			stm.setLong(2, emprestimo.getPagamento_id());
-			stm.setLong(3, emprestimo.getDevolucao_id());
-			stm.setLong(4, emprestimo.getReserva_id());
-			stm.setLong(5, emprestimo.getCliente_pf_id());
-			stm.setLong(6, emprestimo.getCliente_pj_id());
-			stm.setString(7, emprestimo.getData());
-			stm.setString(8, emprestimo.getHora());
-        	stm.setString(9, emprestimo.getStatus());
+			stm.setString(1, cidade.getNome());
         	
 			return stm.execute();
 
@@ -124,10 +108,9 @@ public class EmprestimoDAO {
 	 * @param veiculo
 	 * @return
 	 */
-	public boolean editar(EmprestimoTO emprestimo) {
-		String sqlUpdate = "UPDATE emprestimo SET "
-				+ "agencia_id = ?, pagamento_id = ?, devolucao_id = ?, reserva_id = ?, cliente_pf_id = ?, cliente_pj_id = ?, "
-				+ "data = ?, hora = ?, status = ? "
+	public boolean editar(CidadeTO cidade) {
+		String sqlUpdate = "UPDATE cidade SET "
+				+ "nome = ? "
 				+ "WHERE id = ?";
 
 		PreparedStatement stm = null;
@@ -137,16 +120,8 @@ public class EmprestimoDAO {
 			conexao = ConectaMySQL.getConexao();
 			stm = conexao.prepareStatement(sqlUpdate);
 			
-			stm.setLong(1, emprestimo.getAgencia_id());
-			stm.setLong(2, emprestimo.getPagamento_id());
-			stm.setLong(3, emprestimo.getDevolucao_id());
-			stm.setLong(4, emprestimo.getReserva_id());
-			stm.setLong(5, emprestimo.getCliente_pf_id());
-			stm.setLong(6, emprestimo.getCliente_pj_id());
-			stm.setString(7, emprestimo.getData());
-        	stm.setString(8, emprestimo.getHora());
-        	stm.setString(9, emprestimo.getStatus());
-        	stm.setLong(10, emprestimo.getId());
+			stm.setString(1, cidade.getNome());
+        	stm.setLong(2, cidade.getId());
 			
 			return stm.execute();
 
@@ -179,7 +154,7 @@ public class EmprestimoDAO {
 	 * @return
 	 */
 	public boolean excluir(long id) {		
-		String sqlDelete = "DELETE FROM emprestimo WHERE id = ?";
+		String sqlDelete = "DELETE FROM cidade WHERE id = ?";
 
 		PreparedStatement stm = null;
 		Connection conexao = null;
