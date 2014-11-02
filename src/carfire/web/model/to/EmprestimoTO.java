@@ -15,6 +15,8 @@ public class EmprestimoTO {
 	private String hora = null;
 	private String status = null;	
 
+	private String agencia = null;
+	private String cliente = null;
 	
 	
 	public long getId() {
@@ -77,5 +79,22 @@ public class EmprestimoTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	/*****/
+	public String getAgencia() {
+		return agencia;
+	}
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
+	}
+	public String getCliente() {
+		return cliente;
+	}
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
+	
+	
+	
 	
 }

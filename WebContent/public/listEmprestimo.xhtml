@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition template="/template/master.xhtml">
+
+	<ui:define name="content">
+
+		<ol class="breadcrumb">
+			<li><a href="#">Empréstimo</a></li>
+			<li class="active">Empréstimos</li>
+		</ol>
+
+		<BLOCKQUOTE>
+			<p>Empréstimos</p>
+			<small>Empréstimos realizados</small>
+		</BLOCKQUOTE>
+		<hr />
+
+
+		<div class="col-sm-12 col-md-8">			
+			<div class="btn-group">
+				<a href="/CarFire/public/formCar.jsf"
+					class="btn btn-default btn-sm">Cadastrar</a>
+			</div>
+		</div>
+
+		<div class="col-sm-12 col-md-8">
+
+			<h:form role="form">
+				<table class="display">
+					<thead>
+						<tr>
+							<th>Agência</th>
+							<th>Cliente</th>
+							<th>Data</th>
+							<th>Hora</th>
+							<th>Status</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+	
+					<tbody>
+						
+						<ui:repeat var="emprestimo" value="#{emprestimoController.itens()}">
+							<tr>
+								<td><h:outputText value="#{emprestimo.agencia}" /></td>
+								<td><h:outputText value="#{emprestimo.cliente}" /></td>
+								<td><h:outputText value="#{emprestimo.data}" /></td>
+								<td><h:outputText value="#{emprestimo.hora}" /></td>
+								<td><h:outputText value="#{emprestimo.status}" /></td>
+
+								<td>
+									<!-- Excluir -->
+									<h:commandLink action="#{emprestimoController.excluir()}"
+										styleClass="btn btn-danger btn-xs" title="Cancelar" value="Cancelar">
+										
+										<f:setPropertyActionListener target="#{emprestimoController.emprestimoTO.id}" value="#{emprestimo.id}" />
+									</h:commandLink>
+								
+								
+									<!-- Editar -->
+									<h:commandLink action="#{emprestimoController.editar()}"
+										styleClass="btn btn-success btn-xs" title="Devolução" value="Devolver">
+										
+										<f:setPropertyActionListener target="#{emprestimoController.emprestimoTO}" value="#{emprestimo}" />
+									</h:commandLink> 
+								</td>
+							</tr>
+						</ui:repeat>
+						
+					</tbody>
+				</table>
+			</h:form>			 
+		</div>
+	</ui:define>
+
+	<ui:define name="js_externo">
+		<script type="text/javascript">
+			$("table").dataTable({
+				"language" : {
+					// 					"sLengthMenu": "Registros por página: _MENU_",
+					"sLengthMenu" : "",
+					"sSearch" : "Pesquisar:",
+					"sInfo" : "Exibindo _PAGE_ de _PAGES_ páginas",
+					"sInfoEmpty" : "Exibindo 0 de 0 páginas",
+					"infoFiltered" : " - filtrado de _MAX_ registros",
+					"sPrevious" : "Anterior",
+					"sNext" : "Próximo",
+					"zeroRecords" : "Nenhum registro encontrado"
+				}
+			});
+		</script>
+	</ui:define>
+
+</ui:composition>
+</html>

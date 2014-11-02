@@ -58,6 +58,24 @@ public class EmprestimoController {
 		return "emprestimoPasso3.jsf";
 	}
 	public String salvarPasso3() {		
+		return "listEmprestimo.jsf";
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String cancelar() {	
+		emprestimoDAO.cancelar(emprestimoTO.getId());
+		return null;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String fazerDevolucao() {
 		return null;
 	}
 	

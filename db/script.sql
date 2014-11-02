@@ -337,6 +337,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 insert into `carfire`.`usuario`(nome, email, senha) values
 ("Gabriel", "gabriel@provedor.com", "123");
 
+insert into cliente_pf (email, nome, genero) values
+("gabriel@provedor.com", "Gabriel Freire Braz", "M"),
+("maria@provedor.com", "Maria da Silva", "F");
+
 insert into `carfire`.`grupo`(sigla, nome) values
 ("A", "A – Econômico"),
 ("C", "C – Econômico com Ar"),
@@ -403,3 +407,9 @@ insert into `carfire`.`agencia`(cidade_id, nome) values
 (5, "Agência da praia"),
 (4, "Agência da pesada"),
 (6, "Agência mineira");
+
+INSERT INTO emprestimo (agencia_id, pagamento_id, devolucao_id, reserva_id, cliente_pf_id, cliente_pj_id, data, hora, status) VALUES 
+(1, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "emprestado"),
+(2, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "cancelado"),
+(3, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "finalizado"),
+(2, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "emprestado");

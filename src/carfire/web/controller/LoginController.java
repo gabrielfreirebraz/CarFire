@@ -12,7 +12,7 @@ import carfire.web.model.Login;
 
 public class LoginController {
 
-	public Login login;
+	public Login login = null;
 
 	public LoginController() {
 		this.login = new Login();
