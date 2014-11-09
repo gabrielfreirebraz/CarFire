@@ -54,16 +54,21 @@
 								<td><h:outputText value="#{emprestimo.status}" /></td>
 
 								<td>
+<!-- 									<a href="#" class="btn btn-danger btn-xs cancelar"> 
+ 											Cancelar	 
+											<input type="hidden" value="#{emprestimo.id}" />								 
+										</a> -->
 									<!-- Excluir -->
-									<h:commandLink action="#{emprestimoController.excluir()}"
-										styleClass="btn btn-danger btn-xs" title="Cancelar" value="Cancelar">
+									<h:commandLink action="#{emprestimoController.cancelar()}"									
+										styleClass="btn btn-danger btn-xs cancelar" title="Cancelar" value="Cancelar">
 										
-										<f:setPropertyActionListener target="#{emprestimoController.emprestimoTO.id}" value="#{emprestimo.id}" />
+										<f:setPropertyActionListener class="id" target="#{emprestimoController.emprestimoTO.id}" value="#{emprestimo.id}" />
 									</h:commandLink>
+									
 								
 								
 									<!-- Editar -->
-									<h:commandLink action="#{emprestimoController.editar()}"
+									<h:commandLink action="#{emprestimoController.fazerDevolucao()}"
 										styleClass="btn btn-success btn-xs" title="Devolução" value="Devolver">
 										
 										<f:setPropertyActionListener target="#{emprestimoController.emprestimoTO}" value="#{emprestimo}" />
@@ -74,12 +79,53 @@
 						
 					</tbody>
 				</table>
-			</h:form>			 
+			</h:form>	
+			
+			
+			
+			<!-- Small modal -->
+<!-- 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button> -->
+			
+<!-- 			<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true"> -->
+<!-- 		  		<div class="modal-dialog modal-sm"> -->
+<!-- 		    		<div class="modal-content"> -->
+			      		
+
+<!--         				<div class="modal-header"> -->
+<!-- 				        	<button type="button" class="close" data-dismiss="modal"> -->
+<!-- 					        	<span aria-hidden="true">&times;</span>  -->
+<!-- 				        		<span class="sr-only">Close</span> -->
+<!-- 					        </button> -->
+					        
+<!-- 					        <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
+<!-- 				      	</div>					       -->
+<!-- 				      	<div class="modal-body"> -->
+<!-- 					        ... -->
+<!-- 				      	</div> -->
+<!-- 				      	<div class="modal-footer"> -->
+<!-- 			        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+<!-- 				        	<button type="button" class="btn btn-primary" id="save">Save changes</button> -->
+<!-- 				      	</div> -->
+
+<!-- 			    	</div> -->
+<!-- 		  		</div> -->
+<!-- 			</div> -->
+			
+			
+					 
 		</div>
 	</ui:define>
 
 	<ui:define name="js_externo">
 		<script type="text/javascript">
+		
+
+			
+			
+
+			
+		
+		
 			$("table").dataTable({
 				"language" : {
 					// 					"sLengthMenu": "Registros por página: _MENU_",

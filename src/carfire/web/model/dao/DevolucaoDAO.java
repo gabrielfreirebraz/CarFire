@@ -59,7 +59,58 @@ public class DevolucaoDAO {
             }
         }		
 	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public long lastInsertId() {		
+		PreparedStatement stm = null;
+        Connection conexao = null;
+        ResultSet rs = null;
+       
+    
+        try {            
+        	String sql = "SELECT max(id) AS ultimoId FROM devolucao";
+        	conexao = ConectaMySQL.getConexao();
+            
+            stm = conexao.prepareStatement(sql);            
+            rs = stm.executeQuery();
+            
+            if (rs.next()) {
+            	
+            	return rs.getLong("ultimoId");
+            }     
+            rs.close();            
+            return 0;            
+            
+        } catch (SQLException e) {            
+            e.printStackTrace();
+            try {
+                conexao.rollback();
+                
+            } catch (SQLException e1) {
+                System.out.print(e1.getStackTrace());
+            }	            
+            return 0;
+        }
+        finally{
+            if (stm != null) {
+                try {
+                    stm.close();
+                }
+                catch (SQLException e1) {
+                    System.out.print(e1.getStackTrace());
+                }
+            }
+        }		
+	}
 
+	
+	
+	
+	
 	
 	/**
 	 * 
