@@ -57,9 +57,14 @@ public class EmprestimoController {
 //			i++;
 //		}		
 		
+		
+		
 		return "emprestimoPasso2.jsf";
+//		return "";
 	}
 	public String salvarPasso2() {		
+		System.out.println(this.veiculoSelecionado_id+"foi?");
+		System.out.println(this.acessoriosSelecionados_ids);
 		return "emprestimoPasso3.jsf";
 	}
 	public String salvarPasso3() {		
