@@ -362,7 +362,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 -- -----------------------------------------------------
--- Dados para produção
+-- Dados para produÃ§Ã£o
 -- -----------------------------------------------------
 insert into `carfire`.`usuario`(nome, email, senha) values
 ("Gabriel", "gabriel@provedor.com", "123");
@@ -372,28 +372,28 @@ insert into cliente_pf (email, nome, genero) values
 ("maria@provedor.com", "Maria da Silva", "F");
 
 insert into `carfire`.`grupo`(sigla, nome) values
-("A", "A – Econômico"),
-("C", "C – Econômico com Ar"),
-("F", "F – Intermediário"),
-("G", "G – Intermediário Wagon Especial"),
-("H", "H – Executivo"),
-("I", "I – Utilitário"),
-("K", "K – Executivo Luxo"),
-("M", "M – Intermediário Wagon"),
-("N", "N – Pick-up"),
-("P", "P – 4 x 4 Especial"),
-("R", "R – Minivan"),
-("U", "U – Furgão"),
-("Y", "Y – Blindado");	
+("A", "A Â– EconÃ´mico"),
+("C", "C Â– EconÃ´mico com Ar"),
+("F", "F Â– IntermediÃ¡rio"),
+("G", "G Â– IntermediÃ¡rio Wagon Especial"),
+("H", "H Â– Executivo"),
+("I", "I Â– UtilitÃ¡rio"),
+("K", "K Â– Executivo Luxo"),
+("M", "M Â– IntermediÃ¡rio Wagon"),
+("N", "N Â– Pick-up"),
+("P", "P Â– 4 x 4 Especial"),
+("R", "R Â– Minivan"),
+("U", "U Â– FurgÃ£o"),
+("Y", "Y Â– Blindado");	
 
 insert into `carfire`.`acessorio`(nome) values
 ("Navegador GPS"),
-("Cadeira de Bebê"),
+("Cadeira de BebÃª"),
 ("Motorista");
 
 insert into `carfire`.`tarifa`(nome) values
-("DIÁRIA KM LIVRE"),
-("KM CONTROLADO (VALOR DIÁRIO)");
+("DIÃRIA KM LIVRE"),
+("KM CONTROLADO (VALOR DIÃRIO)");
 
 insert into `carfire`.`itens_tarifa`(grupo_id, tarifa_id, descricao) values
 (1, 1, "R$ 32,90"),
@@ -424,7 +424,7 @@ insert into `carfire`.`itens_tarifa`(grupo_id, tarifa_id, descricao) values
 (13, 2, "R$ 90,49 + R$ 4,16 por km rodado.");
 
 insert into `carfire`.`cidade`(nome) values
-("Taboão da Serra - SP"),
+("TaboÃ£o da Serra - SP"),
 ("Pinheiros - SP"),
 ("Lapa - SP"),
 ("Rio de Janeiro - RJ"),
@@ -432,19 +432,16 @@ insert into `carfire`.`cidade`(nome) values
 ("Belo Horizonte - MG");
 
 insert into `carfire`.`agencia`(cidade_id, nome) values
-(2, "Agência do largo"),
-(2, "Agência do faria lima"),
-(5, "Agência da praia"),
-(4, "Agência da pesada"),
-(6, "Agência mineira");
+(2, "AgÃªncia do largo"),
+(2, "AgÃªncia do faria lima"),
+(5, "AgÃªncia da praia"),
+(4, "AgÃªncia da pesada"),
+(6, "AgÃªncia mineira");
 
 INSERT INTO emprestimo (agencia_id, pagamento_cc_id, pagamento_cq_id, devolucao_id, reserva_id, cliente_pf_id, cliente_pj_id, data, hora, status) VALUES 
 (1, NULL, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "emprestado"),
-
 (2, NULL, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "cancelado"),
-
 (3, NULL, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "finalizado"),
-
 (2, NULL, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "emprestado");
 
 INSERT INTO veiculo (grupo_id, chassi, placa, km, cidade, estado, marca, modelo, fabricante, tarifa, taxa, combustivel, portas, ano_modelo, cor, renavam, descricao, disponivel, estoque, observacoes) VALUES
