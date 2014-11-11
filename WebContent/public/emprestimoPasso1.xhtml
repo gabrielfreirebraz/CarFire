@@ -35,25 +35,23 @@
 					<h4>Escolha seu carro</h4>
 					
 					<div class="row">
-						<h:outputLabel for="grupos" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel>
+<!-- 						<h:outputLabel for="grupos" styleClass="col-sm-4 control-label">Selecione um grupo</h:outputLabel> -->
 						<h:outputLabel for="veiculos" styleClass="col-sm-4 control-label">Selecione um veículo</h:outputLabel>
 					</div>
 					
 					<div class="row">
-						<div class="col-sm-4">						
-							<h:selectOneMenu styleClass="form-control input-sm" id="grupos" onchange="submit()"
-									valueChangeListener="#{grupoController.changeCombosRelacionadas}">		
-									
-										
-								<f:selectItem itemValue="" itemLabel="" />
-								<f:selectItems value="#{grupoController.itens()}" var="grupo" itemValue="#{grupo.id}" itemLabel="#{grupo.nome}" />							
-							</h:selectOneMenu>
-						</div>	
+<!-- 						<div class="col-sm-4">						 -->
+
+
+
+
+
+<!-- 						</div>	 -->
 						
 						<div class="col-sm-4">						
 							<h:selectOneMenu styleClass="form-control input-sm" id="veiculos" value="#{emprestimoController.veiculoSelecionado_id}">
 								<f:selectItem itemValue="" itemLabel="" />
-								<f:selectItems value="#{grupoController.getComboVeiculos()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
+								<f:selectItems value="#{veiculoController.itens()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
 							</h:selectOneMenu>
 						</div>	
 					</div>
@@ -62,33 +60,33 @@
 				
 				
 				<!-- Parte 2 -->
-				<div class="box">
-					<h4>Escolha sua tarifa</h4>
+<!-- 				<div class="box"> -->
+<!-- 					<h4>Escolha sua tarifa</h4> -->
 					
-					<div class="row">
-						<ui:repeat var="tarifa" value="#{tarifaController.itens()}">
-							<h:outputText styleClass="col-sm-4 control-label" value="#{tarifa.nome}" />
-						</ui:repeat>
-					</div>
-					<div class="row">
-						<h:selectOneRadio>
-							<f:selectItems var="item_tarifa" value="#{grupoController.getComboItensTarifa()}" itemValue="#{item_tarifa.tarifa_id}" itemLabel="#{item_tarifa.descricao}" />
-						</h:selectOneRadio>	
-					</div>
-				</div>
+<!-- 					<div class="row"> -->
+<!-- 						<ui:repeat var="tarifa" value="#{tarifaController.itens()}"> -->
+<!-- 							<h:outputText styleClass="col-sm-4 control-label" value="#{tarifa.nome}" /> -->
+<!-- 						</ui:repeat> -->
+<!-- 					</div> -->
+<!-- 					<div class="row"> -->
+<!-- 						<h:selectOneRadio> -->
+<!-- 							<f:selectItems var="item_tarifa" value="#{grupoController.getComboItensTarifa()}" itemValue="#{item_tarifa.tarifa_id}" itemLabel="#{item_tarifa.descricao}" /> -->
+<!-- 						</h:selectOneRadio>	 -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				
 			
 				
 				<!-- Parte 3 -->
-				<div class="box">
-					<h4>Contrate acessórios</h4>
+<!-- 				<div class="box"> -->
+<!-- 					<h4>Contrate acessórios</h4> -->
 								
-					<div class="row">					
-						<h:selectManyCheckbox value="#{emprestimoController.acessoriosSelecionados_ids}">						
-							<f:selectItems value="#{acessorioController.itens()}" var="acessorio" itemValue="#{acessorio.id}" itemLabel="#{acessorio.nome}" />
-						</h:selectManyCheckbox>						
-					</div>
-				</div>
+<!-- 					<div class="row">					 -->
+<!-- 						<h:selectManyCheckbox value="#{emprestimoController.acessoriosSelecionados_ids}">						 -->
+<!-- 							<f:selectItems value="#{acessorioController.itens()}" var="acessorio" itemValue="#{acessorio.id}" itemLabel="#{acessorio.nome}" /> -->
+<!-- 						</h:selectManyCheckbox>						 -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				
 				
 				<ul class="pager col-sm-12">

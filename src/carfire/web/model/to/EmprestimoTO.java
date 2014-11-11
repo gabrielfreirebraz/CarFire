@@ -6,7 +6,8 @@ public class EmprestimoTO {
 
 	private long id = 0;
 	private long agencia_id = 0;
-	private long pagamento_id = 0;
+	private long pagamento_cc_id = 0;
+	private long pagamento_cq_id = 0;
 	private long devolucao_id = 0;
 	private long reserva_id = 0;
 	private long cliente_pf_id = 0;
@@ -31,11 +32,17 @@ public class EmprestimoTO {
 	public void setAgencia_id(long agencia_id) {
 		this.agencia_id = agencia_id;
 	}
-	public long getPagamento_id() {
-		return pagamento_id;
+	public long getPagamento_cc_id() {
+		return pagamento_cc_id;
 	}
-	public void setPagamento_id(long pagamento_id) {
-		this.pagamento_id = pagamento_id;
+	public void setPagamento_cc_id(long pagamento_cc_id) {
+		this.pagamento_cc_id = pagamento_cc_id;
+	}
+	public long getPagamento_cq_id() {
+		return pagamento_cq_id;
+	}
+	public void setPagamento_cq_id(long pagamento_cq_id) {
+		this.pagamento_cq_id = pagamento_cq_id;
 	}
 	public long getDevolucao_id() {
 		return devolucao_id;

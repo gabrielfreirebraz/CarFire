@@ -56,10 +56,6 @@ public class GrupoController {
 		}
 	}
 	
-//	public void setActiveFromAllList(){
-//		VeiculoController veiculoController = new VeiculoController();	
-//		comboVeiculos = veiculoController.getListaByGrupo(e);
-//	}
 	
 
 	

@@ -105,10 +105,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `carfire`.`pagamento`
+-- Table `carfire`.`pagamento_cc`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `carfire`.`pagamento` (
+CREATE TABLE IF NOT EXISTS `carfire`.`pagamento_cc` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `bandeira` VARCHAR(45) NULL,
+  `nome_titular` VARCHAR(45) NULL,
+  `cpf` VARCHAR(45) NULL,
+  `numero_cartao` VARCHAR(45) NULL,
+  `data_validade` VARCHAR(45) NULL,
+  `cod_seguranca` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -168,29 +174,46 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `carfire`.`pagamento_cq`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `carfire`.`pagamento_cq` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `banco` VARCHAR(45) NULL,
+  `agencia` VARCHAR(45) NULL,
+  `conta_corrente` VARCHAR(45) NULL,
+  `nome_titular` VARCHAR(45) NULL,
+  `cpf` VARCHAR(45) NULL,
+  `telefone` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `carfire`.`emprestimo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carfire`.`emprestimo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `agencia_id` INT NOT NULL,
-  `pagamento_id` INT NULL,
+  `pagamento_cc_id` INT NULL,
+  `pagamento_cq_id` INT NULL,
   `devolucao_id` INT NULL,
   `reserva_id` INT NULL,
   `cliente_pf_id` INT NULL,
   `cliente_pj_id` INT NULL,
   `data` VARCHAR(45) NOT NULL,
   `hora` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_emprestimo_pagamento1_idx` (`pagamento_id` ASC),
+  INDEX `fk_emprestimo_pagamento1_idx` (`pagamento_cc_id` ASC),
   INDEX `fk_emprestimo_cliente_pj1_idx` (`cliente_pj_id` ASC),
   INDEX `fk_emprestimo_pj_devolucao1_idx` (`devolucao_id` ASC),
   INDEX `fk_emprestimo_pj_reserva1_idx` (`reserva_id` ASC),
   INDEX `fk_emprestimo_cliente_pf1_idx` (`cliente_pf_id` ASC),
   INDEX `fk_emprestimo_agencia1_idx` (`agencia_id` ASC),
+  INDEX `fk_emprestimo_pagamento_cq1_idx` (`pagamento_cq_id` ASC),
   CONSTRAINT `fk_emprestimo_pagamento1`
-    FOREIGN KEY (`pagamento_id`)
-    REFERENCES `carfire`.`pagamento` (`id`)
+    FOREIGN KEY (`pagamento_cc_id`)
+    REFERENCES `carfire`.`pagamento_cc` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_emprestimo_cliente_pj1`
@@ -216,6 +239,11 @@ CREATE TABLE IF NOT EXISTS `carfire`.`emprestimo` (
   CONSTRAINT `fk_emprestimo_agencia1`
     FOREIGN KEY (`agencia_id`)
     REFERENCES `carfire`.`agencia` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_emprestimo_pagamento_cq1`
+    FOREIGN KEY (`pagamento_cq_id`)
+    REFERENCES `carfire`.`pagamento_cq` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -331,6 +359,8 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
+
+
 -- -----------------------------------------------------
 -- Dados para produção
 -- -----------------------------------------------------
@@ -408,8 +438,17 @@ insert into `carfire`.`agencia`(cidade_id, nome) values
 (4, "Agência da pesada"),
 (6, "Agência mineira");
 
-INSERT INTO emprestimo (agencia_id, pagamento_id, devolucao_id, reserva_id, cliente_pf_id, cliente_pj_id, data, hora, status) VALUES 
-(1, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "emprestado"),
-(2, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "cancelado"),
-(3, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "finalizado"),
-(2, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "emprestado");
+INSERT INTO emprestimo (agencia_id, pagamento_cc_id, pagamento_cq_id, devolucao_id, reserva_id, cliente_pf_id, cliente_pj_id, data, hora, status) VALUES 
+(1, NULL, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "emprestado"),
+
+(2, NULL, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "cancelado"),
+
+(3, NULL, NULL, NULL, NULL, 1, NULL, "02-11-2014", "15:00", "finalizado"),
+
+(2, NULL, NULL, NULL, NULL, 2, NULL, "02-11-2014", "15:00", "emprestado");
+
+INSERT INTO veiculo (grupo_id, chassi, placa, km, cidade, estado, marca, modelo, fabricante, tarifa, taxa, combustivel, portas, ano_modelo, cor, renavam, descricao, disponivel, estoque, observacoes) VALUES
+(2, "", "", "", "", "", "", "", "", "", "", "", 4, 2010, "", "", "Renault Sandero 1.0", 1, "", ""),
+(2, "", "", "", "", "", "", "", "", "", "", "", 4, 2010, "", "", "Palio flex 1.6", 1, "", ""),
+(2, "", "", "", "", "", "", "", "", "", "", "", 4, 2009, "", "", "Celta 1.4", 1, "", "");
+

@@ -1,0 +1,14 @@
+emprestimoPasso1.xhtml 
+
+line 44
+<h:selectOneMenu styleClass="form-control input-sm" id="grupos" onchange="submit()" valueChangeListener="#{grupoController.changeCombosRelacionadas}">		 
+	<f:selectItem itemValue="" itemLabel="" /> 
+ 	<f:selectItems value="#{grupoController.itens()}" var="grupo" itemValue="#{grupo.id}" itemLabel="#{grupo.nome}" />							 
+</h:selectOneMenu> 
+
+
+line 52
+<h:selectOneMenu styleClass="form-control input-sm" id="veiculos" value="#{emprestimoController.veiculoSelecionado_id}">
+	<f:selectItem itemValue="" itemLabel="" />
+	<f:selectItems value="#{grupoController.getComboVeiculos()}" var="veiculo" itemValue="#{veiculo.id}" itemLabel="#{veiculo.descricao}" />							
+</h:selectOneMenu>

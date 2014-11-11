@@ -1,9 +1,6 @@
 package carfire.web.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -12,8 +9,13 @@ import javax.faces.model.SelectItem;
 
 import carfire.web.model.dao.DevolucaoDAO;
 import carfire.web.model.dao.EmprestimoDAO;
+import carfire.web.model.dao.ItensEmprestimoDAO;
+import carfire.web.model.dao.PagamentoCartaoCreditoDAO;
 import carfire.web.model.to.DevolucaoTO;
 import carfire.web.model.to.EmprestimoTO;
+import carfire.web.model.to.ItensEmprestimoTO;
+import carfire.web.model.to.PagamentoCartaoCreditoTO;
+import carfire.web.util.FuncoesData;
 
 
 
@@ -23,6 +25,7 @@ public class EmprestimoController {
 
 	private EmprestimoTO emprestimoTO = null;
 	private EmprestimoDAO emprestimoDAO = null;
+	private ItensEmprestimoDAO itensDAO = null;
 	
 	private long veiculoSelecionado_id = 0;
 	private long tarifaSelecionada_id = 0;
@@ -33,6 +36,7 @@ public class EmprestimoController {
 	public EmprestimoController() {
 		emprestimoTO = new EmprestimoTO();
 		emprestimoDAO = new EmprestimoDAO();
+		itensDAO = new ItensEmprestimoDAO();
 	}
 	
 	
@@ -56,18 +60,51 @@ public class EmprestimoController {
 //			
 //			i++;
 //		}		
-		
-		
-		
 		return "emprestimoPasso2.jsf";
-//		return "";
 	}
 	public String salvarPasso2() {		
-		System.out.println(this.veiculoSelecionado_id+"foi?");
-		System.out.println(this.acessoriosSelecionados_ids);
+		
 		return "emprestimoPasso3.jsf";
 	}
-	public String salvarPasso3() {		
+	public String salvarPasso3() {	
+		
+		//
+		//
+		//
+//		PagamentoCartaoCreditoTO pagamento= new PagamentoCartaoCreditoTO();
+//		pagamento.setBandeira("Visa");
+//		pagamento.setNome_titular("Fulanox");
+//		pagamento.setCpf("122.333.444-22");
+//		pagamento.setNumero_cartao("323234.433434.433434");
+//		pagamento.setData_validade("22/12/1990");
+//		pagamento.setCod_seguranca("322");
+//		
+//		PagamentoCartaoCreditoDAO pagDAO = new PagamentoCartaoCreditoDAO();
+//		pagDAO.inserir(pagamento);
+		
+		
+		//
+		// Novo empréstimo
+		//
+		EmprestimoTO emprestimo = new EmprestimoTO();
+		emprestimo.setAgencia_id(1);
+		emprestimo.setData(FuncoesData.dataAtual());
+		emprestimo.setHora(FuncoesData.horaAtual());
+		emprestimo.setStatus("emprestado");
+		
+		emprestimoDAO.inserir(emprestimo);
+		
+		//
+		// Inserir veículo
+		//
+		ItensEmprestimoTO itens_emprestimo = new ItensEmprestimoTO();
+		itens_emprestimo.setVeiculo_id(veiculoSelecionado_id);
+		itens_emprestimo.setEmprestimo_id(emprestimoDAO.lastInsertId());
+		
+		itensDAO.inserir(itens_emprestimo);
+		
+		
+		
 		return "listEmprestimo.jsf";
 	}
 	
@@ -87,20 +124,13 @@ public class EmprestimoController {
 	 */
 	public String fazerDevolucao() {
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-		
-		String data = dateFormat.format(new Date());
-		String hora = hourFormat.format(new Date());
-
-
 		//
 		// Nova devolução
 		//
 		DevolucaoTO devolucao = new DevolucaoTO();
 		devolucao.setAgencia_id(1);
-		devolucao.setData(data);
-		devolucao.setHora(hora);
+		devolucao.setData(FuncoesData.dataAtual());
+		devolucao.setHora(FuncoesData.horaAtual());
 		
 		DevolucaoDAO devolucaoDAO = new DevolucaoDAO();
 		devolucaoDAO.inserir(devolucao);
@@ -114,6 +144,9 @@ public class EmprestimoController {
 		return null;
 	}
 	
+	
+	
+
 	
 	/**************************************/
 	/* Getter e setters                   */
